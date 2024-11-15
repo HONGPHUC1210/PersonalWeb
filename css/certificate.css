@@ -1,0 +1,42 @@
+/* certificates.css */
+body {
+    background-color: #00171f;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1.sub-title {
+    font-size: 2.5em;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.certificate-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.certificate-list li {
+    margin: 15px 0;
+}
+
+.certificate-list li a {
+    text-decoration: none;
+    color: #00a8e8;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.certificate-list li a:hover {
+    color: #007ea7;
+}

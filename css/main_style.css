@@ -1,0 +1,793 @@
+:root {
+    --main-bg-color: #00171f;
+    --main-text-color: #fff;
+    --accent-color: #007ea7;
+    /* --accent-gradient: linear-gradient(90deg, #ffcc00, #ff0000); */
+    --accent-gradient-start: #003459; 
+    --accent-gradient-end: #007ea7; 
+    --secondary-text-color: #ababab;
+    --secondary-bg-color: #262626;
+    --highlight-color: #00a8e8;
+}
+/* -------------------- Global Styles -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.sub-title {
+    font-size: 60px !important; /* Điều chỉnh kích thước chữ */
+    margin-bottom: 20px; /* Tăng khoảng cách dưới tiêu đề */
+    font-weight: bold; /* Đảm bảo độ đậm của chữ */
+    color: var(--main-text-color) !important; /* Đảm bảo màu chữ */
+}
+
+
+.language-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.language-switcher select {
+    background: var(--secondary-bg-color); /* Nền xám */
+    border: 1px solid var(--accent-color);
+    color: var(--main-text-color);
+    padding: 5px 10px 5px 10px; /* Điều chỉnh padding nếu cần */
+    cursor: pointer;
+    appearance: none; /* Xóa mũi tên mặc định trong hầu hết các trình duyệt */
+    -webkit-appearance: none; /* Xóa mũi tên mặc định trong Safari */
+    -moz-appearance: none; /* Xóa mũi tên mặc định trong Firefox */
+    font-size: 16px;
+    text-align: center;
+    min-width: 60px;
+    padding-right: 20px; /* Thêm padding để tạo không gian cho mũi tên */
+    transition: background 0.3s, color 0.3s;
+}
+
+.language-switcher select:hover {
+    background: var(--accent-color); /* Nền đỏ khi hover */
+    color: var(--main-text-color); /* Văn bản trắng khi hover */
+}
+
+.language-switcher::after {
+    content: '▼';
+    font-size: 12px;
+    color: var(--main-text-color);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.language-switcher select option {
+    background: var(--secondary-bg-color);
+    color: var(--main-text-color);
+}
+
+
+/* -------------------- Header Section -------------------- */
+
+#header {
+    width: 100%;
+    height: 100vh;
+
+    background-image: url(/assets/background2.png);
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+#header .container {
+    padding: 10px 5%; /* Tăng padding để tạo không gian cho các phần tử lớn hơn */
+    max-width: 1600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+
+.logo {
+    width: 80px; /* Tăng kích thước logo */
+    
+}
+
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 30px; /* Tăng khoảng cách giữa các mục */
+}
+
+nav ul li a {
+    color: var(--main-text-color);
+    text-decoration: none;
+    font-size: 24px; /* Tăng kích thước font chữ */
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--accent-color);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.header-text {
+    margin-top: 20%;
+    font-size: 35px;
+}
+
+.header-text h1 {
+    font-size: 70px;
+    margin-top: 20px;
+}
+
+/* Hiệu ứng đổi màu gradient-animation cho chữ  */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.header-text h1 span {
+    background: linear-gradient(90deg, var(--accent-gradient-start), var(--accent-gradient-end));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; 
+    color: transparent; 
+    font-size: 70px; /* Điều chỉnh kích thước font chữ nếu cần */
+    animation: gradient-animation 3s ease infinite;
+}
+
+/* -------------------- About Section -------------------- */
+
+#about {
+    padding: 80px 0;
+    color: var(--secondary-text-color);
+}
+#about .container {
+    padding: 10px 5%; /* Tăng padding để tạo không gian cho các phần tử lớn hơn */
+    max-width: 1600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+}
+
+
+#about .sub-title {
+    font-size: 80px !important; /* Điều chỉnh kích thước chữ */
+    margin-bottom: 20px; /* Tăng khoảng cách dưới tiêu đề */
+    font-weight: bold; /* Đảm bảo độ đậm của chữ */
+    color: var(--main-text-color) !important; /* Đảm bảo màu chữ */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* ------------Col 1------------ */
+.about-col-1 {
+    flex-basis: 35%;
+    /* padding-right: 20px; */
+}
+
+
+/* Slider Style */
+.slider-container {
+    width: 100%;
+    height: 600px; /* Chiều cao cố định của khung */
+    overflow: hidden; /* Ẩn phần ảnh dư thừa */
+    position: relative;
+    background-color: transparent; /* Nền trong suốt hoặc thay bằng màu nền trang */
+    border: 5px transparent; /* Thêm đường viền với màu sắc tùy chọn */
+    border-radius: 15px; /* Bo tròn góc nếu muốn */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.); Hiệu ứng đổ bóng */
+    /* margin: 10px auto; Thêm khoảng cách giữa khung và nội dung xung quanh */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-img {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Đảm bảo ảnh vừa với khung và giữ tỷ lệ */
+    background-color: transparent; /* Hoặc màu nền tùy chỉnh */
+    margin: auto;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 12px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 0px;
+    border-top-left-radius: 0; /* Tạo nửa hình tròn */
+    border-bottom-left-radius: 0;
+}
+
+.next {
+    right: 0;
+    border-top-right-radius: 0; /* Tạo nửa hình tròn */
+    border-bottom-right-radius: 0;
+}
+/* Thêm hiệu ứng khi di chuột */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Tăng độ tối của nền khi hover */
+}
+/* Modal Style */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa modal */
+    width: auto; /* Tự động điều chỉnh theo nội dung */
+    /* max-width: 80%; Điều chỉnh độ rộng tối đa */
+    height: auto;
+    /* max-height: 80%; Điều chỉnh chiều cao tối đa */
+    overflow: auto; /* Thêm thanh cuộn nếu nội dung vượt quá chiều cao */
+    background-color: rgba(0, 0, 0, 0.8); /* Nền tối mờ */
+    padding: 20px;
+    border-radius: 15px; /* Bo tròn góc */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng */
+}
+
+.modal-content {
+    /* margin: auto;
+    display: block; */
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* ------------Col 2------------ */
+
+.about-col-2 {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.about-col-2 h1 {
+    font-size: 100px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+}
+
+.about-col-2 p {
+    font-size: 26px;
+    margin-top: 0;
+}
+
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links {
+    margin-right: 50px;
+    font-size: 2 px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    color: var(--main-text-color); /* Thêm màu cho tab-links */
+}
+
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--accent-color);
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after, 
+.tab-links:hover::after { /* Thêm phần hover::after */
+    width: 50%;
+}
+
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+
+.tab-contents ul ul li {
+    font-size: 14px; /* Kích thước nhỏ hơn cho danh sách con */
+    color: #555; /* Màu chữ cho danh sách con */
+}
+.tab-contents ul li span {
+    color: var(--highlight-color);
+    font-size: 25px; /* Tăng kích thước của các tiêu đề trong các tab */
+    font-weight: bold; /* Đặt chữ đậm */
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
+}
+/* -------------------- Services Section -------------------- */
+#services {
+    padding: 50px 0;
+}
+#service .container {
+    padding: 10px 5%; /* Tăng padding để tạo không gian cho các phần tử lớn hơn */
+    max-width: 1600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px; /* Khoảng cách giữa các box */
+    margin-top: 40px; /* Tạo khoảng cách trên danh sách dịch vụ */
+}
+
+.service-list div {
+    background: var(--secondary-bg-color);
+    padding: 40px;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+    display: flex;
+    flex-direction: column; /* Căn chỉnh các phần tử bên trong theo chiều dọc */
+    justify-content: space-between; /* Không gian giữa các phần tử */
+}
+
+.service-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.service-list div h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    word-wrap: break-word; /* Đảm bảo từ dài sẽ được tách dòng */
+}
+
+.service-list div p {
+    margin: 20px 0; /* Loại bỏ margin để tránh khoảng trống không cần thiết */
+    line-height: 1.6; /* Tạo khoảng cách giữa các dòng văn bản */
+    font-size: 18px; /* Tăng cỡ chữ của đoạn văn bản mô tả */
+}
+
+.service-list div a {
+    text-decoration: none;
+    color: var(--highlight-color); /* Thay đổi màu chữ */
+    font-size: 14px; /* Tăng kích thước chữ */
+    font-weight: bold; /* Làm đậm chữ */
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s; /* Hiệu ứng chuyển đổi màu chữ */
+}
+
+.service-list div:hover {
+    background: var(--accent-color);
+    transform: translateY(-10px);
+}
+
+/* -------------------- Porfolio Section -------------------- */
+#portfolio {
+    padding: 50px 0;
+}
+
+#portfolio .container {
+    padding: 10px 5%; /* Tăng padding để tạo không gian cho các phần tử lớn hơn */
+    max-width: 1600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Đảm bảo container chiếm toàn bộ chiều cao */
+}
+
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 40px;
+}
+
+.work {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.work img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), var(--accent-color));
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+
+.layer h3 {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.layer a {
+    margin-top: 20px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.work:hover img {
+    transform: scale(1.1);
+}
+
+.work:hover .layer {
+    height: 100%;
+}
+
+.btn {
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid var(--accent-color);
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--main-text-color);
+    transition: background 0.5s;
+    align-self: center; /* Căn giữa nút */
+    margin-top:  20px; /* Đẩy nút xuống cuối */
+    margin-bottom: 50px; /* Thêm khoảng cách dưới */
+}
+
+.btn:hover {
+    background: var(--accent-color);
+}
+
+/* CSS để định dạng danh sách chứng chỉ */
+.certificate-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.certificate-list li {
+    margin: 10px 0;
+}
+
+.certificate-list li a {
+    text-decoration: none;
+    color: #007ea7;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.certificate-list li a:hover {
+    color: #005f73;
+}
+
+
+/* -------------------- Contact Section -------------------- */
+#contact .container {
+    padding: 10px 5%; /* Tăng padding để tạo không gian cho các phần tử lớn hơn */
+    max-width: 1600px; /* Chiều rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+}
+
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.contact-right {
+    flex-basis: 60%;
+}
+
+.contact-left p {
+    margin-top: 30px;
+}
+
+.contact-left p i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: var(--secondary-text-color);
+    display: inline-block;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.btn.btn2 {
+    display: inline-block;
+    background: var(--accent-color);
+    text-align: left;
+}
+
+.contact-left .btn-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px; /* Adjust as needed */
+}
+
+.btn2 {
+    margin-top: 10px; /* Adjust as needed */
+    text-align: left; /* Ensure the text aligns to the left */
+    background-color: var(--accent-color); /* Ensure consistent background color */
+    color: var(--main-text-color); /* Ensure consistent text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Adjust border radius as needed */
+    text-decoration: none; /* Remove underline from link */
+    font-size: 20px; /* Increase font size as needed */
+    /* font-weight: bold; */
+}
+
+
+
+
+
+
+
+
+.contact-right form {
+    width: 100%;
+}
+
+
+
+form input, form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: var(--secondary-bg-color);
+    padding: 15px;
+    margin: 15px 0;
+    color: var(--main-text-color);
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+form .btn2 {
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+
+
+/* ------------------------------------------- */
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: var(--secondary-bg-color);
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.copyright i {
+    color: var(--accent-color);
+}
+
+
+/* CSS changes for desktop and mobile menu */
+@media only screen and (max-width: 600px) {
+    #header {
+        background-image: url(/assets/Phone_bg.png);
+    }
+
+    .header-text {
+        margin-top: 50%;
+        font-size: 20px;
+    }
+
+    .header-text h1 {
+        font-size: 30px;
+    }
+
+    .header-text p{
+        font-size: 25px;
+    }
+    .header-text h1 span{
+        font-size: 40px;
+    } 
+
+    nav .fa-solid {
+        display: block;
+        font-size: 25px;
+    }
+
+    nav ul {
+        background: var(--accent-color);
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 25px;
+    }
+
+    nav ul .fa-solid {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    .sub-title {
+        font-size: 40px;
+    }
+
+    .about-col-1, .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .about-col-1 {
+        margin-bottom: 30px;
+    }
+
+    .about-col-2 {
+        font-size: 14px;
+    }
+
+    .tab-links {
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+    .contact-left, .contact-right {
+        flex-basis: 100%;
+    }
+
+    .copyright {
+        font-size: 14px;
+    }
+
+    .language-switcher {
+        display: none;
+    }
+
+    .language-mobile {
+        display: block;
+        margin: 25px;
+        text-align: center;
+    }
+
+    .language-mobile select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: var(--secondary-bg-color);
+        color: var(--main-text-color);
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .language-mobile {
+        display: none;
+    }
+
+    nav .fa-solid.fa-xmark,
+    nav .fa-solid.fa-bars {
+        display: none;
+    }
+}
+

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="/css/main_style.css">
+    <link rel="icon" href="/assets/Log.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/14cb595dd4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Header Section -->
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="/assets/logo.png" alt="Logo">
+            <ul id="sidemenu">
+                <li><a href="#header" data-lang="en">Home</a><a href="#header" data-lang="fr" style="display:none;">Accueil</a></li>
+                <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="fr" style="display:none;">À propos</a></li>
+                <li><a href="#service" data-lang="en">Services</a><a href="#service" data-lang="fr" style="display:none;">Services</a></li>
+                <li><a href="#portfolio" data-lang="en">Portfolio</a><a href="#portfolio" data-lang="fr" style="display:none;">Portfolio</a></li>
+                <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="fr" style="display:none;">Contact</a></li>
+                <li class="language-mobile">
+                    <select id="language-select-mobile" onchange="setLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="fr">FR</option>
+                    </select>
+                </li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            <div class="language-switcher">
+                <select id="language-select" onchange="setLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                </select>
+            </div>
+        </nav>
+
+        <div class="header-text">
+            <p data-lang="en">Actuary Student</p>
+            <p data-lang="fr" style="display:none;">Étudiant en Actuariat</p>
+            <h1 class="moving-element">
+                <span data-lang="en">Hi, I'm </span><span data-lang="fr" style="display:none;">Bonjour, Je m'appelle </span><span> Phuc </span><br>
+                <span data-lang="en"> From Vietnam</span><span data-lang="fr" style="display:none;"> du Vietnam</span>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <div class="slider-container">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <div class="slider">
+                        <img src="/assets/about_1.png" class="slider-img" onclick="openModal(this.src)">
+                        <!-- <img src="/assets/about_2.png" class="slider-img" onclick="openModal(this.src)">
+                        <img src="/assets/about_3.png" class="slider-img" onclick="openModal(this.src)">
+                        <img src="/assets/about_4.png" class="slider-img" onclick="openModal(this.src)"> -->
+
+
+
+                        <!-- Thêm các ảnh khác nếu cần -->
+                    </div>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+            
+            <!-- Modal để hiển thị ảnh phóng to -->
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="img01">
+            </div>
+
+            <div class="about-col-2">
+                <h1 class="sub-title" data-lang="en">About Me</h1>
+                <h1 class="sub-title" data-lang="fr" style="display:none;">À propos de moi</h1>
+                <p data-lang="en">I am an Actuary student with a strong foundation in actuarial science and data science. My expertise lies in analyzing and managing risk, as well as deriving insights from data to drive strategic decisions.I am driven by a passion for numbers and problem-solving, constantly seeking to refine my skills and contribute meaningfully to the fields of actuarial science and data analysis.</p>
+                <p data-lang="fr" style="display:none;">Je suis étudiant en actuariat avec une solide formation en science actuarielle et en science des données. Mon expertise réside dans l'analyse et la gestion des risques, ainsi que dans l'extraction d'informations à partir de données pour orienter les décisions stratégiques.Je suis animé par une passion pour les chiffres et la résolution de problèmes, cherchant constamment à améliorer mes compétences et à contribuer de manière significative aux domaines de l'actuariat et de l'analyse de données.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('education')">Education</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('achivement')">Achivement</p>
+                    <p class="tab-links" onclick="opentab('skills')">Skills</p>
+
+
+                    
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2024 - Current</span><br>Insitut de Science Financière et d'Assurances</li>
+                        <li><span>2021 - 2023</span><br>Hanoi University Science</li>
+                    </ul>
+                </div> 
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>04/2023 - Current</span><br>Solvency: ALM modelization
+                            <ul>
+                                <li> - Generator Scenario Economic</li>
+
+                            </ul>
+                        </li>
+                        <li><span>06/2023 - 09/2023</span><br>VBI: Underwriting</li>
+                    </ul>
+                </div> 
+                <div class="tab-contents" id="achivement">
+                    <ul>
+                        <li>
+                            <span>2024 </span><br>Meta Front-End Developer
+                            <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank">
+                                <i class="fa-solid fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span>2023</span><br>IBM Data Science
+                            <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank">
+                                <i class="fa-solid fa-external-link-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span>2023</span><br>IBM Data Analysis
+                            <a href="https://www.coursera.org/professional-certificates/meta-front-end-developer" target="_blank">
+                                <i class="fa-solid fa-external-link-alt"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div> 
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span data-lang="en">Data Science</span><span data-lang="fr" style="display:none;">Science des Données</span><br>Data Analysis, Data Visualize</li>
+                        <li><span data-lang="en">Actuary Science</span><span data-lang="fr" style="display:none;">Science Actuarielle</span><br>Pricing product </li>
+                        <li><span data-lang="en">Mathematic pedagogical ability</span><span data-lang="fr" style="display:none;">Capacité Pédagogique en Mathématiques</span><br>Math tutor</li>
+                    </ul>
+                </div>         
+ 
+    
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div id="service">
+    <div class="container">
+        <h1 class="sub-title" data-lang="en">My Services</h1>
+        <h1 class="sub-title" data-lang="fr" style="display:none;">Mes Services</h1>
+        <div class="service-list">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2 data-lang="en">Data Analysis</h2>
+                <h2 data-lang="fr" style="display:none;">Analyse de Données</h2>
+                <p data-lang="en">My job is to help you make better decisions.</p>
+                <p data-lang="fr" style="display:none;">Mon travail est de vous aider à prendre de meilleures décisions.</p>
+                <a href="#" data-lang="en">Learn more</a>
+                <a href="#" data-lang="fr" style="display:none;">En savoir plus</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-crop"></i>
+                <h2 data-lang="en">Application Development</h2>
+                <h2 data-lang="fr" style="display:none;">Application Development</h2>
+                <p data-lang="en">A small app or game in Tkinter or Pygame will make your life easier and more fun!</p>
+                <p data-lang="fr" style="display:none;">Une petite appli ou un jeu avec Tkinter ou Pygame rendra votre vie plus facile et plus amusante !</p>
+                <a href="#" data-lang="en">Learn more</a>
+                <a href="#" data-lang="fr" style="display:none;">En savoir plus</a>
+            </div>
+            <!-- <div>
+                <i class="fa-brands fa-app-store"></i>
+                <h2 data-lang="en">Mathematic Tutor</h2>
+                <h2 data-lang="fr" style="display:none;">Tutorat en Mathématiques</h2>
+                <p data-lang="en">A short description about Mathematic Tutor in English.</p>
+                <p data-lang="fr" style="display:none;">Une courte description du tutorat en mathématiques en français.</p>
+                <a href="#" data-lang="en">Learn more</a>
+                <a href="#" data-lang="fr" style="display:none;">En savoir plus</a>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Section -->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title" data-lang="en">My Project</h1>
+        <h1 class="sub-title" data-lang="fr" style="display:none;">Mes Travaux</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="/assets/work-1.png">
+                <div class="layer">
+                    <h3 data-lang="en">Learning French App</h3>
+                    <h3 data-lang="fr" style="display:none;">Application Apprendre le français</h3>
+                    <p data-lang="en">The app connects you to talented people around the world. Download it from Playstore.</p>
+                    <p data-lang="fr" style="display:none;">L'application vous connecte à des personnes talentueuses du monde entier. Téléchargez-la depuis le Playstore.</p>
+                    <a href="https://github.com/HONGPHUC1210/LearningFrenchApp"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="/assets/work-2.1.png">
+                <div class="layer">
+                    <h3 data-lang="en">Music App</h3>
+                    <h3 data-lang="fr" style="display:none;">Application de Musique</h3>
+                    <p data-lang="en">The app connects you to talented people around the world. Download it from Playstore.</p>
+                    <p data-lang="fr" style="display:none;">L'application vous connecte à des personnes talentueuses du monde entier. Téléchargez-la depuis le Playstore.</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <a href="/html/certificates.html" class="btn" data-lang="en">See more</a>
+        <a href="/html/certificates.html" class="btn" data-lang="fr" style="display:none;">Voir plus</a>
+        
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title" data-lang="en">Contact Me</h1>
+                <h1 class="sub-title" data-lang="fr" style="display:none;">Contactez Moi</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>quachhongphuc1210@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>0886621210</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/hongphuc1210"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/hongphucquach/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/HONGPHUC1210"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <div class="btn-container">
+                    <a href="//assets/FR_CV_Hobo.pdf" download class="btn btn2" data-lang="en">Download CV</a>
+                    <a href="//assets/FR_CV_Hobo.pdf" download class="btn btn2" data-lang="fr" style="display:none;">Télécharger CV</a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form id="submitForm">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2" data-lang="en">Submit</button>
+                    <button type="submit" class="btn btn2" data-lang="fr" style="display:none;">Soumettre</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Hong Phuc. Made with <i class="fa-solid fa-heart"></i> by QHP </p>
+    </div>
+</div>
+
+<!-- Linking JavaScript -->
+<script src="/script.js"></script>
+</body>
+</html>

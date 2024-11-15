@@ -1,0 +1,29 @@
+/* certificate_detail.css */
+body {
+    background-color: #00171f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+#certificate-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+#certificate-image, #certificate-pdf {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

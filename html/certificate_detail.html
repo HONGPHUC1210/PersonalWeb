@@ -1,0 +1,55 @@
+<!-- certificate_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Detail</title>
+    <link rel="stylesheet" href="/css/certificate_detail.css">
+
+</head>
+<body>
+
+    <div id="certificate-container">
+        <img id="certificate-image" src="" alt="Certificate" style="display: none;">
+        <iframe id="certificate-pdf" src="" style="display: none;"></iframe>
+    </div>
+
+    <script>
+        // Hàm lấy giá trị từ URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Xác định chứng chỉ dựa trên tham số URL
+        const certificate = getQueryParam("certificate");
+
+        // Chỉ định các file tương ứng với chứng chỉ
+        const certificateFiles = {
+            "meta": { type: "pdf", src: "/assets/Certification/Meta_Front_End.pdf" },
+            "data_analysis": { type: "pdf", src: "/assets/Certification/IBM_Data_Analyst.pdf" },
+            "data_science": { type: "pdf", src: "/assets/Certification/IBM_Data_Science.pdf" },
+            "blood_donation": { type: "pdf", src: "/assets/Certification/Blood.pdf" },
+            "nand2tetris": { type: "pdf", src: "/assets/Certification/NandtoTetris.pdf" },
+
+
+            // Thêm các chứng chỉ khác nếu cần
+        };
+
+        // Hiển thị chứng chỉ
+        const certificateData = certificateFiles[certificate];
+        if (certificateData) {
+            if (certificateData.type === "image") {
+                document.getElementById("certificate-image").src = certificateData.src;
+                document.getElementById("certificate-image").style.display = "block";
+            } else if (certificateData.type === "pdf") {
+                document.getElementById("certificate-pdf").src = `${certificateData.src}#zoom=100`;
+                document.getElementById("certificate-pdf").style.display = "block";
+            }
+        } else {
+            document.body.innerHTML = "<h2>Certificate not found</h2>";
+        }
+    </script>
+</body>
+</html>
