@@ -84,7 +84,7 @@ body {
     width: 100%;
     height: 100vh;
 
-    background-image: url(/assets/background2.png);
+    background-image: url(../assets/background2.png);
 
     background-size: cover;
     background-position: center;
@@ -683,7 +683,7 @@ form .btn2 {
 /* CSS changes for desktop and mobile menu */
 @media only screen and (max-width: 600px) {
     #header {
-        background-image: url(/assets/Phone_bg.png);
+        background-image: url(../assets/Phone_bg.png);
     }
 
     .header-text {
