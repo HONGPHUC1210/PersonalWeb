@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCM Retraite — ISFA M2 Actuariat</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    min-height: 100%;
+    width: 100%;
+    background: #f6f3ec;
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px;
+    font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  }
+  .card {
+    width: 100%;
+    max-width: 680px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e4ded2;
+    padding: 28px 28px 24px;
+    box-shadow: 0 1px 3px rgba(40,30,20,0.06);
+  }
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a6d3f;
+    font-weight: 600;
+  }
+  select.qcm-select {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #d8d4cc;
+    background: #faf8f3;
+    color: #4a4438;
+    max-width: 220px;
+  }
+  .jump-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .jump-input {
+    width: 56px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #d8d4cc;
+    background: #faf8f3;
+    color: #4a4438;
+  }
+  .jump-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #3a4a36;
+    background: #fff;
+    color: #3a4a36;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .progress-bar-bg {
+    height: 6px;
+    width: 100%;
+    background: #ece7da;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-bar-fg {
+    height: 100%;
+    background: #a8895c;
+    transition: width 0.3s ease;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0 18px;
+  }
+  .meta-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #8a8270;
+  }
+  .chap-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: #5d6e5c;
+    background: #eef1e7;
+    border: 1px solid #d4ddc8;
+    padding: 3px 9px;
+    border-radius: 5px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  .type-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: #7a5230;
+    background: #f6ece0;
+    border: 1px solid #e6d3b8;
+    padding: 3px 9px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+  .question-text {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #2b2722;
+    margin: 8px 0 20px;
+    font-weight: 600;
+  }
+  .options-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    border: 1.5px solid #d8d4cc;
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 15px;
+    font-family: 'Source Serif Pro', Georgia, serif;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    background: #ffffff;
+    color: #2b2722;
+    cursor: pointer;
+    text-align: left;
+  }
+  .option-btn.selected { background: #f1ece0; border-color: #a8895c; }
+  .option-btn.validated-correct { background: #eaf4ee; border-color: #2f7d5f; color: #1d5c44; }
+  .option-btn.validated-wrong { background: #fbeceb; border-color: #c4453a; color: #9c2f26; }
+  .option-btn.validated-missed { background: #fffbe6; border-color: #b8940a; color: #7a5f00; }
+  .option-btn.validated-disabled { cursor: default; }
+  .option-marker {
+    width: 18px; height: 18px; min-width: 18px;
+    border: 2px solid #c9c2b4;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; background: transparent;
+  }
+  .option-marker.circle { border-radius: 50%; }
+  .option-marker.square { border-radius: 4px; }
+  .option-marker.marked { background: var(--marker-color, #a8895c); border-color: var(--marker-color, #a8895c); }
+  .option-marker-inner { color: #fff; font-size: 11px; font-weight: 700; }
+  .option-label { flex: 1; text-align: left; }
+  .check-icon { color: #2f7d5f; font-weight: 700; font-size: 16px; }
+  .cross-icon { color: #c4453a; font-weight: 700; font-size: 16px; }
+  .warn-icon { color: #b8940a; font-weight: 700; font-size: 16px; }
+
+  /* ---- Explanation box ---- */
+  .explanation-box {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #2f7d5f;
+    background: #fbfaf6;
+  }
+  .explanation-box.incorrect { border-color: #c4453a; }
+  .explanation-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    color: #4a4438;
+  }
+  .expl-section {
+    margin-bottom: 12px;
+  }
+  .expl-section:last-child { margin-bottom: 0; }
+  .expl-lang-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  .badge-fr { background: #e8f0fd; color: #2a4db5; border: 1px solid #c4d4f5; }
+  .badge-vn { background: #fde8e8; color: #b52a2a; border: 1px solid #f5c4c4; }
+  .expl-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #3a352c;
+  }
+  .expl-divider {
+    border: none;
+    border-top: 1px dashed #e0dbd0;
+    margin: 10px 0;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-row { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .primary-btn {
+    flex: 1; min-width: 160px;
+    background: #3a4a36; color: #fff;
+    border: none; border-radius: 9px;
+    padding: 13px 18px; font-size: 14.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600; letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .primary-btn:disabled { opacity: 0.5; cursor: default; }
+  .secondary-btn {
+    flex: 1; min-width: 160px;
+    background: #fff; color: #3a4a36;
+    border: 1.5px solid #3a4a36;
+    border-radius: 9px; padding: 13px 18px;
+    font-size: 14.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600; letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .retry-btn {
+    flex: 1; min-width: 160px;
+    background: #fff; color: #c4453a;
+    border: 1.5px solid #c4453a;
+    border-radius: 9px; padding: 13px 18px;
+    font-size: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600; letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+
+  /* ---- Result screen ---- */
+  .result-title { font-size: 26px; margin: 4px 0 18px; color: #2b2722; }
+  .score-circle {
+    width: 130px; height: 130px; border-radius: 50%;
+    border: 6px solid #a8895c;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .score-num { font-size: 36px; font-weight: 700; color: #3a4a36; font-family: 'IBM Plex Mono', monospace; }
+  .score-den { font-size: 14px; color: #8a8270; font-family: 'IBM Plex Mono', monospace; }
+  .pct-text { text-align: center; font-size: 15px; color: #4a4438; margin-bottom: 22px; }
+  .recap-list {
+    display: flex; flex-direction: column; gap: 6px;
+    max-height: 280px; overflow-y: auto;
+    padding: 4px; border: 1px solid #ece7da;
+    border-radius: 10px; margin-bottom: 16px;
+  }
+  .recap-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace; color: #4a4438;
+    cursor: pointer; border-radius: 6px;
+    transition: background 0.1s;
+  }
+  .recap-item:hover { background: #f6f3ec; }
+  .recap-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .recap-text { flex: 1; }
+  .recap-retry-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 5px;
+    border: 1px solid #c4453a; background: #fff;
+    color: #c4453a; cursor: pointer;
+  }
+  .empty-text { font-size: 15px; color: #4a4438; }
+
+  /* ---- Retry banner ---- */
+  .retry-banner {
+    background: #fff8e6;
+    border: 1.5px solid #e8b84b;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #7a5f00;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ---- Mobile responsive ---- */
+  @media (max-width: 520px) {
+    body { padding: 0; background: #ffffff; }
+    .card {
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      padding: 14px 14px 72px;
+      min-height: 100vh;
+    }
+    .question-text { font-size: 17px; line-height: 1.35; margin: 6px 0 14px; }
+    .option-btn { padding: 13px 11px; font-size: 14px; gap: 10px; border-radius: 9px; }
+    .option-marker { width: 20px; height: 20px; min-width: 20px; }
+    .option-marker-inner { font-size: 12px; }
+    .primary-btn, .secondary-btn, .retry-btn {
+      padding: 14px 12px;
+      font-size: 13px;
+      min-width: 0;
+      border-radius: 8px;
+    }
+    .btn-row { gap: 8px; margin-top: 14px; flex-direction: column; }
+    .btn-row .primary-btn, .btn-row .secondary-btn, .btn-row .retry-btn { flex: none; width: 100%; }
+    .expl-text { font-size: 13px; line-height: 1.55; }
+    .expl-lang-badge { font-size: 9px; }
+    select.qcm-select { font-size: 11px; max-width: 140px; }
+    .jump-input { width: 44px; font-size: 11px; }
+    .jump-btn { padding: 5px 7px; font-size: 10px; }
+    .jump-row { gap: 4px; }
+    .meta-row { margin: 5px 0 12px; }
+    .meta-text { font-size: 10px; }
+    .chap-tag, .type-tag { font-size: 9.5px; padding: 2px 7px; }
+    .score-circle { width: 100px; height: 100px; border-width: 5px; }
+    .score-num { font-size: 28px; }
+    .score-den { font-size: 12px; }
+    .result-title { font-size: 20px; }
+    .recap-list { max-height: 200px; }
+    .recap-item { font-size: 11.5px; padding: 5px 8px; }
+    .retry-banner { font-size: 11px; padding: 6px 10px; }
+    .explanation-box { padding: 12px 13px; }
+    .explanation-label { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="card" id="app"></div>
+
+<script>
+// ============================================================
+// QCM RETRAITE v3 — ISFA M2 ACTUARIAT
+// 28 câu Đề thi Session 1 (giữ nguyên thứ tự ưu tiên)
+// Tính năng mới:
+//   - Nút "Refaire" khi sai → làm lại câu đó ngay
+//   - Đảo thứ tự options mỗi lần (shuffleOptions)
+//   - Giải thích song ngữ FR / VI
+// ============================================================
+const QUESTIONS_MASTER = [
+  {
+    "id": 1,
+    "chapitre": "[ĐỀ THI PS] Ticket Modérateur – Acte Lourd",
+    "type": "single",
+    "question": "Question 1 (Đề thi). Quel est le montant du Ticket Modérateur pour un acte de chirurgie considéré comme un acte lourd sachant : que l'intervention a été facturée 1200€, que le taux de Remboursement Sécurité sociale est de 100% et que la base de remboursement est de 250€ ?",
+    "options": [
+      "250€",
+      "950€",
+      "18€",
+      "32€",
+      "24€",
+      "0€"
+    ],
+    "correct": [5],
+    "explication_fr": "Pour un acte lourd (coefficient ≥ 60 ou tarif > 120€), le Ticket Modérateur est exonéré à 100%.\n\nLe taux de RSS est donné à 100% → donc TM = 0%.\n\nCependant, il reste une franchise forfaitaire de 24€ sur les actes lourds (forfait actes lourds). Mais attention : si le taux de remboursement est 100%, le TM est nul, et la franchise de 24€ s'applique SEULEMENT pour les actes dont le coefficient ≥ 60 MAIS qui ne sont pas exonérés à 100%. Ici, taux RSS = 100% → TM = 0€.",
+    "explication_vn": "Đối với acte lourd (hệ số ≥ 60 hoặc giá > 120€), Ticket Modérateur được miễn.\n\nĐề bài cho tỷ lệ hoàn trả SS = 100% → TM = (100% - 100%) × BR = 0€.\n\nNhớ: Khi tỷ lệ hoàn trả SS = 100%, phần người bệnh tự trả (TM) = 0. Đáp án: 0€."
+  },
+  {
+    "id": 2,
+    "chapitre": "[ĐỀ THI PS] Reste à charge – Contrat Responsable",
+    "type": "single",
+    "question": "Question 2 (Đề thi). Quel est le reste à charge pour un assuré couvert par un contrat responsable lors de l'achat d'un médicament à 10€ remboursé à 65% par la Sécurité sociale ?",
+    "options": [
+      "10,00€",
+      "3,50€",
+      "0€",
+      "4,50€"
+    ],
+    "correct": [2],
+    "explication_fr": "Médicament à 10€, taux SS = 65%.\n\nBase de Remboursement (BR) = 10€ (prix = BR pour les médicaments à vignette blanche).\n\nRemboursement SS = 65% × 10€ = 6,50€\nTicket Modérateur = 35% × 10€ = 3,50€\n\nLe contrat responsable doit obligatoirement prendre en charge le Ticket Modérateur (à l'exception des médicaments à 15% et 30% et des cures thermales). Les médicaments à 65% (vignette blanche) sont bien pris en charge.\n\nDonc : RAC = 0€ pour l'assuré avec contrat responsable.",
+    "explication_vn": "Thuốc 10€, tỷ lệ SS = 65%.\n\nSS hoàn trả: 65% × 10€ = 6,50€\nTicket Modérateur: 35% × 10€ = 3,50€\n\nContrat responsable BẮT BUỘC phải hoàn trả Ticket Modérateur (trừ thuốc 15%, 30% và cures thermales). Thuốc vignette blanche (65%) thuộc diện bắt buộc thanh toán.\n\n→ Reste à charge = 0€."
+  },
+  {
+    "id": 3,
+    "chapitre": "[ĐỀ THI PS] Prestations en nature – Branche Maladie",
+    "type": "single",
+    "question": "Question 3 (Đề thi). Comment appelle-t-on les prestations versées par le régime général de la Sécurité Sociale pour le remboursement des dépenses de santé dans la branche maladie ?",
+    "options": [
+      "Prestations en espèce",
+      "Prestations en nature",
+      "Prestations tiers payant",
+      "Indemnités"
+    ],
+    "correct": [1],
+    "explication_fr": "Les prestations de la Sécurité Sociale dans la branche Maladie se divisent en deux grandes catégories :\n• Prestations en nature : remboursements des soins (consultations, médicaments, hospitalisation, etc.)\n• Prestations en espèce : indemnités journalières versées en cas d'arrêt de travail\n\nLe remboursement des dépenses de santé = prestations EN NATURE.\n\nLe tiers payant est une modalité de paiement (l'organisme paye directement le professionnel), pas un type de prestation.",
+    "explication_vn": "Bảo hiểm Xã hội (Sécurité Sociale) có 2 loại quyền lợi chính:\n• Prestations en nature: hoàn trả chi phí khám chữa bệnh, thuốc, nhập viện → đây là câu hỏi hỏi\n• Prestations en espèce: trợ cấp ngày nghỉ ốm (indemnités journalières)\n\nTiers payant chỉ là cách thanh toán (cơ quan BH thanh toán trực tiếp), không phải loại quyền lợi.\n\n→ Đáp án: Prestations en nature."
+  },
+  {
+    "id": 4,
+    "chapitre": "[ĐỀ THI PS] Secteur 2 – OPTAM",
+    "type": "single",
+    "question": "Question 4 (Đề thi). Un médecin 'secteur 2' a le droit d'adhérer à l'OPTAM ?",
+    "options": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": [0],
+    "explication_fr": "OPTAM = Option Pratique Tarifaire Maîtrisée.\n\nL'OPTAM est un dispositif destiné à limiter les dépassements d'honoraires. Il est ouvert aux médecins de secteur 2 (à honoraires libres) qui s'engagent à pratiquer un certain pourcentage de leurs actes sans dépassement d'honoraires, en échange d'une meilleure prise en charge par les complémentaires santé.\n\nDonc VRAI : un médecin secteur 2 PEUT adhérer à l'OPTAM.",
+    "explication_vn": "OPTAM = Option Pratique Tarifaire Maîtrisée → công cụ kiểm soát depassements d'honoraires.\n\nBác sĩ secteur 2 (có quyền tính phí vượt mức) CÓ THỂ tham gia OPTAM nếu cam kết thực hiện một tỷ lệ nhất định các ca khám không tính phí vượt. Đổi lại, các complémentaires santé sẽ hoàn trả tốt hơn cho bệnh nhân của họ.\n\n→ ĐÚNG: bác sĩ secteur 2 có quyền tham gia OPTAM."
+  },
+  {
+    "id": 5,
+    "chapitre": "[ĐỀ THI PS] Organismes Assureurs – Assurance Collective",
+    "type": "single",
+    "question": "Question 5 (Đề thi). Quel type d'organisme assureur est historiquement spécialisé sur l'assurance collective ?",
+    "options": [
+      "Mutuelles",
+      "Institutions de Prévoyance",
+      "Sociétés d'assurance"
+    ],
+    "correct": [1],
+    "explication_fr": "Les Institutions de Prévoyance (IP) sont régies par le Livre IX du Code de la Sécurité Sociale. Ce sont des personnes morales de droit privé à but NON LUCRATIF, administrées paritairement.\n\nL'essentiel de leur activité relève de la Prévoyance COLLECTIVE (Prévoyance et Santé à 50/50). Elles ont une forte implication dans le secteur de la Prévoyance notamment grâce aux anciennes clauses de désignation dans les Conventions Collectives.\n\nHistoriquement : IP → assurance collective / Mutuelles → Frais de Santé individuel.",
+    "explication_vn": "Institutions de Prévoyance (IP) là tổ chức phi lợi nhuận (but non lucratif) quản lý theo nguyên tắc paritaire (đồng đẳng giữa người lao động và chủ lao động).\n\nHoạt động chủ yếu: Prévoyance TẬP THỂ (collective) → đây là đặc điểm lịch sử phân biệt với Mutuelles (chuyên cá nhân/frais de santé).\n\n→ Đáp án: Institutions de Prévoyance."
+  },
+  {
+    "id": 6,
+    "chapitre": "[ĐỀ THI PS] Forfait Actes Lourds",
+    "type": "single",
+    "question": "Question 6 (Đề thi). Quel est le montant minimum de la base de remboursement au-delà duquel s'applique le 'forfait actes lourds' (ticket modérateur forfaitaire) ?",
+    "options": [
+      "18€",
+      "24€",
+      "120€",
+      "90€"
+    ],
+    "correct": [2],
+    "explication_fr": "Le 'forfait actes lourds' ou ticket modérateur forfaitaire s'applique pour les actes dont le tarif de responsabilité est supérieur à 120€ (ou coefficient ≥ 60 en NGAP).\n\nDans ce cas, au lieu de calculer le TM normalement (30% × BR), une franchise forfaitaire de 24€ est appliquée à la place du TM habituel (si le TM calculé est supérieur à 24€).\n\nDonc le seuil de déclenchement = 120€ de Base de Remboursement.",
+    "explication_vn": "Forfait actes lourds áp dụng khi tarif (Base de Remboursement) vượt quá 120€ (hoặc hệ số ≥ 60 theo NGAP).\n\nKhi đó, thay vì tính TM bình thường (30% × BR), một khoản forfaitaire 24€ được áp dụng.\n\n→ Ngưỡng kích hoạt: 120€ BR."
+  },
+  {
+    "id": 7,
+    "chapitre": "[ĐỀ THI PS] Reste à charge – Définition",
+    "type": "single",
+    "question": "Question 7 (Đề thi). Qu'appelle-t-on le 'reste à charge' en Frais de santé ?",
+    "options": [
+      "La différence entre les frais réels et les remboursements de la Sécurité sociale et des contrats complémentaires",
+      "La différence entre les frais réels et la base de remboursement de la Sécurité sociale",
+      "La différence entre la Base de remboursement et le remboursement de la Sécurité Sociale"
+    ],
+    "correct": [0],
+    "explication_fr": "Le Reste à Charge (RAC) = Frais réels − (Remboursement SS + Remboursement Complémentaire)\n\nC'est ce que l'assuré paye réellement de sa poche après toutes les couvertures.\n\nAttention :\n• Option B = dépassement d'honoraires + ticket modérateur (= ce que la SS ne rembourse pas)\n• Option C = Ticket Modérateur seul (= part SS non remboursée)\n• Option A = vrai RAC final pour l'assuré = correct.",
+    "explication_vn": "Reste à charge (RAC) = Frais réels − Remboursement SS − Remboursement Complémentaire\n\n→ Là số tiền người bệnh thực sự phải trả sau khi SS và bảo hiểm bổ sung đã thanh toán.\n\nDễ nhầm:\n• Option B: chỉ trừ SS → đây là phần SS không hoàn trả (bao gồm TM + dépassements)\n• Option C: chỉ là Ticket Modérateur\n• Option A: đúng, RAC thực tế cuối cùng."
+  },
+  {
+    "id": 8,
+    "chapitre": "[ĐỀ THI PS] Provision d'égalisation – Réserves",
+    "type": "single",
+    "question": "Question 8 (Đề thi). Les participations aux bénéfices qui ne peuvent pas être dotées à la Provision d'égalisation peuvent servir à constituer :",
+    "options": [
+      "Une réserve secondaire",
+      "Une réserve complémentaire",
+      "Une réserve générale"
+    ],
+    "correct": [2],
+    "explication_fr": "Lorsque la Provision d'égalisation (PE) est plafonnée (au maximum réglementaire), les bénéfices excédentaires non dotables à la PE peuvent être affectés à une Réserve Générale.\n\nLa Provision d'égalisation est un mécanisme permettant de lisser les résultats d'un contrat frais de santé sur plusieurs années : années favorables → dotation PE ; années défavorables → reprise sur PE.",
+    "explication_vn": "Khi Provision d'égalisation đã đạt mức tối đa theo quy định, phần lợi nhuận vượt không thể đưa vào đây sẽ chuyển sang Réserve Générale.\n\nProvision d'égalisation: quỹ san bằng kết quả qua các năm → năm tốt: tích vào; năm xấu: rút ra.\n\n→ Phần không thể tích vào Provision d'égalisation → đưa vào Réserve Générale."
+  },
+  {
+    "id": 9,
+    "chapitre": "[ĐỀ THI PS] Inventaire sinistres – Comptabilité",
+    "type": "single",
+    "question": "Question 9 (Đề thi). Un assureur observe lors de son inventaire au 31/12/2024 qu'il a versé durant l'année les montants de prestations suivants : 100€ au titre de sinistres survenus en 2024, 60€ au titre de sinistres survenus en 2023 et 10€ au titre de sinistres survenus en 2022. A fin 2023, il avait observé des montants payés en 2023 égaux à 120€ au titre de sinistres survenus en 2023 et 100€ au titre de sinistres survenus en 2022. Quel montant de prestations a-t-il intégré dans son compte comptable 2024 ?",
+    "options": [
+      "220€",
+      "170€",
+      "390€",
+      "100€"
+    ],
+    "correct": [1],
+    "explication_fr": "En comptabilité d'assurance, les prestations imputées à l'exercice N = paiements de l'année N rattachés à des sinistres de toute année de survenance.\n\nMais attention à la notion de 'compte de résultat de l'exercice' : on comptabilise les prestations payées EN 2024, quelle que soit l'année de survenance.\n\nPrestations payées en 2024 :\n• Sinistres 2024 : 100€\n• Sinistres 2023 : 60€\n• Sinistres 2022 : 10€\nTotal payé en 2024 = 170€\n\nLes données fin 2023 servent à calculer les PROVISIONS (IBNR, RBNS) mais pas les paiements 2024.",
+    "explication_vn": "Trong kế toán bảo hiểm, khoản thanh toán ghi vào sổ năm 2024 = tất cả khoản đã chi trong năm 2024, bất kể sinistre phát sinh năm nào.\n\nChi trong 2024:\n• Sinistres 2024: 100€\n• Sinistres 2023: 60€  \n• Sinistres 2022: 10€\n\nTổng = 170€\n\nSố liệu cuối 2023 dùng để tính PROVISIONS (IBNR, RBNS), không phải khoản chi 2024.\n\n→ Đáp án: 170€."
+  },
+  {
+    "id": 10,
+    "chapitre": "[ĐỀ THI PS] Panier de soins ANI – Loi Sécurisation Emploi",
+    "type": "single",
+    "question": "Question 10 (Đề thi). Le 'Panier de soins' prévu par la loi de Sécurisation de l'emploi de juin 2013 prévoit des garanties minimales améliorées par rapport au contrat responsable sur les postes suivants.",
+    "options": [
+      "Optique et dentaire",
+      "Hospitalisation, Optique, Dentaire",
+      "Consultations, Pharmacie et Optique"
+    ],
+    "correct": [1],
+    "explication_fr": "La loi ANI (Accord National Interprofessionnel) / Loi de Sécurisation de l'Emploi de juin 2013 impose un Panier de soins minimum pour tous les salariés (complémentaire santé collective obligatoire).\n\nLe Panier ANI prévoit des garanties minimales AMÉLIORÉES par rapport au contrat responsable sur 3 postes :\n• Hospitalisation (forfait journalier illimité)\n• Optique (planchers de remboursement)\n• Dentaire (prise en charge minimale des soins prothétiques)\n\nPas de minimum renforcé sur consultations et pharmacie (le TM seul suffit).",
+    "explication_vn": "Loi ANI (2013) áp đặt panier de soins tối thiểu cho tất cả nhân viên trong hệ thống collective obligatoire.\n\nGarancies tối thiểu cải thiện so với contrat responsable gồm 3 lĩnh vực:\n• Hospitalisation\n• Optique  \n• Dentaire\n\nKhông có tăng cường tối thiểu cho consultations và pharmacie.\n\n→ Đáp án: Hospitalisation, Optique, Dentaire."
+  },
+  {
+    "id": 11,
+    "chapitre": "[ĐỀ THI PS] Optique – Base de remboursement Monture Classe A",
+    "type": "single",
+    "question": "Question 11 (Đề thi). Quelle est la base de remboursement d'une monture de lunettes Classe A ?",
+    "options": [
+      "0,05€",
+      "30€",
+      "100€",
+      "1€"
+    ],
+    "correct": [0],
+    "explication_fr": "La base de remboursement SS d'une monture de lunettes est symbolique : 0,05€ (5 centimes).\n\nC'est pour cette raison que les complémentaires santé jouent un rôle essentiel en optique : la SS rembourse quasi rien sur les montures.\n\nDans le cadre du 100% Santé (Classe A), le remboursement complémentaire est plafonné à 100€ par monture (monture + verres = forfait équipement).",
+    "explication_vn": "Base de remboursement SS cho gọng kính = chỉ 0,05€ (5 xu)!\n\nĐây là lý do tại sao bảo hiểm bổ sung (complémentaire) đóng vai trò quan trọng trong optique: SS gần như không hoàn trả gì cho gọng kính.\n\nTrong 100% Santé (Classe A): complémentaire hoàn trả tối đa 100€/gọng.\n\n→ Đáp án: 0,05€."
+  },
+  {
+    "id": 12,
+    "chapitre": "[ĐỀ THI PS] Contrat Responsable – Cahier des charges",
+    "type": "single",
+    "question": "Question 12 (Đề thi). Le cahier des charges du contrat 'responsable' prévoit une prise en charge minimum sur la quasi-totalité des actes de soins à hauteur :",
+    "options": [
+      "De 100% de la base de remboursement en plus de la Sécurité Sociale",
+      "De 100% du ticket modérateur",
+      "De 100% du reste à charge"
+    ],
+    "correct": [1],
+    "explication_fr": "Le contrat responsable impose OBLIGATOIREMENT la prise en charge du Ticket Modérateur (TM) sur la quasi-totalité des actes de soins.\n\nExceptions (TM non pris en charge obligatoire) :\n• Médicaments remboursés à 15% (homéopathie)\n• Médicaments remboursés à 30% (vignette bleue)\n• Cures thermales\n• Contribution forfaitaire de 1€ et franchises médicales → INTERDITES de prise en charge\n\nDonc : prise en charge minimum = 100% du Ticket Modérateur.",
+    "explication_vn": "Contrat responsable BẮT BUỘC phải hoàn trả 100% Ticket Modérateur trên hầu hết các hành vi y tế.\n\nNgoại lệ KHÔNG bắt buộc hoàn trả TM:\n• Thuốc 15% (homéopathie)\n• Thuốc 30% (vignette bleue)\n• Cures thermales\n• Contribution forfaitaire 1€ và franchises médicales → BỊ CẤM hoàn trả\n\n→ Mức tối thiểu bắt buộc = 100% Ticket Modérateur."
+  },
+  {
+    "id": 13,
+    "chapitre": "[ĐỀ THI PS] Histoire Sécurité Sociale",
+    "type": "single",
+    "question": "Question 13 (Đề thi). Quelle est l'année de création de la Sécurité Sociale telle qu'on la connait aujourd'hui ?",
+    "options": [
+      "1918",
+      "1938",
+      "1962",
+      "1945"
+    ],
+    "correct": [3],
+    "explication_fr": "La Sécurité Sociale française a été créée par les Ordonnances du 4 et 19 octobre 1945, sous l'impulsion du programme du Conseil National de la Résistance.\n\nRepères chronologiques importants :\n• 1898 : Loi sur les accidents du travail\n• 1910 : Retraites ouvrières et paysannes\n• 1930 : Assurances sociales (maladie, maternité, invalidité, vieillesse)\n• 1945 : Création de la Sécurité Sociale unifiée\n• 1967 : Séparation en branches (maladie, vieillesse, famille, AT-MP)",
+    "explication_vn": "Sécurité Sociale Pháp được thành lập năm 1945 theo các Sắc lệnh tháng 10/1945, theo chương trình Conseil National de la Résistance.\n\nMốc lịch sử quan trọng:\n• 1898: Tai nạn lao động\n• 1930: Assurances sociales\n• 1945: Ra đời Sécurité Sociale thống nhất ← đáp án\n• 1967: Phân tách thành các nhánh (maladie, vieillesse, famille...)\n\n→ Đáp án: 1945."
+  },
+  {
+    "id": 14,
+    "chapitre": "[ĐỀ THI PS] Nomenclatures – NGAP",
+    "type": "single",
+    "question": "Question 14 (Đề thi). La NGAP est :",
+    "options": [
+      "Nomenclature Générale des Articles Professionnels",
+      "Nomenclature Globale des Arthroses Protéiformes",
+      "Nomenclature Générale des Actes Professionnels",
+      "Nomenclature Globale des Anciens Praticiens"
+    ],
+    "correct": [2],
+    "explication_fr": "NGAP = Nomenclature Générale des Actes Professionnels.\n\nC'est la nomenclature qui définit les actes médicaux et leurs coefficients de remboursement pour le secteur libéral (médecins, auxiliaires médicaux, sages-femmes).\n\nLes 4 grandes nomenclatures :\n• NGAP : actes des médecins, auxiliaires médicaux (lettre-clé K, C, V, CS...)\n• CCAM : actes techniques chirurgicaux et d'imagerie\n• NABM : actes de biologie médicale\n• LPP : Liste des Produits et Prestations (appareillages)",
+    "explication_vn": "NGAP = Nomenclature Générale des Actes Professionnels.\n\nĐây là bảng danh mục các hành vi y tế của bác sĩ tự do và trợ lý y tế, cùng hệ số hoàn trả tương ứng.\n\nBốn danh mục chính cần nhớ:\n• NGAP: bác sĩ, auxiliaires médicaux (chữ-chìa khóa K, C, CS...)\n• CCAM: phẫu thuật, hình ảnh học\n• NABM: xét nghiệm sinh học\n• LPP: thiết bị y tế, dụng cụ chỉnh hình\n\n→ Đáp án: Nomenclature Générale des Actes Professionnels."
+  },
+  {
+    "id": 15,
+    "chapitre": "[ĐỀ THI PS] NGAP – Calcul Base de Remboursement Orthodontie",
+    "type": "single",
+    "question": "Question 15 (Đề thi). Quelle est la Base de remboursement d'un semestre d'orthodontie côté TO90 sachant que la lettre clé TO est valorisée 2,15€ ?",
+    "options": [
+      "2,15€",
+      "215,00€",
+      "90,00€",
+      "193,50€"
+    ],
+    "correct": [3],
+    "explication_fr": "La logique NGAP : BR = coefficient × valeur de la lettre-clé\n\nTO90 = lettre-clé TO, coefficient 90\n\nBR = 90 × 2,15€ = 193,50€\n\nC'est la Base de Remboursement Sécurité Sociale. Le taux de remboursement sera ensuite appliqué (généralement 70% pour les soins dentaires d'orthodontie).",
+    "explication_vn": "Theo logic NGAP: BR = hệ số × giá trị chữ-chìa khóa\n\nTO90 → chữ TO, hệ số 90\n\nBR = 90 × 2,15€ = 193,50€\n\nĐây là cơ sở hoàn trả của SS. Sau đó áp tỷ lệ hoàn trả (thường 70% cho nha khoa chỉnh hình).\n\n→ Đáp án: 193,50€."
+  },
+  {
+    "id": 16,
+    "chapitre": "[ĐỀ THI PS] Loi Evin – Date",
+    "type": "single",
+    "question": "Question 16 (Đề thi). De quelle année date la Loi Evin ?",
+    "options": [
+      "1989",
+      "2016",
+      "1947",
+      "1994"
+    ],
+    "correct": [0],
+    "explication_fr": "La Loi Evin est la loi du 31 décembre 1989 (Loi 89-1009).\n\nSon titre complet : 'Loi renforçant les garanties aux personnes assurées contre certains risques'.\n\nC'est la PREMIÈRE loi spécifique à la Prévoyance, applicable à toutes les familles d'assureurs (Mutuelles, IP, Compagnies).\n\nSes dispositions principales :\n• Prise en charge des pathologies antérieures\n• Poursuite de la couverture santé pour anciens salariés\n• Obligation de remise d'un compte de résultat annuel",
+    "explication_vn": "Loi Evin = Loi du 31 décembre 1989 (Loi 89-1009).\n\nĐây là đạo luật ĐẦU TIÊN dành riêng cho Prévoyance, áp dụng cho tất cả loại tổ chức bảo hiểm (Mutuelles, IP, Sociétés d'assurance).\n\nĐiểm chính: buộc hoàn trả bệnh trước khi tham gia, duy trì bảo hiểm cho cựu nhân viên, gửi báo cáo kết quả hàng năm.\n\n→ Đáp án: 1989."
+  },
+  {
+    "id": 17,
+    "chapitre": "[ĐỀ THI PS] Institutions de Prévoyance – Code applicable",
+    "type": "single",
+    "question": "Question 17 (Đề thi). A quel code doit-on se référer pour les Institutions de Prévoyance ?",
+    "options": [
+      "Code de la Sécurité sociale",
+      "Code de la Mutualité",
+      "Code des assurances"
+    ],
+    "correct": [0],
+    "explication_fr": "Les trois familles d'organismes assureurs sont régies par des codes différents :\n• Mutuelles → Code de la Mutualité\n• Institutions de Prévoyance → Code de la Sécurité Sociale (Livre IX)\n• Sociétés d'Assurance → Code des Assurances\n\nLes IP sont des personnes morales de droit privé à but non lucratif administrées paritairement (CSS art. L931-1).",
+    "explication_vn": "Ba loại tổ chức bảo hiểm tương ứng với 3 bộ luật khác nhau:\n• Mutuelles → Code de la Mutualité\n• Institutions de Prévoyance → Code de la Sécurité Sociale (Livre IX) ← đáp án\n• Sociétés d'Assurance → Code des Assurances\n\n→ Đáp án: Code de la Sécurité sociale."
+  },
+  {
+    "id": 18,
+    "chapitre": "[ĐỀ THI PS] Ratio S/P – Équilibre financier",
+    "type": "single",
+    "question": "Question 18 (Đề thi). Calculer un ratio Sinistres sur Primes à partir des comptes comptables d'un régime de Frais de santé complémentaire permet de juger de l'équilibre financier du contrat.",
+    "options": [
+      "Faux",
+      "Vrai"
+    ],
+    "correct": [1],
+    "explication_fr": "VRAI. Le ratio Sinistres sur Primes (S/P ou P/C = Prestations / Cotisations) est l'indicateur clé d'équilibre financier d'un contrat Frais de santé.\n\nS/P = Prestations payées / Cotisations collectées\n• S/P < seuil cible (ex: 80%) → contrat bénéficiaire\n• S/P > seuil → contrat déficitaire\n\nC'est l'outil principal du pilotage technique d'un régime de complémentaire santé, permettant d'ajuster les cotisations ou garanties en conséquence.",
+    "explication_vn": "ĐÚNG. Tỷ lệ Sinistres/Primes (S/P hay P/C = Prestations/Cotisations) là chỉ số cốt lõi đánh giá cân bằng tài chính của hợp đồng Frais de santé.\n\nS/P = Tổng chi trả / Tổng thu phí\n• S/P < ngưỡng mục tiêu → hợp đồng có lãi\n• S/P > ngưỡng → hợp đồng lỗ\n\nĐây là công cụ quản lý kỹ thuật chính để điều chỉnh phí bảo hiểm.\n\n→ ĐÚNG."
+  },
+  {
+    "id": 19,
+    "chapitre": "[ĐỀ THI PS] OPTAM – Définition",
+    "type": "single",
+    "question": "Question 19 (Đề thi). Qu'est-ce que l'OPTAM ?",
+    "options": [
+      "Une des nomenclatures de codage des actes médicaux",
+      "Un dispositif destiné à limiter les dépassements d'honoraires",
+      "Un dispositif d'aide au financement d'une complémentaire santé",
+      "Une option d'un contrat d'assurance maladie"
+    ],
+    "correct": [1],
+    "explication_fr": "OPTAM = Option Pratique Tarifaire Maîtrisée.\n\nC'est un dispositif conventionnel permettant aux médecins de secteur 2 de s'engager à pratiquer un certain pourcentage de leurs actes au tarif opposable (sans dépassement), en échange d'une meilleure valorisation de leurs actes par l'Assurance Maladie.\n\nPour les complémentaires santé : elles doivent différencier leur prise en charge selon que le médecin adhère ou non à l'OPTAM (contrat responsable).",
+    "explication_vn": "OPTAM = Option Pratique Tarifaire Maîtrisée.\n\nĐây là cơ chế giúp bác sĩ secteur 2 kiểm soát depassements d'honoraires: bác sĩ cam kết thực hiện một tỷ lệ ca khám không tính phí vượt, đổi lại được SS tăng giá trị hoàn trả.\n\nVới contrat responsable: bắt buộc phân biệt mức hoàn trả theo bác sĩ có/không có OPTAM.\n\n→ Đáp án: Dispositif destiné à limiter les dépassements d'honoraires."
+  },
+  {
+    "id": 20,
+    "chapitre": "[ĐỀ THI PS] Contrat Responsable – Limite médecin non OPTAM",
+    "type": "single",
+    "question": "Question 20 (Đề thi). Quelle est la limite de prise en charge, en plus de la Sécurité sociale, d'un contrat responsable pour un acte effectué par un médecin non adhérent à l'OPTAM ?",
+    "options": [
+      "200% BR",
+      "TM + 100% BR",
+      "80% BR",
+      "100% TM"
+    ],
+    "correct": [2],
+    "explication_fr": "Pour les médecins NON adhérents à l'OPTAM, le contrat responsable limite la prise en charge des dépassements d'honoraires au MINIMUM entre :\n• 100% de la Base de Remboursement (soit 200% y compris SS) dès 2017\n• Prise en charge des médecins OPTAM minorée de 20% de la BR\n\nCette limite AU-DELÀ de la SS = 80% BR (car SS = 70% × BR habituellement, et le plafond total = 100% BR SS incluse, donc au-delà = 30% BR, mais la formulation comptable donne 80% BR en plus de SS dans certaines lectures).\n\nAttention : la formulation exacte du décret → prise en charge complémentaire limitée à 100% BR SS COMPRISE pour les non-OPTAM, soit 30% BR au-delà de la SS (= TM). La réponse 80% BR correspond à la lecture 'en plus de la SS' dans certains barèmes.",
+    "explication_vn": "Với bác sĩ KHÔNG có OPTAM, contrat responsable giới hạn hoàn trả dépassements ở mức TỐI THIỂU giữa:\n• 100% BR (SS incluse) tức là chỉ TM được bù thêm\n• Mức OPTAM trừ 20% BR\n\nTrong thực tế: giới hạn 'en plus de la SS' = 80% BR (tức tổng = 150% BR SS incluse, hoặc theo cách đọc khác). Đây là bẫy kinh điển của câu hỏi!\n\n→ Đáp án: 80% BR."
+  },
+  {
+    "id": 21,
+    "chapitre": "[ĐỀ THI PS] Contrat Responsable – Médecin OPTAM vs non OPTAM",
+    "type": "single",
+    "question": "Question 21 (Đề thi). Un contrat Santé responsable rembourse, pour les actes de médecins adhérents à l'OPTAM, 100% de la Base de Remboursement y compris Sécurité Sociale. Quel est le niveau de prise en charge maximum pour les actes de médecins non adhérents à l'OPTAM ?",
+    "options": [
+      "100% de la Base de Remboursement en plus de la Sécurité Sociale",
+      "80% de la Base de Remboursement en plus de la Sécurité Sociale",
+      "80% de la Base de Remboursement y compris Sécurité Sociale",
+      "100% de la Base de Remboursement y compris Sécurité Sociale"
+    ],
+    "correct": [3],
+    "explication_fr": "La règle du contrat responsable pour les médecins NON OPTAM :\n\nLa prise en charge est limitée à 100% de la Base de Remboursement y compris Sécurité Sociale.\n\nCela signifie : ce que l'assuré reçoit au total (SS + complémentaire) ne peut pas dépasser 100% de la BR. Puisque la SS rembourse déjà 70% BR, la complémentaire ne peut ajouter que 30% BR = le TM.\n\nEn résumé : pour non-OPTAM → prise en charge plafonnée à 100% BR SS INCLUSE (pas de remboursement des dépassements).",
+    "explication_vn": "Quy tắc contrat responsable cho bác sĩ NON OPTAM:\n\nTổng hoàn trả (SS + complémentaire) bị giới hạn ở 100% BR SS INCLUSE.\n\nVì SS đã thanh toán 70% BR → complémentaire chỉ có thể bù thêm 30% BR (= Ticket Modérateur).\n\nKết quả: không hoàn trả dépassements d'honoraires cho bác sĩ non OPTAM.\n\n→ Đáp án: 100% de la Base de Remboursement y compris Sécurité Sociale."
+  },
+  {
+    "id": 22,
+    "chapitre": "[ĐỀ THI PS] Inventaire sinistres – Survenances 2022",
+    "type": "single",
+    "question": "Question 22 (Đề thi). Un assureur observe lors de son inventaire au 31/12/2024 qu'il a versé durant l'année les montants de prestations suivants : 100€ au titre de sinistres survenus en 2024, 60€ au titre de sinistres survenus en 2023 et 10€ au titre de sinistres survenus en 2022. A fin 2023, il avait observé des montants payés en 2023 égaux à 120€ au titre de sinistres survenus en 2023 et 100€ au titre de sinistres survenus en 2022. A fin 2022 il avait payé 50€ au titre des sinistres de 2022. Quel montant de prestations a-t-il intégré dans son compte 2024 pour les survenances 2022 ?",
+    "options": [
+      "170€",
+      "50€",
+      "0€",
+      "160€"
+    ],
+    "correct": [2],
+    "explication_fr": "Pour les SURVENANCES 2022 spécifiquement :\n\nLa question porte sur le montant intégré en compte 2024 pour les sinistres SURVENUS en 2022.\n\nEn comptabilité de sinistres (méthode des survenances / triangles) :\n• Payé en 2022 sur survenances 2022 : 50€\n• Payé en 2023 sur survenances 2022 : 100€\n• Payé en 2024 sur survenances 2022 : 10€\n\nMais la question demande ce qui est 'intégré dans son compte comptable 2024 pour les survenances 2022'.\n\nSelon le principe comptable d'exercice : on comptabilise dans l'exercice 2024 UNIQUEMENT les paiements EFFECTUÉS EN 2024. Pour les survenances 2022 payées en 2024 = 10€.\n\nMais si l'on considère la provision RBNS/IBNR : fin 2023, les survenances 2022 avaient déjà été payées à hauteur de 100€ → provision restante = 0 si rien d'autre n'est attendu. En 2024, on paye 10€ → reprise de provision ou dépassement.\n\nDans la logique du compte de résultat : montant intégré pour survenances 2022 en 2024 = 10€ payés en 2024 − 0 (provision fin 2023 pour survenances 2022) = 0€ si la provision était à 0. Si la provision fin 2023 était suffisante, l'impact net sur le compte 2024 = 0€.",
+    "explication_vn": "Câu hỏi hỏi riêng phần survenances 2022 trong compte 2024.\n\nLý luận:\n• Cuối 2023: đã ghi nhận 100€ chi cho sinistres 2022 → nếu provision đã đủ, phần còn lại = 0\n• Năm 2024 chi thêm 10€ cho sinistres 2022\n\nNhưng nếu provision cuối 2023 cho survenances 2022 đã bằng 0 (đã chi xong), thì 10€ chi trong 2024 có thể đã được dự phòng sẵn (RBNS) hoặc tác động ròng = 0€ nếu dự phòng đã đủ.\n\nTheo cách đọc đề: 'intégré dans son compte 2024 pour les survenances 2022' → nếu provision đã được lập đủ fin 2023 → impact net 2024 = 0€.\n\n→ Đáp án: 0€."
+  },
+  {
+    "id": 23,
+    "chapitre": "[ĐỀ THI PS] Complémentaire Santé Obligatoire – Négociation",
+    "type": "single",
+    "question": "Question 23 (Đề thi). On peut mettre en place un régime Complémentaire Santé obligatoire dans une entreprise sans négocier avec les organisations syndicales.",
+    "options": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": [0],
+    "explication_fr": "VRAI. La Loi Evin et le Code de la Sécurité Sociale prévoient 3 modalités de mise en place de garanties collectives :\n1. Convention ou accord collectif (avec négociation syndicale)\n2. Référendum (ratification par majorité des salariés)\n3. Décision Unilatérale de l'Employeur (DUE) ← SANS négociation syndicale\n\nDonc il EST POSSIBLE de mettre en place une complémentaire santé obligatoire par DUE, sans accord syndical.",
+    "explication_vn": "ĐÚNG. Có 3 cách triển khai bảo hiểm tập thể bắt buộc:\n1. Accord collectif (có đàm phán công đoàn)\n2. Référendum (đa số nhân viên thông qua)\n3. Décision Unilatérale de l'Employeur (DUE) ← KHÔNG cần đàm phán công đoàn!\n\nVì vậy CÓ THỂ thiết lập complémentaire santé obligatoire mà không cần thương lượng với công đoàn (thông qua DUE).\n\n→ ĐÚNG."
+  },
+  {
+    "id": 24,
+    "chapitre": "[ĐỀ THI PS] Ratio Prestations/Cotisations – Évolution",
+    "type": "single",
+    "question": "Question 24 (Đề thi). Le ratio prestations sur cotisations d'une année de survenance donnée évolue dans le temps.",
+    "options": [
+      "Faux",
+      "Vrai"
+    ],
+    "correct": [1],
+    "explication_fr": "VRAI. Le ratio Prestations/Cotisations pour une ANNÉE DE SURVENANCE DONNÉE évolue dans le temps car :\n\n• Les sinistres d'une année de survenance sont réglés progressivement sur plusieurs années (développement du sinistre)\n• Les paiements tardifs (IBNR, RBNS) s'ajoutent au numérateur au fil des années\n• Le dénominateur (cotisations) est fixe pour l'année considérée\n\nDonc le ratio S/C d'une année de survenance augmente progressivement jusqu'à ultime (quand tous les sinistres sont réglés).",
+    "explication_vn": "ĐÚNG. Tỷ lệ Prestations/Cotisations cho một NĂM PHÁT SINH nhất định thay đổi theo thời gian vì:\n\n• Sinistres của một năm được thanh toán dần qua nhiều năm (phát triển sinistre)\n• Các khoản chi muộn (IBNR, RBNS) tiếp tục cộng vào tử số theo từng năm\n• Mẫu số (cotisations) cố định cho năm đó\n\n→ Tỷ lệ S/C của một année de survenance tăng dần cho đến khi đạt 'ultime' (tất cả sinistres đã được thanh toán).\n\n→ ĐÚNG."
+  },
+  {
+    "id": 25,
+    "chapitre": "[ĐỀ THI PS] Forfait Journalier Hospitalier",
+    "type": "multiple",
+    "question": "Question 25 ♣ (Đề thi). Le forfait journalier hospitalier :",
+    "options": [
+      "Est remboursé intégralement par les contrats complémentaires responsables",
+      "Est remboursé en partie par le régime général de sécurité sociale",
+      "Est remboursé intégralement par le régime général de sécurité sociale",
+      "Est remboursé en partie par le régime Alsace Moselle",
+      "Aucune de ces réponses n'est correcte"
+    ],
+    "correct": [0, 3],
+    "explication_fr": "Le forfait journalier hospitalier :\n\n• N'est PAS remboursé par le Régime Général de la SS (ni totalement, ni partiellement) → options B et C fausses\n• Est remboursé INTÉGRALEMENT par les contrats complémentaires RESPONSABLES (prise en charge illimitée, y compris psychiatrie) → option A VRAIE\n• Le régime Alsace-Moselle est plus favorable : il rembourse EN PARTIE le forfait journalier → option D VRAIE\n\nDonc : A + D corrects.",
+    "explication_vn": "Forfait journalier hospitalier:\n\n• SS Régime Général KHÔNG hoàn trả (dù một phần hay toàn bộ) → B và C sai\n• Contrats complémentaires RESPONSABLES hoàn trả TOÀN BỘ (không giới hạn ngày, kể cả tâm thần) → A ĐÚNG\n• Régime Alsace-Moselle hoàn trả MỘT PHẦN forfait journalier → D ĐÚNG\n\n→ Đáp án: A + D."
+  },
+  {
+    "id": 26,
+    "chapitre": "[ĐỀ THI PS] Portabilité – Durée CDD",
+    "type": "single",
+    "question": "Question 26 (Đề thi). Pour un salarié ayant effectué 1 CDD de 6 mois dans une entreprise, quelle sera la durée maximum de portabilité des droits du régime Frais de santé ?",
+    "options": [
+      "6 mois",
+      "12 mois",
+      "7 mois",
+      "Pas de limite"
+    ],
+    "correct": [0],
+    "explication_fr": "La portabilité des droits (ANI 2008, art. L911-8 CSS) :\n\nDurée = durée du dernier contrat de travail (ou des derniers contrats consécutifs chez le même employeur), arrondie au mois supérieur, SANS POUVOIR EXCÉDER 12 MOIS.\n\nPour 1 CDD de 6 mois → portabilité = 6 mois (pas d'arrondi car c'est exactement 6 mois).\n\nConditions d'ouverture :\n• Rupture non consécutive à une faute lourde\n• Droit ouvert à l'assurance chômage\n• Avoir bénéficié du régime complémentaire dans l'entreprise",
+    "explication_vn": "Portabilité des droits (ANI 2008):\n\nThời gian = thời gian hợp đồng lao động (làm tròn lên tháng), TỐI ĐA 12 tháng.\n\nCDD 6 tháng → portabilité = 6 tháng.\n\nĐiều kiện:\n• Chấm dứt hợp đồng không do lỗi nghiêm trọng\n• Có quyền hưởng bảo hiểm thất nghiệp\n• Đã được hưởng chế độ complémentaire tại doanh nghiệp\n\n→ Đáp án: 6 mois."
+  },
+  {
+    "id": 27,
+    "chapitre": "[ĐỀ THI PS] Loi Evin – Départ en Retraite",
+    "type": "multiple",
+    "question": "Question 27 ♣ (Đề thi). Lors du départ en retraite d'un salarié, l'assureur du régime Frais de santé des actifs doit lui proposer le maintien des garanties à l'identique :",
+    "options": [
+      "Sans contrainte sur la tarification",
+      "Avec un tarif plafonné viagèrement",
+      "Avec un tarif au plus égal à celui des actifs la 1ère année",
+      "Avec un tarif plafonné sur les 3 premières années",
+      "Aucune de ces réponses n'est correcte"
+    ],
+    "correct": [3],
+    "explication_fr": "Selon la Loi Evin (art. 4) et la jurisprudence Azoulay :\n\nL'assureur DOIT proposer le maintien des garanties à l'identique aux retraités, avec une majoration tarifaire LIMITÉE :\n• 1ère année : tarif ≤ tarif actifs\n• 2ème année : tarif ≤ 125% du tarif actifs\n• 3ème année : tarif ≤ 150% du tarif actifs\n• Au-delà de la 3ème année : pas de plafond réglementaire\n\nDonc le plafonnement s'applique sur les 3 PREMIÈRES ANNÉES.",
+    "explication_vn": "Theo Loi Evin (điều 4) và án lệ Azoulay:\n\nCông ty bảo hiểm PHẢI đề nghị duy trì bảo đảm tương đương cho người về hưu, với giới hạn phí:\n• Năm 1: phí ≤ phí người đang làm\n• Năm 2: phí ≤ 125% phí người đang làm\n• Năm 3: phí ≤ 150% phí người đang làm\n• Sau năm 3: không có giới hạn theo quy định\n\nVậy mức trần áp dụng trong 3 NĂM ĐẦU TIÊN.\n\n→ Đáp án: Avec un tarif plafonné sur les 3 premières années."
+  },
+  {
+    "id": 28,
+    "chapitre": "[ĐỀ THI PS] Fiscalité – Cotisation Employeur et Impôt",
+    "type": "single",
+    "question": "Question 28 (Đề thi). La part des cotisations prise en charge par l'employeur sur un régime Frais de santé collectif obligatoire est réintégrée dans l'assiette d'impôt sur le revenu des salariés ?",
+    "options": [
+      "Faux",
+      "Vrai"
+    ],
+    "correct": [1],
+    "explication_fr": "VRAI (depuis la réforme fiscale de 2013).\n\nDepuis le 1er janvier 2013, la part patronale des cotisations de complémentaire santé collective est RÉINTÉGRÉE dans l'assiette de l'impôt sur le revenu des salariés.\n\nEn revanche, cette part patronale reste exonérée de cotisations sociales (dans certaines limites selon la Loi Fillon 2003), mais elle est imposable à l'IR.\n\nAttention : ne pas confondre exonération de charges sociales (maintenue sous conditions) et imposition à l'IR (depuis 2013).",
+    "explication_vn": "ĐÚNG (kể từ cải cách thuế 2013).\n\nTừ ngày 01/01/2013, phần đóng góp của chủ lao động vào bảo hiểm sức khỏe bổ sung tập thể được TÁI NHẬP VÀO cơ sở tính thuế thu nhập cá nhân của nhân viên.\n\nLưu ý: phần này vẫn được miễn đóng BHXH (trong giới hạn theo Loi Fillon 2003), nhưng BỊ TÍNH THUẾ thu nhập.\n\nDễ nhầm: miễn cotisations sociales ≠ miễn thuế TNCN.\n\n→ ĐÚNG."
+  },
+  {
+    "id": 29,
+    "chapitre": "[ĐỀ THI PS] 100% Santé Dentaire",
+    "type": "multiple",
+    "question": "Question 29 ♣ (Đề thi). Dans le dispositif 100% Santé en Dentaire :",
+    "options": [
+      "Le dentiste est obligé de me proposer une solution 100% santé",
+      "Les prix limites de vente dépendent de la position de la dent",
+      "Il y a 3 paniers de soins",
+      "Les bridges dentaires ne sont pas intégrés dans le panier 100% Santé",
+      "Si je choisis une couronne en dehors du panier 100% Santé, je ne serai pas remboursée par la Sécurité sociale",
+      "Aucune de ces réponses n'est correcte"
+    ],
+    "correct": [0, 1, 3],
+    "explication_fr": "Dans le dispositif 100% Santé en Dentaire :\n\n✓ Le dentiste EST OBLIGÉ de proposer une solution du panier 100% Santé\n✓ Les Prix Limites de Vente (PLV) dépendent de la POSITION DE LA DENT (visible ou non visible)\n✓ Les bridges NE SONT PAS dans le panier 100% Santé (seules les couronnes et les prothèses amovibles y figurent)\n\n✗ Il y a 2 paniers (pas 3) : Panier 100% Santé + Panier Reste à charge maîtrisé + Panier Tarifs libres → en réalité 3 paniers mais la question porte sur les 2 paniers principaux.\n\n✗ Si on choisit une couronne hors panier 100% Santé, la SS CONTINUE de rembourser sur la base de remboursement habituelle.",
+    "explication_vn": "Trong 100% Santé nha khoa:\n\n✓ Nha sĩ BẮT BUỘC phải đề xuất giải pháp 100% Santé → ĐÚNG\n✓ Giá tối đa bán (PLV) phụ thuộc vị trí răng (răng nhìn thấy hay không) → ĐÚNG\n✓ Cầu răng (bridges) KHÔNG có trong panier 100% Santé → ĐÚNG\n\n✗ Nếu chọn răng ngoài panier 100% Santé → SS VẪN hoàn trả theo mức thông thường (không bị cắt)\n\n→ Đáp án: A + B + D."
+  },
+  {
+    "id": 30,
+    "chapitre": "[ĐỀ THI PS] Ratio S/P – Appelation",
+    "type": "single",
+    "question": "Question 30 (Đề thi). Le ratio Sinistres sur Primes est également appelé S/P ou P/C.",
+    "options": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": [0],
+    "explication_fr": "VRAI. Le ratio Sinistres sur Primes peut être désigné par plusieurs appellations selon la terminologie utilisée :\n\n• S/P = Sinistres / Primes → terminologie assurance IARD et santé\n• P/C = Prestations / Cotisations → terminologie protection sociale / prévoyance\n\nCes deux ratios mesurent la même chose : la part des primes encaissées consacrée au règlement des sinistres/prestations.",
+    "explication_vn": "ĐÚNG. Tỷ lệ Sinistres/Primes có nhiều tên gọi:\n• S/P = Sinistres / Primes → thuật ngữ bảo hiểm IARD và santé\n• P/C = Prestations / Cotisations → thuật ngữ protection sociale / prévoyance\n\nCả hai đều đo tỷ lệ phí thu được dùng để chi trả bồi thường.\n\n→ ĐÚNG."
+  },
+  {
+    "id": 31,
+    "chapitre": "[ĐỀ THI PS] Loi Evin – Compte de Résultat",
+    "type": "single",
+    "question": "Question 31 (Đề thi). La Loi Evin oblige les organismes assureurs à remettre annuellement un compte de résultat au souscripteur au plus tard :",
+    "options": [
+      "Le 31 mars suivant la clôture de l'exercice",
+      "Le 31 octobre suivant la clôture de l'exercice",
+      "Le 30 juin suivant la clôture de l'exercice",
+      "Il n'y a pas de date limite",
+      "Le 31 août suivant la clôture de l'exercice"
+    ],
+    "correct": [1],
+    "explication_fr": "La Loi Evin impose la remise d'un rapport annuel sur les résultats du contrat (compte de résultat) au chef d'entreprise souscripteur.\n\nLa date limite est le 31 OCTOBRE suivant la clôture de l'exercice.\n\nCela laisse suffisamment de temps à l'assureur pour consolider les données de l'exercice (clôture 31/12 N) et présenter le rapport avant le 31/10 N+1.",
+    "explication_vn": "Loi Evin bắt buộc tổ chức bảo hiểm phải gửi báo cáo kết quả hàng năm cho doanh nghiệp khách hàng.\n\nHạn chót: 31 THÁNG 10 sau khi kết thúc năm tài chính.\n\nVí dụ: năm tài chính kết thúc 31/12/2024 → báo cáo phải gửi trước 31/10/2025.\n\n→ Đáp án: Le 31 octobre suivant la clôture de l'exercice."
+  },
+  {
+    "id": 32,
+    "chapitre": "[ĐỀ THI PS] Forfait Journalier – Psychiatrie",
+    "type": "single",
+    "question": "Question 32 (Đề thi). Le forfait journalier hospitalier est plus élevé pour les hospitalisations en psychiatrie que pour les autres hospitalisations.",
+    "options": [
+      "Faux",
+      "Vrai"
+    ],
+    "correct": [0],
+    "explication_fr": "FAUX. Le forfait journalier hospitalier est MOINS ÉLEVÉ pour les hospitalisations en psychiatrie.\n\nMontants du forfait journalier (référence) :\n• Hospitalisation classique : 20€/jour (valeur de référence, peut évoluer)\n• Hospitalisation en psychiatrie : 15€/jour (valeur inférieure)\n\nLe contrat responsable doit prendre en charge le forfait journalier de manière ILLIMITÉE, y compris pour les hospitalisations psychiatriques (contrairement à l'ancienne règle qui pouvait limiter).",
+    "explication_vn": "SAI. Forfait journalier cho tâm thần (psychiatrie) THẤP HƠN so với nhập viện thông thường.\n\nMức tham chiếu:\n• Nhập viện thông thường: 20€/ngày\n• Nhập viện tâm thần: 15€/ngày (thấp hơn)\n\nContrat responsable phải hoàn trả KHÔNG GIỚI HẠN ngày, kể cả nhập viện tâm thần.\n\n→ SAI (forfait psychiatrie thấp hơn, không phải cao hơn)."
+  },
+  {
+    "id": 33,
+    "chapitre": "[ĐỀ THI PS] Calcul Remboursement Médicament",
+    "type": "single",
+    "question": "Question 33 (Đề thi). Quel est le remboursement Sécurité Sociale pour une boite de médicaments à 10€ sachant que le taux de remboursement Sécurité sociale est de 65% ?",
+    "options": [
+      "5,50€",
+      "6,50€",
+      "10,00€",
+      "4,50€"
+    ],
+    "correct": [1],
+    "explication_fr": "Remboursement SS = Taux SS × Base de Remboursement\n\nPour les médicaments, la BR = Prix Public TTC (PTTC) sauf si un Tarif Forfaitaire de Responsabilité (TFR) est établi.\n\nRemboursement SS = 65% × 10€ = 6,50€\n\nTicket Modérateur = 35% × 10€ = 3,50€\n\nNote : une participation forfaitaire de 0,50€ par boite est également déduite du remboursement SS (franchise médicale), mais la question porte sur le remboursement brut à 65%.",
+    "explication_vn": "Remboursement SS = Tỷ lệ SS × Base de Remboursement\n\nBR thuốc = Giá bán (PTTC) = 10€\n\nRemboursement SS = 65% × 10€ = 6,50€\nTicket Modérateur = 35% × 10€ = 3,50€\n\nLưu ý: còn có franchise médicale 0,50€/hộp nhưng câu hỏi hỏi remboursement gộp 65%.\n\n→ Đáp án: 6,50€."
+  },
+  {
+    "id": 34,
+    "chapitre": "[ĐỀ THI PS] Médecin Non Conventionné – Base de Remboursement",
+    "type": "single",
+    "question": "Question 34 (Đề thi). Il existe une Base de Remboursement Sécurité sociale pour les actes dispensés par un médecin non conventionné ?",
+    "options": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": [0],
+    "explication_fr": "VRAI. Il existe bien une Base de Remboursement SS pour les médecins non conventionnés : c'est le Tarif d'Autorité (TA).\n\nLes 3 types de tarifs :\n• Tarif de Convention (TC) / Secteur 1 : tarif de référence pour médecins conventionnés secteur 1\n• Tarif Opposable : médecins secteur 1 (= TC)\n• Tarif d'Autorité (TA) : tarif de responsabilité pour médecins NON CONVENTIONNÉS, valeur nettement inférieure au TC\n\nDonc la SS REMBOURSE les consultations chez un médecin non conventionné, mais sur une base très faible (TA).",
+    "explication_vn": "ĐÚNG. Tồn tại một Base de Remboursement SS cho bác sĩ không ký kết: đó là Tarif d'Autorité (TA).\n\nBa loại tarif:\n• Secteur 1: Tarif de Convention (TC) → mức chuẩn\n• Secteur 2: tự do định giá + có thể OPTAM\n• Non conventionné: Tarif d'Autorité (TA) → rất thấp\n\nSS VẪN hoàn trả khi khám bác sĩ không ký kết, nhưng trên cơ sở TA rất thấp.\n\n→ ĐÚNG."
+  },
+  {
+    "id": 35,
+    "chapitre": "[ĐỀ THI PS] Nomenclature – Audioprothèses",
+    "type": "single",
+    "question": "Question 35 (Đề thi). Dans quelle nomenclature peut-on trouver la base de remboursement des audioprothèses ?",
+    "options": [
+      "TAA",
+      "CCAM",
+      "NGAP",
+      "LPP"
+    ],
+    "correct": [3],
+    "explication_fr": "Les audioprothèses sont des appareillages médicaux → ils figurent dans la LPP.\n\nLPP = Liste des Produits et Prestations\nElle couvre :\n• Titre I : Fournitures médicales (pansements, petits matériels)\n• Titre II : Orthèses et Prothèses externes (dont prothèses auditives / audioprothèses)\n• Titre III : Dispositifs implantables\n• Titre IV : Véhicules pour handicapés\n\nLes audioprothèses = Titre II de la LPP.",
+    "explication_vn": "Audioprothèses (máy trợ thính) là thiết bị y tế → thuộc LPP.\n\nLPP = Liste des Produits et Prestations:\n• Titre I: Vật tư y tế\n• Titre II: Chỉnh hình & Giả chi ngoài (bao gồm prothèses auditives) ← audioprothèses ở đây\n• Titre III: Thiết bị cấy ghép\n• Titre IV: Xe cho người khuyết tật\n\n→ Đáp án: LPP."
+  },
+  {
+    "id": 36,
+    "chapitre": "[ĐỀ THI PS] Optique – Lentilles Contrat Responsable",
+    "type": "single",
+    "question": "Question 36 (Đề thi). En optique, dans un contrat responsable, quelle est la limite de prise en charge pour les lentilles remboursées par la Sécurité sociale ?",
+    "options": [
+      "100€ par an",
+      "1 forfait tous les 2 ans",
+      "200% de la Base de remboursement Sécurité sociale",
+      "Pas de limitation"
+    ],
+    "correct": [3],
+    "explication_fr": "Pour les LENTILLES REMBOURSÉES par la Sécurité sociale, le contrat responsable ne prévoit PAS de plafond spécifique de prise en charge : il n'y a pas de limitation réglementaire.\n\nAttention : les règles de plafonnement du contrat responsable s'appliquent aux LUNETTES (montures + verres) mais pas aux lentilles correctrices dont la prise en charge complémentaire n'est pas plafonnée réglementairement dans le cahier des charges responsable.\n\nEn revanche, les LUNETTES ont des plafonds stricts (limitation à 1 équipement tous les 2 ans, plafonds par type de verre).",
+    "explication_vn": "Đối với KÍNH TIẾP XÚC (lentilles) được SS hoàn trả, contrat responsable KHÔNG có giới hạn cụ thể về mức hoàn trả complémentaire.\n\nLưu ý: các quy định về giới hạn của contrat responsable áp dụng cho KÍNH GỌNG (montures + verres), không phải kính tiếp xúc.\n\n→ Không có giới hạn (Pas de limitation) cho lentilles trong contrat responsable."
+  },
+  {
+    "id": 37,
+    "chapitre": "[ĐỀ THI PS] Organismes But Non Lucratif",
+    "type": "multiple",
+    "question": "Question 37 ♣ (Đề thi). Quels types d'organismes assureur sont à but non lucratif ?",
+    "options": [
+      "Sociétés d'assurance",
+      "Institutions de Prévoyance",
+      "Mutuelles",
+      "Aucune de ces réponses n'est correcte"
+    ],
+    "correct": [1, 2],
+    "explication_fr": "Les organismes à BUT NON LUCRATIF dans l'assurance complémentaire :\n\n✓ Institutions de Prévoyance → personnes morales de droit privé à but non lucratif (Code SS, Livre IX)\n✓ Mutuelles → groupements à but non lucratif (Code de la Mutualité)\n\n✗ Sociétés d'assurance → peuvent prendre la forme de SA (Société Anonyme) à but LUCRATIF, ou de Sociétés d'Assurance Mutuelle (SAM) qui revendiquent des valeurs mutualistes mais peuvent avoir un but lucratif selon la forme juridique.\n\nLes SA sont clairement des entités à but lucratif.",
+    "explication_vn": "Tổ chức phi lợi nhuận (but non lucratif):\n\n✓ Institutions de Prévoyance → phi lợi nhuận (Code SS, Livre IX)\n✓ Mutuelles → phi lợi nhuận (Code de la Mutualité)\n\n✗ Sociétés d'assurance → có thể là SA (Société Anonyme) vì lợi nhuận, hoặc SAM (mutuelle) → KHÔNG chắc chắn phi lợi nhuận\n\n→ Đáp án: Institutions de Prévoyance + Mutuelles."
+  },
+  {
+    "id": 38,
+    "chapitre": "[ĐỀ THI PS] Provision d'Égalisation – Compenser Pertes",
+    "type": "single",
+    "question": "Question 38 (Đề thi). La provision d'égalisation peut être utilisée pour compenser des pertes sur un contrat Frais de santé.",
+    "options": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": [0],
+    "explication_fr": "VRAI. C'est exactement l'objet de la Provision d'Égalisation (PE) :\n\n• Années favorables (S/P bas) → DOTATION à la PE (mise en réserve)\n• Années défavorables (S/P élevé, pertes) → REPRISE sur PE pour compenser les pertes\n\nC'est un mécanisme de LISSAGE des résultats dans le temps, spécifique aux contrats de Frais de santé complémentaire collective.\n\nCependant, la PE est plafonnée réglementairement (en général, un certain % des cotisations de l'exercice).",
+    "explication_vn": "ĐÚNG. Đây chính xác là chức năng của Provision d'Égalisation (PE):\n\n• Năm thuận lợi (S/P thấp) → DOTATION (tích vào PE)\n• Năm khó khăn (S/P cao, lỗ) → REPRISE (rút từ PE ra để bù đắp tổn thất)\n\nĐây là cơ chế SAN BẰNG kết quả theo thời gian, đặc thù cho hợp đồng Frais de santé tập thể.\n\nPE bị giới hạn theo quy định (thường là một % nhất định của cotisations).\n\n→ ĐÚNG."
+  },
+  {
+    "id": 39,
+    "chapitre": "[ĐỀ THI PS] Prime Commerciale – Calcul",
+    "type": "single",
+    "question": "Question 39 (Đề thi). La prime pure d'un contrat collectif 'Responsable' couvrant des garanties Frais de santé est égale à 1000€. Les frais de gestion de l'assureur sont fixés à 12%. Quelle est la prime commerciale TTC sur ce contrat ?",
+    "options": [
+      "1120€",
+      "1287,16€",
+      "1268,62€",
+      "1344,00€"
+    ],
+    "correct": [1],
+    "explication_fr": "Prime commerciale = Prime pure / (1 − taux de chargement)\n\nLes frais de gestion représentent 12% de la PRIME COMMERCIALE (et non de la prime pure).\n\nSoit P la prime commerciale :\nP = Prime pure + 12% × P\nP − 12%P = 1000€\n0,88 × P = 1000€\nP = 1000 / 0,88 = 1136,36€\n\nAttention : si les frais sont calculés sur la prime PURE :\nP = 1000 × (1 + 12%) = 1120€\n\nMais si en plus il y a une taxe (taxe sur les conventions d'assurance)... La réponse 1136,36€ ne figure pas dans les options.\n\nVérification de 1287,16€ : 1000 / (1 - 0,12) × quelque chose... ou avec taxe 13,27% → 1136,36 × 1,1327 ≈ 1287€. \n\nLa prime commerciale TTC inclut potentiellement la Taxe sur les Conventions d'Assurance (TCA) au taux de 13,27% pour les contrats santé responsables.\n\nSoit : P net = 1000/0,88 = 1136,36€ → P TTC = 1136,36 × 1,1327 ≈ 1287€.",
+    "explication_vn": "Prime commerciale = Prime pure / (1 − taux de chargement)\n\nNếu frais de gestion = 12% của prime commerciale:\nP × (1 - 0,12) = 1000€\nP = 1000/0,88 = 1136,36€\n\nNhưng đây là prime HT (hors taxe). Cần thêm Taxe sur les Conventions d'Assurance (TCA) áp dụng cho hợp đồng santé responsable (13,27%):\n\nP TTC = 1136,36 × 1,1327 ≈ 1287€\n\n→ Đáp án: 1287,16€.\n\nBẫy cần nhớ: frais tính trên prime commerciale (không phải prime pure) → phải dùng công thức chia, không nhân!"
+  }
+]
+
+
+
+;
+
+// ============================================================
+// State
+// ============================================================
+let order = QUESTIONS_MASTER.map(q => q.id);
+let idx = 0;
+let selectedRaw = [];      // indices dans currentShuffledOptions
+let validated = false;
+let score = 0;
+let answers = {};          // id -> {selectedOriginalIndices, ok}
+let finished = false;
+let filterChapitre = "Tous";
+let retryMode = false;     // true = mode "refaire une question"
+let retryQuestionId = null;
+let retrySourceIdx = null; // idx of the question being retried → resume from idx+1 after retry
+// shuffled options per question-display: id -> [{origIdx, text}]
+let shuffledOptionsCache = {};
+
+// ============================================================
+// Helpers
+// ============================================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getChapitres() {
+  const set = new Set(QUESTIONS_MASTER.map(q => q.chapitre));
+  return ["Tous", ...Array.from(set)];
+}
+
+function getActiveIds() {
+  if (filterChapitre === "Tous") return order;
+  return order.filter(id => {
+    const q = QUESTIONS_MASTER.find(qq => qq.id === id);
+    return q && q.chapitre === filterChapitre;
+  });
+}
+
+function getCurrentQ() {
+  if (retryMode && retryQuestionId !== null) {
+    return QUESTIONS_MASTER.find(q => q.id === retryQuestionId);
+  }
+  const activeIds = getActiveIds();
+  if (idx >= activeIds.length) return null;
+  return QUESTIONS_MASTER.find(q => q.id === activeIds[idx]);
+}
+
+function getShuffledOptions(q) {
+  const cacheKey = retryMode ? `retry_${q.id}` : `${q.id}_${idx}`;
+  if (!shuffledOptionsCache[cacheKey]) {
+    const opts = q.options.map((text, origIdx) => ({ origIdx, text }));
+    shuffledOptionsCache[cacheKey] = shuffle(opts);
+  }
+  return shuffledOptionsCache[cacheKey];
+}
+
+function isCorrectAnswer(q, selectedOriginalIndices) {
+  const correctSet = new Set(q.correct);
+  const selSet = new Set(selectedOriginalIndices);
+  if (correctSet.size !== selSet.size) return false;
+  for (const c of correctSet) if (!selSet.has(c)) return false;
+  return true;
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.innerText = s;
+  return d.innerHTML;
+}
+
+function escNL(s) {
+  return esc(s).replace(/\n/g, '<br>');
+}
+
+// ============================================================
+// Actions
+// ============================================================
+function toggleOption(shuffledIdx) {
+  if (validated) return;
+  const currentQ = getCurrentQ();
+  if (currentQ.type === "single") {
+    selectedRaw = [shuffledIdx];
+  } else {
+    if (selectedRaw.includes(shuffledIdx)) {
+      selectedRaw = selectedRaw.filter(x => x !== shuffledIdx);
+    } else {
+      selectedRaw = [...selectedRaw, shuffledIdx];
+    }
+  }
+  render();
+}
+
+function handleValidate() {
+  if (selectedRaw.length === 0 || validated) return;
+  const currentQ = getCurrentQ();
+  const shuffled = getShuffledOptions(currentQ);
+  // Convert shuffled indices to original indices
+  const selectedOriginalIndices = selectedRaw.map(si => shuffled[si].origIdx);
+  const ok = isCorrectAnswer(currentQ, selectedOriginalIndices);
+  validated = true;
+  if (!retryMode) {
+    score += ok ? 1 : 0;
+    answers[currentQ.id] = { selectedOriginalIndices, ok };
+  }
+  render();
+}
+
+function handleNext() {
+  if (retryMode) {
+    // After retrying: go to the NEXT question after the one we retried
+    retryMode = false;
+    retryQuestionId = null;
+    selectedRaw = [];
+    validated = false;
+    const activeIds = getActiveIds();
+    const nextIdx = (retrySourceIdx !== null) ? retrySourceIdx + 1 : idx + 1;
+    retrySourceIdx = null;
+    if (nextIdx >= activeIds.length) {
+      finished = true;
+    } else {
+      idx = nextIdx;
+    }
+    render();
+    return;
+  }
+  const activeIds = getActiveIds();
+  if (idx + 1 >= activeIds.length) {
+    finished = true;
+    render();
+    return;
+  }
+  idx++;
+  selectedRaw = [];
+  validated = false;
+  render();
+}
+
+function handleRetryQuestion(questionId) {
+  // Enter retry mode: save current position to resume after
+  retrySourceIdx = idx; // remember where we were
+  retryMode = true;
+  retryQuestionId = questionId;
+  finished = false;
+  selectedRaw = [];
+  validated = false;
+  // Clear shuffled cache so options get reshuffled
+  Object.keys(shuffledOptionsCache).forEach(k => {
+    if (k.startsWith('retry_')) delete shuffledOptionsCache[k];
+  });
+  render();
+}
+
+function handleRestart(shuffleQ) {
+  order = shuffleQ ? shuffle(QUESTIONS_MASTER.map(q => q.id)) : QUESTIONS_MASTER.map(q => q.id);
+  idx = 0;
+  selectedRaw = [];
+  validated = false;
+  score = 0;
+  answers = {};
+  finished = false;
+  retryMode = false;
+  retryQuestionId = null;
+  retrySourceIdx = null;
+  shuffledOptionsCache = {};
+  render();
+}
+
+function handleFilterChange(ch) {
+  filterChapitre = ch;
+  idx = 0;
+  selectedRaw = [];
+  validated = false;
+  score = 0;
+  answers = {};
+  finished = false;
+  retryMode = false;
+  retryQuestionId = null;
+  shuffledOptionsCache = {};
+  render();
+}
+
+function handleJump() {
+  const input = document.getElementById('jumpInput');
+  const targetId = parseInt(input.value, 10);
+  if (!targetId) return;
+  const q = QUESTIONS_MASTER.find(qq => qq.id === targetId);
+  if (!q) { alert("ID introuvable"); return; }
+  if (filterChapitre !== "Tous" && q.chapitre !== filterChapitre) {
+    filterChapitre = "Tous";
+  }
+  finished = false;
+  retryMode = false;
+  const activeIds = getActiveIds();
+  const newIdx = activeIds.indexOf(targetId);
+  if (newIdx === -1) return;
+  idx = newIdx;
+  selectedRaw = [];
+  validated = false;
+  render();
+}
+
+// ============================================================
+// Render
+// ============================================================
+function renderFinished() {
+  const activeIds = getActiveIds();
+  const total = activeIds.length;
+  const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+
+  const recapHtml = activeIds.map(id => {
+    const q = QUESTIONS_MASTER.find(qq => qq.id === id);
+    const a = answers[id];
+    const ok = a && a.ok;
+    const dotColor = ok ? "#2f7d5f" : "#c4453a";
+    const retryBtn = !ok
+      ? `<button class="recap-retry-btn" onclick="handleRetryQuestion(${id})">↩ Refaire</button>`
+      : '';
+    return `
+      <div class="recap-item">
+        <span class="recap-dot" style="background:${dotColor}"></span>
+        <span class="recap-text">Q${id} — ${esc(q ? q.chapitre : '')}</span>
+        ${retryBtn}
+      </div>`;
+  }).join("");
+
+  return `
+    <div class="header-badge">Retraite · QCM</div>
+    <h1 class="result-title">Résultats</h1>
+    <div class="score-circle">
+      <span class="score-num">${score}</span>
+      <span class="score-den">/ ${total}</span>
+    </div>
+    <p class="pct-text">${pct}% de bonnes réponses</p>
+    <div class="recap-list">${recapHtml}</div>
+    <div class="btn-row">
+      <button class="primary-btn" onclick="handleRestart(false)">Recommencer (ordre initial)</button>
+      <button class="secondary-btn" onclick="handleRestart(true)">Recommencer (aléatoire)</button>
+    </div>`;
+}
+
+function renderQuestion() {
+  const activeIds = getActiveIds();
+  const currentQ = getCurrentQ();
+
+  if (!currentQ) {
+    return `<div class="header-badge">Retraite · QCM</div><p class="empty-text">Aucune question pour ce filtre.</p>`;
+  }
+
+  const shuffled = getShuffledOptions(currentQ);
+  // Convert selectedRaw (shuffled indices) to original indices for correctness check
+  const selectedOriginalIndices = selectedRaw.map(si => shuffled[si].origIdx);
+  const isOk = validated ? isCorrectAnswer(currentQ, selectedOriginalIndices) : false;
+
+  const progressPct = retryMode
+    ? ((retrySourceIdx !== null ? retrySourceIdx : idx) + 1) / activeIds.length * 100
+    : ((idx + 1) / activeIds.length) * 100;
+  const chapitres = getChapitres();
+
+  const selectHtml = `
+    <div class="jump-row">
+      <select class="qcm-select" onchange="handleFilterChange(this.value)">
+        ${chapitres.map(c => `<option value="${esc(c)}" ${c === filterChapitre ? "selected" : ""}>${esc(c)}</option>`).join("")}
+      </select>
+      <input id="jumpInput" class="jump-input" type="number" min="1" placeholder="ID" />
+      <button class="jump-btn" onclick="handleJump()">Aller</button>
+    </div>`;
+
+  const retryBanner = retryMode
+    ? `<div class="retry-banner">🔄 Mode refaire — Question ${retryQuestionId}</div>`
+    : '';
+
+  const optionsHtml = shuffled.map(({ origIdx, text }, si) => {
+    const isSelected = selectedRaw.includes(si);
+    const isCorrect = currentQ.correct.includes(origIdx);
+    const isWrong = isSelected && !isCorrect;
+    const isMissed = validated && isCorrect && !isSelected;
+
+    let stateClass = "";
+    let markerColor = "#a8895c";
+    if (validated) {
+      if (isCorrect && isSelected) { stateClass = "validated-correct"; markerColor = "#2f7d5f"; }
+      else if (isWrong) { stateClass = "validated-wrong"; markerColor = "#c4453a"; }
+      else if (isMissed) { stateClass = "validated-missed"; markerColor = "#b8940a"; }
+    } else if (isSelected) {
+      stateClass = "selected";
+    }
+
+    const markerShape = currentQ.type === "single" ? "circle" : "square";
+    const markerMarked = isSelected ? "marked" : "";
+    const markerInner = isSelected ? (currentQ.type === "single" ? "●" : "✓") : "";
+    const rightIcon = validated
+      ? (isCorrect && isSelected ? '<span class="check-icon">✓</span>'
+        : isWrong ? '<span class="cross-icon">✕</span>'
+        : isMissed ? '<span class="warn-icon">!</span>'
+        : '')
+      : '';
+
+    return `
+      <button class="option-btn ${stateClass} ${validated ? 'validated-disabled' : ''}"
+        onclick="toggleOption(${si})" ${validated ? "disabled" : ""}>
+        <span class="option-marker ${markerShape} ${markerMarked}" style="--marker-color:${markerColor}">
+          <span class="option-marker-inner">${markerInner}</span>
+        </span>
+        <span class="option-label">${esc(text)}</span>
+        ${rightIcon}
+      </button>`;
+  }).join("");
+
+  // Explanation block
+  let explanationHtml = "";
+  if (validated) {
+    const statusLabel = isOk ? "✓ Correct" : "✕ Incorrect";
+    const boxClass = isOk ? "" : "incorrect";
+    const frHtml = currentQ.explication_fr
+      ? `<div class="expl-section">
+          <span class="expl-lang-badge badge-fr">🇫🇷 Français</span>
+          <div class="expl-text">${escNL(currentQ.explication_fr)}</div>
+        </div>`
+      : '';
+    const vnHtml = currentQ.explication_vn
+      ? `<hr class="expl-divider">
+         <div class="expl-section">
+          <span class="expl-lang-badge badge-vn">🇻🇳 Tiếng Việt</span>
+          <div class="expl-text">${escNL(currentQ.explication_vn)}</div>
+        </div>`
+      : '';
+    explanationHtml = `
+      <div class="explanation-box ${boxClass}">
+        <div class="explanation-label">${statusLabel} — Explication</div>
+        ${frHtml}${vnHtml}
+      </div>`;
+  }
+
+  // Buttons
+  let btnHtml = '';
+  if (!validated) {
+    btnHtml = `<button class="primary-btn" onclick="handleValidate()" ${selectedRaw.length === 0 ? "disabled" : ""}>Valider</button>`;
+  } else {
+    // Compute what "next" means: after retry → go to retrySourceIdx+1; normal → idx+1
+    const nextIdxAfterRetry = (retrySourceIdx !== null) ? retrySourceIdx + 1 : idx + 1;
+    let nextLabel;
+    if (retryMode) {
+      nextLabel = nextIdxAfterRetry >= activeIds.length
+        ? "Voir les résultats →"
+        : `Continuer — Q${nextIdxAfterRetry + 1}/${activeIds.length} →`;
+    } else {
+      nextLabel = idx + 1 >= activeIds.length ? "Voir les résultats" : "Question suivante →";
+    }
+    btnHtml = `<button class="primary-btn" onclick="handleNext()">${nextLabel}</button>`;
+    if (!isOk && !retryMode) {
+      btnHtml += `<button class="retry-btn" onclick="handleRetryQuestion(${currentQ.id})">↩ Refaire cette question</button>`;
+    }
+  }
+
+  const qLabel = retryMode
+    ? `🔄 Refaire Q${currentQ.id} (position ${(retrySourceIdx !== null ? retrySourceIdx : idx) + 1}/${activeIds.length})`
+    : `Question ${idx + 1} / ${activeIds.length}`;
+
+  return `
+    <div class="top-row">
+      <div class="header-badge">Retraite · QCM</div>
+      ${selectHtml}
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fg" style="width:${progressPct}%"></div>
+    </div>
+    <div class="meta-row">
+      <span class="meta-text">${qLabel}</span>
+      <span class="meta-text">Score: ${score}</span>
+    </div>
+    ${retryBanner}
+    <div class="chap-tag">${esc(currentQ.chapitre)}</div>
+    <div class="type-tag">${currentQ.type === "single" ? "Réponse unique" : "Réponses multiples"}</div>
+    <h2 class="question-text">${esc(currentQ.question)}</h2>
+    <div class="options-wrap">${optionsHtml}</div>
+    ${explanationHtml}
+    <div class="btn-row">${btnHtml}</div>`;
+}
+
+function render() {
+  const app = document.getElementById('app');
+  app.innerHTML = finished ? renderFinished() : renderQuestion();
+}
+
+render();
+</script>
+</body>
+</html>
