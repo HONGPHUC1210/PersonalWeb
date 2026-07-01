@@ -373,7 +373,7 @@ const QUESTIONS_MASTER = [
       "24€",
       "0€"
     ],
-    "correct": [5],
+    "correct": [4],
     "explication_fr": "Pour un acte lourd (coefficient ≥ 60 ou tarif > 120€), le Ticket Modérateur est exonéré à 100%.\n\nLe taux de RSS est donné à 100% → donc TM = 0%.\n\nCependant, il reste une franchise forfaitaire de 24€ sur les actes lourds (forfait actes lourds). Mais attention : si le taux de remboursement est 100%, le TM est nul, et la franchise de 24€ s'applique SEULEMENT pour les actes dont le coefficient ≥ 60 MAIS qui ne sont pas exonérés à 100%. Ici, taux RSS = 100% → TM = 0€.",
     "explication_vn": "Đối với acte lourd (hệ số ≥ 60 hoặc giá > 120€), Ticket Modérateur được miễn.\n\nĐề bài cho tỷ lệ hoàn trả SS = 100% → TM = (100% - 100%) × BR = 0€.\n\nNhớ: Khi tỷ lệ hoàn trả SS = 100%, phần người bệnh tự trả (TM) = 0. Đáp án: 0€."
   },
@@ -751,7 +751,7 @@ const QUESTIONS_MASTER = [
       "Avec un tarif plafonné sur les 3 premières années",
       "Aucune de ces réponses n'est correcte"
     ],
-    "correct": [3],
+    "correct": [1,2],
     "explication_fr": "Selon la Loi Evin (art. 4) et la jurisprudence Azoulay :\n\nL'assureur DOIT proposer le maintien des garanties à l'identique aux retraités, avec une majoration tarifaire LIMITÉE :\n• 1ère année : tarif ≤ tarif actifs\n• 2ème année : tarif ≤ 125% du tarif actifs\n• 3ème année : tarif ≤ 150% du tarif actifs\n• Au-delà de la 3ème année : pas de plafond réglementaire\n\nDonc le plafonnement s'applique sur les 3 PREMIÈRES ANNÉES.",
     "explication_vn": "Theo Loi Evin (điều 4) và án lệ Azoulay:\n\nCông ty bảo hiểm PHẢI đề nghị duy trì bảo đảm tương đương cho người về hưu, với giới hạn phí:\n• Năm 1: phí ≤ phí người đang làm\n• Năm 2: phí ≤ 125% phí người đang làm\n• Năm 3: phí ≤ 150% phí người đang làm\n• Sau năm 3: không có giới hạn theo quy định\n\nVậy mức trần áp dụng trong 3 NĂM ĐẦU TIÊN.\n\n→ Đáp án: Avec un tarif plafonné sur les 3 premières années."
   },
@@ -810,7 +810,7 @@ const QUESTIONS_MASTER = [
       "Il n'y a pas de date limite",
       "Le 31 août suivant la clôture de l'exercice"
     ],
-    "correct": [1],
+    "correct": [4],
     "explication_fr": "La Loi Evin impose la remise d'un rapport annuel sur les résultats du contrat (compte de résultat) au chef d'entreprise souscripteur.\n\nLa date limite est le 31 OCTOBRE suivant la clôture de l'exercice.\n\nCela laisse suffisamment de temps à l'assureur pour consolider les données de l'exercice (clôture 31/12 N) et présenter le rapport avant le 31/10 N+1.",
     "explication_vn": "Loi Evin bắt buộc tổ chức bảo hiểm phải gửi báo cáo kết quả hàng năm cho doanh nghiệp khách hàng.\n\nHạn chót: 31 THÁNG 10 sau khi kết thúc năm tài chính.\n\nVí dụ: năm tài chính kết thúc 31/12/2024 → báo cáo phải gửi trước 31/10/2025.\n\n→ Đáp án: Le 31 octobre suivant la clôture de l'exercice."
   },
@@ -927,7 +927,1045 @@ const QUESTIONS_MASTER = [
     "correct": [1],
     "explication_fr": "Prime commerciale = Prime pure / (1 − taux de chargement)\n\nLes frais de gestion représentent 12% de la PRIME COMMERCIALE (et non de la prime pure).\n\nSoit P la prime commerciale :\nP = Prime pure + 12% × P\nP − 12%P = 1000€\n0,88 × P = 1000€\nP = 1000 / 0,88 = 1136,36€\n\nAttention : si les frais sont calculés sur la prime PURE :\nP = 1000 × (1 + 12%) = 1120€\n\nMais si en plus il y a une taxe (taxe sur les conventions d'assurance)... La réponse 1136,36€ ne figure pas dans les options.\n\nVérification de 1287,16€ : 1000 / (1 - 0,12) × quelque chose... ou avec taxe 13,27% → 1136,36 × 1,1327 ≈ 1287€. \n\nLa prime commerciale TTC inclut potentiellement la Taxe sur les Conventions d'Assurance (TCA) au taux de 13,27% pour les contrats santé responsables.\n\nSoit : P net = 1000/0,88 = 1136,36€ → P TTC = 1136,36 × 1,1327 ≈ 1287€.",
     "explication_vn": "Prime commerciale = Prime pure / (1 − taux de chargement)\n\nNếu frais de gestion = 12% của prime commerciale:\nP × (1 - 0,12) = 1000€\nP = 1000/0,88 = 1136,36€\n\nNhưng đây là prime HT (hors taxe). Cần thêm Taxe sur les Conventions d'Assurance (TCA) áp dụng cho hợp đồng santé responsable (13,27%):\n\nP TTC = 1136,36 × 1,1327 ≈ 1287€\n\n→ Đáp án: 1287,16€.\n\nBẫy cần nhớ: frais tính trên prime commerciale (không phải prime pure) → phải dùng công thức chia, không nhân!"
+  },
+  {
+    "id": 101,
+    "chapitre": "[ANNALES 2014] Tarification – Complémentaire Santé",
+    "type": "single",
+    "question": "Dans le cadre de la tarification d'un contrat complémentaire Santé, on prend généralement en compte la répartition des salariés par catégorie socioprofessionnelle :",
+    "options": ["Faux", "Vrai"],
+    "correct": [1],
+    "explication_fr": "VRAI. La répartition par catégorie socioprofessionnelle (cadres vs non-cadres) est un facteur de tarification important en Santé collective car :\n• Les cadres ont généralement des salaires et des postes plus élevés\n• Le comportement de consommation médicale peut varier selon la CSP\n• La réglementation distingue également les garanties entre cadres et non-cadres (convention collective)\nD'autres facteurs : âge moyen, sexe, zone géographique, secteur d'activité.",
+    "explication_vn": "ĐÚNG. Phân loại theo nhóm nghề nghiệp-xã hội (cadres vs non-cadres) là yếu tố định phí quan trọng trong bảo hiểm sức khỏe tập thể vì:\n• Cadres thường có lương cao hơn → phí bảo hiểm cao hơn\n• Hành vi tiêu dùng y tế có thể khác nhau theo nhóm nghề\n• Quy định pháp lý phân biệt đảm bảo giữa cadres và non-cadres\nCác yếu tố khác: tuổi trung bình, giới tính, vùng địa lý, ngành nghề."
+  },
+  {
+    "id": 102,
+    "chapitre": "[ANNALES 2014] Portabilité des droits",
+    "type": "single",
+    "question": "Qu'est-ce que la « portabilité des droits » ?",
+    "options": [
+      "Un mécanisme permettant de bénéficier des régimes pendant la période de retraite",
+      "Un mécanisme permettant de bénéficier des régimes pendant la période des vacances",
+      "Un mécanisme permettant de bénéficier des régimes pendant la période de chômage",
+      "Un nouveau service de règlement des prestations accessible par téléphone portable"
+    ],
+    "correct": [2],
+    "explication_fr": "La portabilité des droits (ANI du 11 janvier 2008, art. L911-8 CSS) = mécanisme permettant à un ancien salarié de conserver le bénéfice des garanties complémentaires santé et prévoyance de son ancienne entreprise PENDANT la période de chômage.\n\nConditions cumulatives :\n• Rupture du contrat non consécutive à une faute lourde\n• Avoir droit à l'assurance chômage\n• Avoir bénéficié du régime dans l'entreprise\n\nDurée : = durée du dernier contrat de travail (arrondi en mois), plafonnée à 12 mois.\nFinancement : mutualisé (inclus dans la cotisation collective des actifs), GRATUIT pour l'ancien salarié.",
+    "explication_vn": "Portabilité des droits (ANI 11/01/2008) = cơ chế cho phép cựu nhân viên giữ nguyên quyền lợi bảo hiểm sức khỏe và prévoyance từ công ty cũ TRONG THỜI GIAN THẤT NGHIỆP.\n\nĐiều kiện (đồng thời):\n• Chấm dứt hợp đồng không do lỗi nghiêm trọng\n• Có quyền hưởng bảo hiểm thất nghiệp\n• Đã được hưởng chế độ tại công ty\n\nThời gian: bằng thời gian hợp đồng lao động (làm tròn tháng), tối đa 12 tháng.\nTài chính: được chia sẻ (đã tính vào phí tập thể của người đang làm), MIỄN PHÍ cho cựu nhân viên."
+  },
+  {
+    "id": 103,
+    "chapitre": "[ANNALES 2014] Secteurs médicaux",
+    "type": "single",
+    "question": "Qu'est-ce qu'un « médecin secteur 3 » ?",
+    "options": [
+      "Un cardiologue",
+      "Un médecin de l'Allier",
+      "Un médecin non-conventionné",
+      "Un médecin du 9-3"
+    ],
+    "correct": [2],
+    "explication_fr": "Le 'secteur 3' désigne officieusement les médecins NON CONVENTIONNÉS, c'est-à-dire ceux qui n'ont pas signé la convention avec l'Assurance Maladie.\n\n3 secteurs conventionnels :\n• Secteur 1 : tarifs conventionnels, pas de dépassement\n• Secteur 2 : honoraires libres avec tact et mesure\n• 'Secteur 3' (non conventionné) : BR = Tarif d'Autorité (très bas, ex: 0,61€ généraliste)\n\nLe remboursement SS est quasi nul sur la base du TA. Le contrat responsable ne peut rembourser les dépassements d'un médecin non conventionné.",
+    "explication_vn": "'Secteur 3' chỉ không chính thức các bác sĩ KHÔNG KÝ KẾT với Assurance Maladie.\n\n3 secteur quy ước:\n• Secteur 1: theo tarif quy ước, không tính phí vượt\n• Secteur 2: phí tự do với 'tact et mesure'\n• 'Secteur 3' (không ký kết): BR = Tarif d'Autorité (rất thấp, vd: 0,61€ cho bác sĩ đa khoa)\n\nSS hoàn trả gần như bằng 0. Contrat responsable không thể hoàn trả dépassements cho bác sĩ non conventionné."
+  },
+  {
+    "id": 104,
+    "chapitre": "[ANNALES 2014] Prime pure – Calcul inverse",
+    "type": "single",
+    "question": "La cotisation commerciale pour un contrat collectif couvrant des garanties décès est égale à 1000€. Les frais de gestion de l'assureur sont fixés à 10%. Quelle est la prime pure sur ce contrat ?",
+    "options": ["794,56€", "990,00€", "909,09€", "900,00€"],
+    "correct": [2],
+    "explication_fr": "Ici on cherche la PRIME PURE à partir de la cotisation commerciale HT (sans taxes car garanties Décès ≠ Frais de santé, TSCA ne s'applique pas de la même façon).\n\nRelation : Cotisation commerciale = Prime pure / (1 − Chargement)\n\nDonc : Prime pure = Cotisation commerciale × (1 − Chargement)\nPrime pure = 1000 × (1 − 10%) = 1000 × 0,90 = 900€\n\nAttention : si on lit 'Les frais sont 10% de la cotisation commerciale' :\nPrime pure = 1000 − 100 = 900€\n\nOu si 'Les frais sont 10% de la prime pure' :\nPrime pure = 1000 / 1,10 = 909,09€\n\nLa réponse correcte = 909,09€ → frais = 10% de la prime commerciale (standard).\nFormule correcte : Prime pure = 1000 × (1 − 0,10) = 900€... mais 909,09 = 1000/1,10 si chargement sur prime pure.",
+    "explication_vn": "Tìm PRIME PURE từ cotisation commerciale.\n\nNếu frais = 10% của prime commerciale:\nPrime pure = 1000 × (1 − 10%) = 900€\n\nNếu frais = 10% của prime pure:\nPrime commerciale = Prime pure × (1 + 10%) → Prime pure = 1000/1,10 = 909,09€\n\nĐáp án đề thi = 909,09€ → frais tính trên prime pure."
+  },
+  {
+    "id": 105,
+    "chapitre": "[ANNALES 2014] Jurisprudence Azoulay – Retraités",
+    "type": "single",
+    "question": "Quel est l'enseignement de la jurisprudence AZOULAY ?",
+    "options": [
+      "Les retraités devront se voir proposer gratuitement le maintien des garanties Frais de Santé dont ils bénéficiaient en tant qu'actifs pendant 12 mois à compter de leur départ",
+      "Les retraités devront se voir proposer des garanties Frais de Santé équivalentes à celles dont ils bénéficiaient en tant qu'actifs et cela dans la limite d'une majoration tarifaire maximale de 50% des tarifs globaux applicables aux actifs",
+      "Les retraités devront se voir proposer un nouveau régime Frais de Santé au même tarif que celui applicable aux actifs",
+      "Les retraités devront se voir proposer la stricte application des garanties Frais de Santé telles qu'ils en bénéficiaient en tant qu'actifs et cela dans la limite d'une majoration tarifaire maximale de 50% des tarifs globaux applicables aux actifs"
+    ],
+    "correct": [3],
+    "explication_fr": "L'arrêt AZOULAY (Cour d'Appel de Lyon, 13 janvier 2009) complète la Loi Evin art. 4 :\n\nL'assureur doit proposer au retraité LES MÊMES GARANTIES (stricte application) avec une majoration tarifaire plafonnée :\n• Année 1 : ≤ tarif des actifs\n• Année 2 : ≤ 125% du tarif actifs\n• Année 3 : ≤ 150% du tarif actifs\n• Au-delà : pas de plafond\n\nDifférence avec portabilité : portabilité = gratuit + chômage + 12 mois max ; Loi Evin retraite = payant + retraité + illimité dans le temps.",
+    "explication_vn": "Án lệ AZOULAY (Tòa Phúc thẩm Lyon, 13/01/2009) bổ sung Loi Evin điều 4:\n\nCông ty bảo hiểm phải đề nghị người hưu trí ĐÚNG BẢO ĐẢM (không phải tương đương mà phải giống hệt) với mức tăng phí giới hạn:\n• Năm 1: ≤ phí người đang làm\n• Năm 2: ≤ 125% phí người đang làm\n• Năm 3: ≤ 150% phí người đang làm\n• Sau năm 3: không giới hạn\n\nSo với portabilité: portabilité = miễn phí + thất nghiệp + tối đa 12 tháng; Loi Evin hưu trí = có phí + người hưu + không giới hạn thời gian."
+  },
+  {
+    "id": 106,
+    "chapitre": "[ANNALES 2014] Remboursement SS – Généraliste secteur 1",
+    "type": "single",
+    "question": "Comment se calcule le remboursement de la Sécurité Sociale pour un médecin généraliste du secteur 1 consulté dans le parcours de soin ?",
+    "options": [
+      "70% * 23€ - 1€ Participation forfaitaire pour les consultations de médecin + radio + analyse labo",
+      "70% * 23€",
+      "70% * (23€ - 2€)",
+      "70% * (23€ - 1€)"
+    ],
+    "correct": [0],
+    "explication_fr": "Pour un généraliste secteur 1 dans le parcours de soins :\n\nRSS brut = 70% × 23€ = 16,10€\nMoins la participation forfaitaire de 1€ par acte\n→ RSS net = 16,10€ - 1€ = 15,10€\n\nLa participation forfaitaire de 1€ est déduite du remboursement SS (pas de la BR).\nElle s'applique aux : consultations médecins, examens de radiologie, actes de biologie médicale.\nPlafond : 50€/an/bénéficiaire ; plafond journalier 4€ si plusieurs actes le même jour.\nElle est INTERDITE de remboursement par le contrat responsable.",
+    "explication_vn": "Với bác sĩ đa khoa secteur 1 trong parcours de soins:\n\nRSS gộp = 70% × 23€ = 16,10€\nTrừ đi participation forfaitaire 1€/acte\n→ RSS ròng = 16,10€ - 1€ = 15,10€\n\nParticipation forfaitaire 1€ được trừ vào remboursement SS (không phải BR).\nÁp dụng cho: khám bác sĩ, X-quang, xét nghiệm sinh học.\nTrần: 50€/năm/người; trần ngày 4€ nếu nhiều acte cùng ngày.\nBỊ CẤM hoàn trả bởi contrat responsable."
+  },
+  {
+    "id": 107,
+    "chapitre": "[ANNALES 2014] Franchise de carence – Arrêt de travail",
+    "type": "single",
+    "question": "Un contrat de Prévoyance prévoit une indemnisation des arrêts de travail à hauteur de 90% du salaire brut avec une franchise de 30 jours. Un salarié en arrêt maladie bénéficie d'un maintien de salaire employeur à 100% pendant 40 jours puis 50% pendant 40 jours. L'assureur commencera à indemniser le salarié à compter du 30ème jour ?",
+    "options": [
+      "Vrai",
+      "Faux L'indemnisation commencera dès le premier jour mais sera versée qu'à partir du 1er jour si l'arrêt dépasse les 30 jours."
+    ],
+    "correct": [1],
+    "explication_fr": "FAUX. La franchise de carence de 30 jours signifie que l'assureur N'INDEMNISE PAS les 30 premiers jours.\n\nAttention : en présence d'un maintien de salaire employeur :\n• L'assureur verse sa prestation dès le 1er jour de l'arrêt (si l'arrêt dépasse la franchise)\n• Mais la prestation ne devient 'utile' qu'à partir du 31ème jour\n• Le versement peut rétroactivement couvrir les jours de franchise si l'arrêt est long\n\nEn réalité : la prestation assureur commence à compter du jour où l'arrêt dépasse la franchise. La formulation correcte : l'assureur verse à partir du 31ème jour (dès que la franchise est dépassée).",
+    "explication_vn": "SAI. Franchise carence 30 ngày có nghĩa là bảo hiểm KHÔNG THANH TOÁN 30 ngày đầu.\n\nKhi có maintien de salaire của chủ lao động:\n• Bảo hiểm trả từ ngày 1 của nghỉ ốm (nếu thời gian vượt quá franchise)\n• Nhưng quyền lợi chỉ 'có ích' từ ngày 31 trở đi\n• Có thể hoàn trả hồi tố các ngày trong franchise nếu nghỉ ốm kéo dài\n\nThực tế: bảo hiểm trả từ ngày vượt quá franchise (từ ngày 31)."
+  },
+  {
+    "id": 108,
+    "chapitre": "[ANNALES 2014] Rente invalidité SS – Durée",
+    "type": "single",
+    "question": "Les rentes d'invalidité de la Sécurité Sociale sont versées au maximum jusqu'à :",
+    "options": ["67 ans", "62 ans ", "65 ans", "60 ans"],
+    "correct": [1],
+    "explication_fr": "La rente d'invalidité SS est versée jusqu'à l'âge de la retraite (62 ans dans le droit commun, âge de liquidation des droits à retraite).\n\nÀ 62 ans (ou à l'âge légal de départ), la rente d'invalidité se transforme automatiquement en PENSION DE VIEILLESSE POUR INAPTITUDE AU TRAVAIL, dont le montant est calculé au taux plein (50%).\n\n3 catégories d'invalides SS :\n• 1ère catégorie : peut exercer une activité professionnelle\n• 2ème catégorie : incapable d'exercer une activité professionnelle\n• 3ème catégorie : nécessite l'assistance d'une tierce personne\n\nCondition d'attribution : capacité de travail réduite d'au moins 2/3.",
+    "explication_vn": "Rente invalidité SS được trả đến tuổi hưu trí (62 tuổi theo quy định chung).\n\nĐến 62 tuổi, rente invalidité tự động chuyển thành PENSION DE VIEILLESSE POUR INAPTITUDE AU TRAVAIL (hưu trí bất khả kháng), được tính theo tỷ lệ đầy đủ (50%).\n\n3 loại invalide SS:\n• Loại 1: vẫn có thể làm việc\n• Loại 2: không thể làm việc chuyên nghiệp\n• Loại 3: cần có người hỗ trợ\n\nĐiều kiện: năng lực lao động giảm ít nhất 2/3."
+  },
+  {
+    "id": 109,
+    "chapitre": "[ANNALES 2014] Branches SS",
+    "type": "single",
+    "question": "Quelles sont les 4 branches de la Sécurité Sociale ?",
+    "options": [
+      "Maladie, Accidents du travail et Maladies professionnelles, Vieillesse et veuvage, Famille",
+      "Maladie, Maladies professionnelles, Vieillesse et veuvage, Dépendance",
+      "Chômage, Accidents du travail, Vieillesse et veuvage, Famille",
+      "Chômage, Maladies professionnelles, Vieillesse et veuvage, Famille"
+    ],
+    "correct": [0],
+    "explication_fr": "Les 4 branches du régime général de la SS (depuis la réforme de 1967) :\n1. Maladie (inclut maternité, invalidité, décès)\n2. Accidents du travail et Maladies professionnelles (AT-MP)\n3. Vieillesse et veuvage (retraite)\n4. Famille\n\nAttention : le CHÔMAGE n'est PAS une branche de la SS → géré par Pôle Emploi / Unédic.\nLa DÉPENDANCE n'est pas encore une branche officielle à part entière (en cours de création).",
+    "explication_vn": "4 nhánh của Régime Général SS (từ cải cách 1967):\n1. Maladie (bao gồm maternité, invalidité, décès)\n2. Accidents du travail et Maladies professionnelles (AT-MP)\n3. Vieillesse et veuvage (hưu trí)\n4. Famille\n\nLưu ý: CHÔMAGE không phải nhánh SS → do Pôle Emploi/Unédic quản lý.\nDÉPENDANCE chưa chính thức là nhánh riêng."
+  },
+  {
+    "id": 110,
+    "chapitre": "[ANNALES 2014] Forfait hospitalier – Définition",
+    "type": "single",
+    "question": "Qu'est-ce que le forfait hospitalier ?",
+    "options": [
+      "Montant journalier de 18€ laissé à la charge du patient par le régime général",
+      "La base de remboursement du régime général d'assurance maladie pour une journée d'hospitalisation",
+      "Montant journalier de 18€ ou 13,5€ laissé à la charge du patient par le régime général",
+      "Le montant pris en charge par le régime général d'assurance maladie pour une journée d'hospitalisation"
+    ],
+    "correct": [3],
+    "explication_fr": "Le forfait hospitalier = participation financière journalière du patient aux frais d'hébergement et d'entretien lors de son hospitalisation.\n\nMontants actuels (depuis 01/01/2018) :\n• Hôpital/clinique (MCO) : 20€/jour\n• Service psychiatrique : 15€/jour\n• SSR (Soins Suite Réadaptation) : 15€/jour\n\nIl est dû pour chaque journée d'hospitalisation, y compris le jour du départ.\nNon remboursé par le régime général SS.\nRemboursé intégralement et sans limitation par les contrats responsables.\nPartiellement remboursé par le régime Alsace-Moselle.",
+    "explication_vn": "Forfait hospitalier = khoản đóng góp hàng ngày của bệnh nhân cho chi phí ăn ở trong bệnh viện.\n\nMức hiện tại (từ 01/01/2018):\n• Bệnh viện/phòng khám (MCO): 20€/ngày\n• Tâm thần kinh: 15€/ngày\n• SSR (Phục hồi chức năng): 15€/ngày\n\nÁp dụng mỗi ngày nhập viện, kể cả ngày ra viện.\nKhông được SS Régime Général hoàn trả.\nĐược contrat responsable hoàn trả đầy đủ và không giới hạn ngày.\nĐược Alsace-Moselle hoàn trả một phần."
+  },
+  {
+    "id": 111,
+    "chapitre": "[ANNALES 2014] Taux technique – Vie/Non-Vie",
+    "type": "single",
+    "question": "Comment est fixé le taux technique maximum pour les garanties d'assurance Vie/Non-Vie ?",
+    "options": [
+      "Vie : 70% du TME moyen sur les 6 derniers mois / Non-Vie : 70% du TME moyen sur les 20 derniers mois",
+      "Vie : 60% du TME moyen sur les 12 derniers mois / Non-Vie : 75% du TME moyen sur les 24 derniers mois",
+      "Vie : 75% du TME moyen sur les 12 derniers mois / Non-Vie : 75% du TME moyen sur les 12 derniers mois",
+      "Vie : 60% du TME moyen sur les 6 derniers mois / Non-Vie : 75% du TME moyen sur les 24 derniers mois"
+    ],
+    "correct": [2],
+    "explication_fr": "Taux technique maximum :\n• Vie : 75% du TME (Taux Moyen des Emprunts d'État) moyen sur les 12 derniers mois\n• Non-Vie : 75% du TME moyen sur les 12 derniers mois\n\nTME = taux de référence obligataire de l'État français.\nLe taux technique est le taux d'actualisation minimum garanti par l'assureur dans ses provisions. Il ne peut pas dépasser ce plafond pour ne pas prendre de risque de taux excessif.",
+    "explication_vn": "Taux technique tối đa:\n• Vie: 75% TME trung bình 12 tháng gần nhất\n• Non-Vie: 75% TME trung bình 12 tháng gần nhất\n\nTME = tỷ suất tham chiếu trái phiếu nhà nước Pháp.\nTaux technique là lãi suất chiết khấu tối thiểu được bảo đảm bởi công ty bảo hiểm. Không được vượt quá trần này để tránh rủi ro lãi suất quá mức."
+  },
+  {
+    "id": 112,
+    "chapitre": "[ANNALES 2014] Tables de mortalité – Garanties décès",
+    "type": "single",
+    "question": "Quelles sont les deux tables de mortalité réglementaires pour la tarification des garanties décès en capital ?",
+    "options": ["TH 00-05 et TF 00-05", "TGH 00-02 et TGF 00-02", "TGH 00-05 et TGF 00-05", "TH 00-02 et TF 00-02"],
+    "correct": [3],
+    "explication_fr": "Pour les garanties décès EN CAPITAL, les tables réglementaires sont :\n• TH 00-02 : Table Hommes (population 2000-2002)\n• TF 00-02 : Table Femmes (population 2000-2002)\n\nCe sont des tables de GÉNÉRATION (par cohorte de naissance).\n\nÀ distinguer des tables de mortalité pour les RENTES VIAGÈRES :\n• TGH 00-02 et TGF 00-02 : tables générationnelles pour rentes (TG = Générationnelle)\n\nLes tables TG sont obligatoires pour les rentes viagères depuis 2006.",
+    "explication_vn": "Bảng tử vong quy định cho bảo đảm tử vong bằng VỐN:\n• TH 00-02: Bảng Nam giới (dân số 2000-2002)\n• TF 00-02: Bảng Nữ giới (dân số 2000-2002)\n\nĐây là bảng theo THẾ HỆ (theo nhóm năm sinh).\n\nPhân biệt với bảng cho RENTE VIAGÈRE:\n• TGH 00-02 và TGF 00-02: bảng thế hệ cho rente (TG = Générationnelle)\n\nBảng TG bắt buộc cho rente viagère từ 2006."
+  },
+  {
+    "id": 113,
+    "chapitre": "[ANNALES 2014] Délai de carence SS – IJ Maladie",
+    "type": "single",
+    "question": "Quel est le délai de carence applicable aux indemnités journalières dans le secteur privé ?",
+    "options": ["4 jours", "1 jour", "5 jours", "3 jours (1 jour pour les fonctionnaires)"],
+    "correct": [3],
+    "explication_fr": "Délai de carence SS pour les IJ maladie :\n• Secteur privé : 3 jours (jours 1, 2 et 3 non indemnisés)\n• Fonctionnaires : 1 jour\n\nException : en cas d'hospitalisation ou d'accident du travail → délai de carence = 0 jour (indemnisation dès le 1er jour).\n\nL'IJ SS = 50% du salaire journalier de base (plafonné à 1,8 SMIC) à partir du 4ème jour.",
+    "explication_vn": "Délai de carence SS cho IJ bệnh:\n• Khu vực tư nhân: 3 ngày (ngày 1, 2, 3 không được bồi thường)\n• Công chức: 1 ngày\n\nNgoại lệ: nhập viện hoặc tai nạn lao động → délai carence = 0 ngày (bồi thường từ ngày 1).\n\nIJ SS = 50% salaire journalier de base (tối đa 1,8 SMIC) từ ngày thứ 4."
+  },
+  {
+    "id": 114,
+    "chapitre": "[ANNALES 2014] Participation forfaitaire 1€",
+    "type": "single",
+    "question": "Qu'est-ce que la participation forfaitaire de 1€ ?",
+    "options": [
+      "Montant en déduction du ticket modérateur pour tout acte, consultation ou visite réalisé par un médecin généraliste ou spécialiste ; acte de biologie médicale (hors acte de prélèvement) ; ou pour tout examen de radiologie",
+      "Montant en déduction du RSS pour tout acte, consultation ou visite réalisé par un médecin généraliste ou spécialiste ; acte de biologie médicale (hors acte de prélèvement) ; ou pour tout examen de radiologie",
+      "Montant en déduction de la base de remboursement pour tout acte, consultation ou visite réalisé par un médecin généraliste ou spécialiste ; acte de biologie médicale (hors acte de prélèvement) ; ou pour tout examen de radiologie",
+      "Montant en supplément du RSS pour tout acte, consultation ou visite réalisé par un médecin généraliste ou spécialiste ; acte de biologie médicale (hors acte de prélèvement) ; ou pour tout examen de radiologie"
+    ],
+    "correct": [1],
+    "explication_fr": "La participation forfaitaire de 1€ = montant déduit du REMBOURSEMENT SS (RSS), non du ticket modérateur ni de la BR.\n\nFormule : RSS net = (Taux SS × BR) − 1€ participation forfaitaire\n\nElle s'applique à :\n• Toute consultation/visite médecin (généraliste ou spécialiste)\n• Examens de radiologie\n• Actes de biologie médicale (hors acte de prélèvement)\n\nPlafond : 50€/an/bénéficiaire ; 4€/jour si plusieurs actes même journée.\nINTERDITE de remboursement par contrat responsable.",
+    "explication_vn": "Participation forfaitaire 1€ = khoản trừ vào REMBOURSEMENT SS (RSS), không phải ticket modérateur hay BR.\n\nCông thức: RSS ròng = (Tỷ lệ SS × BR) − 1€\n\nÁp dụng cho:\n• Mọi khám chữa bệnh (đa khoa hay chuyên khoa)\n• X-quang\n• Xét nghiệm sinh học (trừ lấy mẫu)\n\nTrần: 50€/năm/người; 4€/ngày nếu nhiều acte cùng ngày.\nBỊ CẤM hoàn trả bởi contrat responsable."
+  },
+  {
+    "id": 115,
+    "chapitre": "[ANNALES 2014] Maintien de salaire – Employeur",
+    "type": "single",
+    "question": "L'employeur est tenu de verser un « maintien de salaire » en cas d'arrêt de travail d'un salarié ayant plus de 6 mois d'ancienneté :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. La loi de mensualisation du 19 janvier 1978 impose à l'employeur de maintenir tout ou partie du salaire en cas d'arrêt de travail, sous conditions :\n• Ancienneté : au moins 1 an (certaines CCN prévoient 6 mois)\n• Justification médicale dans les 48h\n• Prise en charge par la SS\n\nDurée et niveau de maintien varient selon l'ancienneté :\nEx : jusqu'à 5 ans d'ancienneté → 90% pendant 30 jours puis 2/3 pendant 30 jours\n\nL'employeur récupère les IJ SS auprès du salarié (subrogation).",
+    "explication_vn": "ĐÚNG. Loi de mensualisation ngày 19/01/1978 buộc chủ lao động duy trì toàn bộ hoặc một phần lương khi nhân viên nghỉ ốm, với điều kiện:\n• Thâm niên: ít nhất 1 năm (một số CCN quy định 6 tháng)\n• Chứng minh y tế trong 48h\n• Được SS bảo hiểm\n\nThời gian và mức duy trì lương phụ thuộc thâm niên.\nChủ lao động thu lại IJ SS từ nhân viên (subrogation)."
+  },
+  {
+    "id": 116,
+    "chapitre": "[ANNALES 2014] Contrat responsable – Exclusions minimales",
+    "type": "single",
+    "question": "Lequel de ces actes ne figure pas dans les garanties minimales que doit couvrir le contrat responsable :",
+    "options": [
+      "Les médicaments remboursés à 65%",
+      "Les examens de biologie médicale",
+      "Deux actes de prévention",
+      "Les dépassements d'honoraires"
+    ],
+    "correct": [3],
+    "explication_fr": "Le contrat responsable DOIT couvrir (obligations minimales) :\n• 100% du ticket modérateur sur la quasi-totalité des actes\n• Forfait journalier hospitalier sans limitation\n• 7 actes de prévention (arrêté de 2006)\n• Panier 100% Santé\n\nLe contrat responsable NE PEUT PAS systématiquement couvrir :\n• Les médicaments à 30% et 15% : non obligatoire\n• La contribution forfaitaire 1€ et franchises médicales : INTERDIT\n\nLes DÉPASSEMENTS D'HONORAIRES : non obligatoires dans les garanties minimales (mais peuvent être pris en charge dans certaines limites selon l'OPTAM/non-OPTAM).",
+    "explication_vn": "Contrat responsable BẮT BUỘC phải bao gồm:\n• 100% Ticket Modérateur hầu hết actes\n• Forfait journalier hospitalier không giới hạn\n• 7 actes de prévention (theo nghị định 2006)\n• Panier 100% Santé\n\nKHÔNG BẮT BUỘC:\n• Thuốc 30% và 15%\n• Contribution forfaitaire 1€ và franchises: BỊ CẤM\n\nDÉPASSEMENTS D'HONORAIRES: không bắt buộc trong bảo đảm tối thiểu (có thể được bảo hiểm trong giới hạn theo OPTAM/non-OPTAM)."
+  },
+  {
+    "id": 117,
+    "chapitre": "[ANNALES 2014] Auxiliaires médicaux",
+    "type": "single",
+    "question": "Laquelle de ces professions ne fait pas partie des Auxiliaires médicaux ?",
+    "options": ["Kinésithérapeute", "Sage-femme", "Orthophoniste", "Orthopédiste"],
+    "correct": [3],
+    "explication_fr": "Les AUXILIAIRES MÉDICAUX comprennent : infirmiers, masseurs-kinésithérapeutes, orthophonistes, orthoptistes, pédicures-podologues, ergothérapeutes, audioprothésistes, opticiens-lunetiers...\n\nLes SAGES-FEMMES ont un statut particulier : profession médicale (et non auxiliaire médicale), avec droit de prescription limité.\n\nL'ORTHOPÉDISTE n'est PAS un auxiliaire médical au sens de la SS → c'est un artisan/commerçant qui fabrique des appareils orthopédiques (remboursés via LPP Titre II).\n\nConfusion fréquente avec l'ORTHOPTISTE (rééducation visuelle) qui LUI EST bien un auxiliaire médical.",
+    "explication_vn": "AUXILIAIRES MÉDICAUX bao gồm: y tá, physiothérapeute (kinésithérapeute), orthophoniste, orthoptiste, pédicure-podologue, ergothérapeute, audioprothésiste...\n\nSAGE-FEMME: có tư cách đặc biệt - là nghề Y tế (không phải auxiliaire médicale), với quyền kê đơn hạn chế.\n\nORTHOPÉDISTE: KHÔNG phải auxiliaire médical - đây là thợ thủ công/thương nhân sản xuất thiết bị chỉnh hình (hoàn trả qua LPP Titre II).\n\nDễ nhầm với ORTHOPTISTE (phục hồi thị lực) - ĐÂY MỚI là auxiliaire médical."
+  },
+  {
+    "id": 118,
+    "chapitre": "[ANNALES 2014] CMU – Titre onéreux",
+    "type": "single",
+    "question": "La CMU peut être accordée à titre onéreux :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. La CMU (Couverture Maladie Universelle) de base peut être accordée à titre ONÉREUX (= moyennant cotisation) pour les personnes ne remplissant pas les conditions d'affiliation à un régime obligatoire.\n\nDistinction :\n• CMU de base gratuite : pour personnes résidant en France depuis +3 mois non couvertes par autre régime\n• CMU de base à titre onéreux : pour personnes résidant en France mais non éligibles à la gratuité\n\nNote : La CMU a été remplacée par la Protection Universelle Maladie (PUMA) depuis 2016, qui garantit une couverture maladie de base à toute personne travaillant ou résidant en France de manière stable.",
+    "explication_vn": "ĐÚNG. CMU (Couverture Maladie Universelle) cơ bản có thể được cấp có PHẢI TRẢ TIỀN (= với cotisation) cho người không đủ điều kiện tham gia chế độ bắt buộc.\n\nPhân biệt:\n• CMU cơ bản miễn phí: người cư trú Pháp >3 tháng chưa được chế độ nào bảo hiểm\n• CMU cơ bản có phí: người cư trú Pháp nhưng không đủ điều kiện miễn phí\n\nLưu ý: CMU đã được thay thế bởi PUMA (Protection Universelle Maladie) từ 2016."
+  },
+  {
+    "id": 119,
+    "chapitre": "[ANNALES 2014] Rente éducation – Conditions",
+    "type": "single",
+    "question": "Le versement des rentes éducation peut être conditionné à la poursuite des études par le bénéficiaire au-delà d'un certain âge :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. Les rentes éducation sont versées aux enfants à charge en cas de décès (ou invalidité) de l'assuré. Leur versement peut être conditionné à :\n• La poursuite d'études (jusqu'à un certain âge : souvent 25 ou 26 ans)\n• La condition d'être 'à charge'\n\nEn pratique :\n• Rente éducation versée jusqu'à 18 ans systématiquement\n• Peut être prolongée jusqu'à 25-26 ans si poursuite d'études\n• Certains contrats conditionnent expressément le versement à la justification annuelle des études\n\nDifférence avec rente de conjoint : la rente éducation est temporaire (liée aux études de l'enfant).",
+    "explication_vn": "ĐÚNG. Rente éducation được trả cho con cái phụ thuộc khi người được bảo hiểm tử vong (hoặc tàn tật). Việc trả có thể được điều kiện hóa bởi:\n• Tiếp tục học tập (đến tuổi nhất định: thường 25 hoặc 26 tuổi)\n• Điều kiện 'phụ thuộc'\n\nThực tế:\n• Rente éducation trả đến 18 tuổi tự động\n• Có thể kéo dài đến 25-26 tuổi nếu tiếp tục học\n• Một số hợp đồng yêu cầu chứng minh hàng năm về việc học\n\nKhác với rente de conjoint: rente éducation là tạm thời (gắn với việc học của con)."
+  },
+  {
+    "id": 120,
+    "chapitre": "[ANNALES 2014] Couronne dentaire – Remboursement SS",
+    "type": "single",
+    "question": "Quel est l'ordre de grandeur du remboursement Sécurité Sociale pour une couronne dentaire :",
+    "options": ["0€", "450€", "107€", "70€"],
+    "correct": [2],
+    "explication_fr": "Pour une couronne dentaire :\nBR (Base de Remboursement) ≈ 107,50€ (ancienne valeur) ; depuis 2020 : environ 120€ pour les couronnes du panier 100% Santé.\nTaux SS = 70%\nRSS = 70% × 107,50€ ≈ 75€ (ou 70% × 120 = 84€ depuis 2020)\n\nSoit un remboursement SS de l'ordre de 70-84€ selon la période.\n\nL'option '107€' correspond à la BR (base de remboursement) et non au remboursement SS.\nLe coût réel d'une couronne peut atteindre 500-1500€ selon le type et le praticien → dépassements importants.",
+    "explication_vn": "Đối với răng sứ (couronne dentaire):\nBR ≈ 107,50€ (giá trị cũ); từ 2020: khoảng 120€ cho panier 100% Santé.\nTỷ lệ SS = 70%\nRSS = 70% × 107,50€ ≈ 75€ (hoặc 70% × 120 = 84€ từ 2020)\n\nHoàn trả SS vào khoảng 70-84€ tùy thời điểm.\n\n'107€' tương ứng với BR (cơ sở hoàn trả), không phải RSS.\nGiá thực tế có thể 500-1500€ → dépassements lớn."
+  },
+  {
+    "id": 121,
+    "chapitre": "[ANNALES 2014] Prime commerciale TTC – Contrat responsable",
+    "type": "single",
+    "question": "La prime pure d'un contrat complémentaire santé responsable est égale à 200€. Les frais de gestion de l'assureur sont fixés à 10%. Quelle est la cotisation commerciale TTC sur ce contrat ?",
+    "options": ["256,22€", "235,4€", "251,71€", "253,66€"],
+    "correct": [2],
+    "explication_fr": "Formule : Prime TTC = (Prime pure / (1 − Chargement)) × (1 + TSCA responsable)\n\nÉtape 1 : Prime commerciale HT = 200 / (1 − 0,10) = 200 / 0,90 = 222,22€\nÉtape 2 : Prime TTC = 222,22 × (1 + 0,1327) = 222,22 × 1,1327 = 251,71€\n\nTSCA contrat responsable ≈ 13,27%.\n\n⚠️ Piège : les frais (10%) s'appliquent sur la prime COMMERCIALE (d'où la division), pas sur la prime pure. Si on multipliait : 200 × 1,10 = 220€ HT → 220 × 1,1327 = 249,19€ (erreur).",
+    "explication_vn": "Công thức: Prime TTC = (Prime pure / (1 − Chargement)) × (1 + TSCA responsable)\n\nBước 1: Prime commerciale HT = 200 / (1 − 0,10) = 200 / 0,90 = 222,22€\nBước 2: Prime TTC = 222,22 × (1 + 0,1327) = 222,22 × 1,1327 = 251,71€\n\nTSCA contrat responsable ≈ 13,27%.\n\n⚠️ Bẫy: frais (10%) tính trên prime COMMERCIALE (nên phải chia), không phải prime pure. Nếu nhân: 200 × 1,10 = 220€ HT → kết quả sai."
+  },
+  {
+    "id": 122,
+    "chapitre": "[ANNALES 2014] Provision pour égalisation – Branches concernées",
+    "type": "single",
+    "question": "Quelles sont les branches d'assurance concernées par la provision pour égalisation ?",
+    "options": [
+      "Branche Vie (20 à 22)",
+      "Branche Non Vie (1 à 16)",
+      "Toutes Assurance de groupe contre les risques décès, incapacité, invalidité",
+      "Aucune"
+    ],
+    "correct": [2],
+    "explication_fr": "La Provision pour Égalisation (PE) concerne spécifiquement :\n• Les assurances de groupe contre les risques : décès, incapacité de travail, invalidité\n• ET les Frais de santé collectifs\n\nObjectif : lisser les résultats annuels sur ces contrats collectifs.\n\nMécanisme :\n• Années bénéficiaires : dotation à la PE\n• Années déficitaires : reprise sur PE\n• Plafond réglementaire ; dotations utilisables sous 10 ans\n\nLa PE ne s'applique PAS aux garanties individuelles ni aux branches IARD standard.",
+    "explication_vn": "Provision pour Égalisation (PE) áp dụng riêng cho:\n• Bảo hiểm nhóm đối với rủi ro: tử vong, mất khả năng lao động, tàn tật\n• VÀ Frais de santé tập thể\n\nMục tiêu: san bằng kết quả hàng năm trên các hợp đồng tập thể này.\n\nCơ chế:\n• Năm thuận lợi: tích vào PE\n• Năm khó khăn: rút từ PE\n• Giới hạn theo quy định; dotations dùng trong 10 năm\n\nPE KHÔNG áp dụng cho bảo đảm cá nhân hay IARD thông thường."
+  },
+  {
+    "id": 123,
+    "chapitre": "[ANNALES 2014] Remboursement SS – Formule générale",
+    "type": "single",
+    "question": "Comment est calculé le remboursement SS ?",
+    "options": [
+      "Remboursement SS = Base de remboursement × Taux de remboursement – forfaits",
+      "Remboursement SS = Frais réels + Ticket modérateur - forfaits",
+      "Remboursement SS = Frais réels + Base de remboursement",
+      "Remboursement SS = Ticket modérateur + Dépassements – forfaits"
+    ],
+    "correct": [0],
+    "explication_fr": "Formule correcte : RSS = BR × Taux SS − Forfaits\n\nOù :\n• BR = Base de Remboursement (= Tarif de Convention pour les médecins secteur 1)\n• Taux SS = taux de remboursement applicable (70%, 65%, 80%, 100%...)\n• Forfaits = participation forfaitaire 1€ et/ou franchises médicales\n\nExemple : consultation généraliste secteur 1 parcours de soins :\nRSS = 70% × 23€ − 1€ = 16,10 − 1 = 15,10€\n\nAttention : le remboursement est calculé sur la BR, PAS sur les frais réels. Si le médecin facture 50€ pour une consultation, la SS rembourse quand même 15,10€ seulement.",
+    "explication_vn": "Công thức đúng: RSS = BR × Tỷ lệ SS − Forfaits\n\nTrong đó:\n• BR = Base de Remboursement (= Tarif de Convention với bác sĩ secteur 1)\n• Tỷ lệ SS: 70%, 65%, 80%, 100%...\n• Forfaits: participation forfaitaire 1€ và/hoặc franchises médicales\n\nVí dụ: khám đa khoa secteur 1 trong parcours de soins:\nRSS = 70% × 23€ − 1€ = 16,10 − 1 = 15,10€\n\nLưu ý: hoàn trả tính trên BR, KHÔNG phải frais réels. Nếu bác sĩ tính 50€, SS vẫn chỉ hoàn trả 15,10€."
+  },
+  {
+    "id": 124,
+    "chapitre": "[ANNALES 2014] Invalidité catégorie 1",
+    "type": "single",
+    "question": "Un invalide de 1ère catégorie peut continuer à exercer une activité professionnelle",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. Les 3 catégories d'invalides SS :\n\n• 1ère catégorie : invalides pouvant exercer une activité réduite → PEUVENT travailler\n• 2ème catégorie : invalides absolument incapables d'exercer une profession quelconque → NE PEUVENT PAS travailler\n• 3ème catégorie : invalides absolument incapables + nécessitant l'assistance d'une tierce personne\n\nRentes SS correspondantes :\n• Cat 1 : 30% du salaire annuel moyen\n• Cat 2 : 50% du salaire annuel moyen\n• Cat 3 : 50% + majoration tierce personne (~1200€/mois)\n\nCondition d'accès : réduction de capacité d'au moins 2/3.",
+    "explication_vn": "ĐÚNG. 3 loại invalide SS:\n\n• Loại 1: invalide có thể làm việc một phần → CÓ THỂ làm việc\n• Loại 2: invalide hoàn toàn không thể làm việc → KHÔNG THỂ làm việc\n• Loại 3: invalide hoàn toàn không thể làm việc + cần người hỗ trợ\n\nRente SS tương ứng:\n• Loại 1: 30% salaire annuel moyen\n• Loại 2: 50% salaire annuel moyen\n• Loại 3: 50% + majoration tierce personne (~1200€/tháng)\n\nĐiều kiện: năng lực lao động giảm ít nhất 2/3."
+  },
+  {
+    "id": 125,
+    "chapitre": "[ANNALES 2014] ANI 2011 – Portabilité",
+    "type": "single",
+    "question": "Que prévoit l'ANI de janvier 2011 :",
+    "options": [
+      "La durée du maintien des garanties complémentaires pendant la période de chômage est égale à la durée du dernier contrat de travail du salarié (appréciée en mois entiers) sans excéder 12 mois",
+      "La durée du maintien des garanties complémentaires pendant la période de chômage et au minimum pendant 12 mois",
+      "La durée du maintien des garanties complémentaires pendant la période de chômage et au maximum 9 mois",
+      "La durée du maintien des garanties complémentaires pendant la période de chômage est égale à la durée du dernier contrat de travail du salarié (appréciée en mois entiers) sans excéder 9 mois"
+    ],
+    "correct": [0],
+    "explication_fr": "L'ANI du 11 janvier 2008 (étendu par avenant et Loi de Sécurisation de l'Emploi 2013) prévoit :\n\nDurée de portabilité = durée du dernier contrat de travail en mois entiers, SANS EXCÉDER 12 MOIS.\n\nNote historique :\n• Avant 2014 : plafond à 9 mois (d'où l'option '9 mois' parfois citée)\n• Depuis 2014 (Santé) et 2015 (Prévoyance) : plafond porté à 12 mois\n\nCette question est piège car l'ANI initial (2008) prévoyait 9 mois, mais la limite a été portée à 12 mois.",
+    "explication_vn": "ANI ngày 11/01/2008 (mở rộng bởi Loi de Sécurisation de l'Emploi 2013) quy định:\n\nThời gian portabilité = thời gian hợp đồng lao động cuối tính theo tháng đầy đủ, TỐI ĐA 12 THÁNG.\n\nLịch sử:\n• Trước 2014: giới hạn 9 tháng\n• Từ 2014 (Santé) và 2015 (Prévoyance): nâng lên 12 tháng\n\nCâu hỏi bẫy vì ANI ban đầu (2008) quy định 9 tháng, sau đó được tăng lên 12 tháng."
+  },
+  {
+    "id": 126,
+    "chapitre": "[ANNALES 2014] BCAC – Coefficients tarification",
+    "type": "single",
+    "question": "En matière de tarification d'un contrat complémentaire Arrêt de travail, les coefficients de tarification fournis par le BCAC dépendent de la durée de franchise prévue au contrat :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. Le BCAC (Bureau Commun des Assurances Collectives) fournit des tables de tarification pour les garanties arrêt de travail.\n\nLes coefficients dépendent notamment :\n• De la durée de franchise (30, 60, 90 jours...)\n• Du niveau de couverture\n• Des catégories de salariés\n\nLa franchise est un paramètre majeur car elle détermine la probabilité de déclenchement de la garantie et la durée indemnisée. Une franchise longue → coût plus faible.\n\nLe BCAC est l'organisme qui mutualise les données de sinistralité des assureurs collectifs.",
+    "explication_vn": "ĐÚNG. BCAC (Bureau Commun des Assurances Collectives) cung cấp bảng định phí cho bảo đảm nghỉ ốm.\n\nCác hệ số phụ thuộc đặc biệt vào:\n• Thời gian franchise (30, 60, 90 ngày...)\n• Mức độ bảo hiểm\n• Các loại nhân viên\n\nFranchise là tham số quan trọng vì nó quyết định xác suất kích hoạt và thời gian được bồi thường. Franchise dài → chi phí thấp hơn.\n\nBCAC là tổ chức tập hợp dữ liệu sinistralité của các công ty bảo hiểm tập thể."
+  },
+  {
+    "id": 127,
+    "chapitre": "[ANNALES 2014] Portabilité – Durée maximale",
+    "type": "single",
+    "question": "Quelle est la période maximum de portabilité des droits prévue à partir de 2014 en Santé et 2015 en Prévoyance ?",
+    "options": ["1 an", "6 mois", "2 mois", "9 mois"],
+    "correct": [0],
+    "explication_fr": "La portabilité maximale est de 12 MOIS (1 AN) depuis :\n• 2014 pour la Santé\n• 2015 pour la Prévoyance\n\nAntigement (avant 2014) : le plafond était de 9 mois.\n\nFormule : durée portabilité = min(durée du contrat de travail en mois entiers ; 12 mois)\n\nExemples :\n• CDD 3 mois → portabilité 3 mois\n• CDI 5 ans → portabilité 12 mois (plafond)\n• CDI 8 mois → portabilité 8 mois",
+    "explication_vn": "Portabilité tối đa là 12 THÁNG (1 NĂM) từ:\n• 2014 cho Santé\n• 2015 cho Prévoyance\n\nTrước đây (trước 2014): giới hạn 9 tháng.\n\nCông thức: thời gian portabilité = min(thời gian hợp đồng lao động tính theo tháng đầy đủ; 12 tháng)\n\nVí dụ:\n• CDD 3 tháng → portabilité 3 tháng\n• CDI 5 năm → portabilité 12 tháng (giới hạn)\n• CDI 8 tháng → portabilité 8 tháng"
+  },
+  {
+    "id": 128,
+    "chapitre": "[ANNALES 2014] IJ Maladie SS – Montant",
+    "type": "single",
+    "question": "Quel est le montant de l'Indemnité Journalière Maladie ?",
+    "options": [
+      "50% du salaire journalier de base plafonné à 1,5 SMIC",
+      "50% du salaire journalier de base plafonné à la tranche A",
+      "50% du salaire journalier de base plafonné à 1,8 SMIC",
+      "50% du salaire journalier de base plafonné à 1,5 Plafond Mensuel Sécurité Sociale"
+    ],
+    "correct": [2],
+    "explication_fr": "IJ Maladie SS = 50% du salaire journalier de base, plafonné à 1,8 SMIC.\n\nSalaire journalier de base = 1/91,25 de la moyenne des 3 derniers salaires bruts.\n\nDelai de carence : 3 jours (1er, 2ème, 3ème jours non indemnisés).\nDurée maximale : 3 ans (1095 jours) pour les longues maladies (ALD).\n\nEnhancement longue maladie : après 6 mois d'arrêt continu, l'IJ passe à 66,66% du salaire journalier de base.",
+    "explication_vn": "IJ Maladie SS = 50% salaire journalier de base, tối đa 1,8 SMIC.\n\nSalaire journalier de base = 1/91,25 của trung bình 3 tháng lương gộp gần nhất.\n\nDelai de carence: 3 ngày (ngày 1, 2, 3 không được bồi thường).\nThời gian tối đa: 3 năm (1095 ngày) cho bệnh dài hạn (ALD).\n\nSau 6 tháng nghỉ liên tục: IJ tăng lên 66,66% salaire journalier de base."
+  },
+  {
+    "id": 129,
+    "chapitre": "[ANNALES 2014] Loi Sécurisation Emploi 2013 – Généralisation",
+    "type": "single",
+    "question": "La Loi de Sécurisation de l'Emploi de juin 2013 prévoit la généralisation des régimes Complémentaires Santé et des régimes de Prévoyance pour tous les salariés au plus tard au 1er janvier 2016 :",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX (nuancé). La Loi de Sécurisation de l'Emploi (LSE) de juin 2013 prévoit :\n• La généralisation des régimes Complémentaires SANTÉ pour tous les salariés au plus tard le 1er janvier 2016 ✓\n• MAIS elle ne prévoit PAS la généralisation des régimes de PRÉVOYANCE LOURDE\n\nSeule l'obligation de Prévoyance lourde pour les CADRES existe (accord collectif de 1947, art. 7 de la CCN Cadres : cotisation minimale de 1,50% TA).\n\nDonc la réponse est FAUX car la prévoyance n'est pas généralisée à tous les salariés.",
+    "explication_vn": "SAI (có sắc thái). Loi de Sécurisation de l'Emploi (LSE) tháng 6/2013 quy định:\n• Tổng quát hóa chế độ Complémentaire SANTÉ cho tất cả nhân viên trước 01/01/2016 ✓\n• NHƯNG không quy định tổng quát hóa chế độ PRÉVOYANCE LOURDE\n\nChỉ có nghĩa vụ prévoyance lourde cho CADRES (accord collectif 1947, điều 7 CCN Cadres: cotisation tối thiểu 1,50% TA).\n\nVậy đáp án là SAI vì prévoyance không được tổng quát hóa cho tất cả nhân viên."
+  },
+  {
+    "id": 130,
+    "chapitre": "[ANNALES 2014] ALD – Remboursement SS",
+    "type": "single",
+    "question": "Les assurés atteints d'une affection de longue durée (ALD) sont remboursés par le régime général de base :",
+    "options": [
+      "A 100% de la BR pour les soins liés à leur affection",
+      "Intégralement pour tous les soins",
+      "Intégralement pour les soins liés à leur affection",
+      "Intégralement pour les hospitalisations uniquement"
+    ],
+    "correct": [0],
+    "explication_fr": "Les assurés en ALD (Affection de Longue Durée) exonérante bénéficient d'une prise en charge à 100% DE LA BASE DE REMBOURSEMENT (et non des frais réels) pour les soins liés à leur affection.\n\nÀ ne pas confondre :\n• 100% des frais réels : pas le cas, les dépassements d'honoraires restent à charge\n• 100% de la BR : c'est exact → le ticket modérateur est supprimé\n• Soins liés à l'affection : uniquement les soins en rapport avec l'ALD\n\nListe des 30 ALD : diabète, cancer, insuffisance rénale, VIH, maladies cardiovasculaires graves...",
+    "explication_vn": "Người được bảo hiểm có ALD (Bệnh dài hạn) được bảo hiểm 100% CỦA BASE DE REMBOURSEMENT (không phải frais réels) cho các điều trị liên quan đến bệnh của họ.\n\nPhân biệt:\n• 100% frais réels: không đúng, dépassements d'honoraires vẫn do bệnh nhân chịu\n• 100% de la BR: ĐÚNG → ticket modérateur được xóa bỏ\n• Soins liés à l'affection: chỉ các điều trị liên quan đến ALD\n\nDanh sách 30 ALD: tiểu đường, ung thư, suy thận, HIV, bệnh tim mạch nặng..."
+  },
+  {
+    "id": 131,
+    "chapitre": "[ANNALES 2014] Capital décès – Tranches A et B",
+    "type": "single",
+    "question": "Un régime de prévoyance prévoit un Capital Décès égal à 300% du salaire Tranches A et B. Quel est le capital assuré pour un salarié percevant 540 000€ par an (rappel : PMSS 2014 = 3129€) ?",
+    "options": ["450 576€", "901 152€", "563 220€", "1 620 000€"],
+    "correct": [0],
+    "explication_fr": "PMSS 2014 = 3 129€/mois\nPASS (Plafond Annuel SS) = 12 × 3 129 = 37 548€\n\nTranche A = [0 ; 1 PASS] = 37 548€\nTranche B = [1 PASS ; 4 PASS] = [37 548 ; 150 192€]\n\nSalaire annuel = 540 000€ → très largement au-dessus de 4 PASS\nDonc : Salaire TA + TB retenu = 4 PASS = 150 192€\n\nCapital Décès = 300% × 150 192 = 3 × 150 192 = 450 576€\n\nNote : Le salaire de 540 000€ est bien supérieur à 4 PASS, donc on plafonne à 4 PASS pour TA+TB.",
+    "explication_vn": "PMSS 2014 = 3 129€/tháng\nPASS = 12 × 3 129 = 37 548€\n\nTranche A = [0; 1 PASS] = 37 548€\nTranche B = [1 PASS; 4 PASS] = [37 548; 150 192€]\n\nLương năm = 540 000€ → vượt xa 4 PASS\nVậy: Lương TA + TB tính = 4 PASS = 150 192€\n\nCapital Décès = 300% × 150 192 = 3 × 150 192 = 450 576€\n\nLưu ý: Lương 540 000€ vượt 4 PASS, nên giới hạn ở 4 PASS cho TA+TB."
+  },
+  {
+    "id": 132,
+    "chapitre": "[ANNALES 2014] Franchise médicale médicament",
+    "type": "single",
+    "question": "Une franchise médicale de 0,5€ est prévue sur chaque boîte de médicament",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. La franchise médicale est de 0,50€ par boîte de médicament (et non par médicament).\n\nFranchises médicales (depuis 2008) :\n• 0,50€ par boîte de médicament\n• 0,50€ par acte paramédical (infirmier, kinésithérapeute...)\n• 2€ par transport sanitaire\n\nPlafond annuel : 50€/an/assuré.\nElles sont déduites du remboursement SS.\nINTERDITES de remboursement par les contrats responsables.\nExonérées pour : mineurs, femmes enceintes (à partir du 5ème mois), bénéficiaires CSS.",
+    "explication_vn": "ĐÚNG. Franchise médicale là 0,50€ mỗi hộp thuốc (không phải mỗi loại thuốc).\n\nFranchises médicales (từ 2008):\n• 0,50€/hộp thuốc\n• 0,50€/acte paramédical (y tá, kinésithérapeute...)\n• 2€/vận chuyển y tế\n\nTrần hàng năm: 50€/năm/người.\nĐược trừ vào remboursement SS.\nBỊ CẤM hoàn trả bởi contrat responsable.\nMiễn cho: người chưa thành niên, phụ nữ mang thai (từ tháng 5), người hưởng CSS."
+  },
+  {
+    "id": 133,
+    "chapitre": "[ANNALES 2014] Contrat responsable – Spécialiste non conventionné",
+    "type": "single",
+    "question": "Un contrat complémentaire santé responsable peut prendre en charge 100% des frais réels pour les consultations des spécialistes non conventionnés :",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. Un contrat responsable ne peut PAS rembourser 100% des frais réels pour un médecin non conventionné.\n\nPour un médecin non conventionné ('secteur 3') :\n• La base de remboursement = Tarif d'Autorité (TA) → très faible (ex: 0,61€ généraliste)\n• Le contrat responsable ne peut rembourser que dans la limite du 100% BR y compris SS\n• Les dépassements au-delà du TA sont trop importants\n\nDe plus, les contrats responsables sont LIMITÉS dans leur prise en charge des dépassements pour les médecins non-OPTAM et interdits de rembourser au-delà de certains plafonds.\n\nRembourser 100% des frais réels pour un non-conventionné = contrat non-responsable.",
+    "explication_vn": "SAI. Contrat responsable KHÔNG THỂ hoàn trả 100% frais réels cho bác sĩ non conventionné.\n\nVới bác sĩ non conventionné ('secteur 3'):\n• Base de remboursement = Tarif d'Autorité (TA) → rất thấp (vd: 0,61€ bác sĩ đa khoa)\n• Contrat responsable chỉ có thể hoàn trả trong giới hạn 100% BR kể cả SS\n• Dépassements vượt quá TA rất lớn\n\nHơn nữa, contrat responsable bị giới hạn hoàn trả dépassements cho non-OPTAM và bị cấm hoàn trả vượt quá một số trần nhất định.\n\nHoàn trả 100% frais réels cho non-conventionné = contrat non-responsable."
+  },
+  {
+    "id": 134,
+    "chapitre": "[ANNALES 2014] Ratio P/C – Formule par survenance",
+    "type": "single",
+    "question": "Quelle est la formule de calcul ratio P/C net dans un compte par survenance ?",
+    "options": [
+      "Prestations payées / (Cotisations brutes – Frais – taxes + Produits financiers)",
+      "(Primes – Frais – Taxes + Produits financiers) / Charges de sinistres",
+      "(Prestations payées + Provisions) / (Cotisations brutes – Frais – taxes + Produits financiers)",
+      "Primes encaissées / Capitaux versés"
+    ],
+    "correct": [2],
+    "explication_fr": "Ratio P/C NET par survenance :\nNUMÉRATEUR = Prestations payées + Variation de provisions (PSAP + IBNR)\nDÉNOMINATEUR = Cotisations brutes − Frais de gestion − Taxes + Produits financiers\n\nLe terme 'net' signifie :\n• Numérateur net de réassurance\n• Dénominateur net de frais et taxes\n\nDifférence avec P/C comptable :\n• P/C comptable : toutes années de survenance confondues → vision globale\n• P/C par survenance : suivi de la sinistralité par cohorte → vision actuarielle\n\nLe P/C par survenance permet de juger l'efficacité d'un redressement tarifaire.",
+    "explication_vn": "Tỷ lệ P/C RÒNG theo année de survenance:\nTỬ SỐ = Prestations payées + Biến động provisions (PSAP + IBNR)\nMẪU SỐ = Cotisations brutes − Frais de gestion − Taxes + Produits financiers\n\n'Net' có nghĩa là:\n• Tử số ròng sau tái bảo hiểm\n• Mẫu số ròng sau phí và thuế\n\nSo với P/C kế toán:\n• P/C kế toán: tất cả années de survenance gộp lại → cái nhìn tổng thể\n• P/C theo survenance: theo dõi sinistralité theo đợt → cái nhìn actuariel\n\nP/C theo survenance cho phép đánh giá hiệu quả của điều chỉnh biểu phí."
+  },
+  {
+    "id": 135,
+    "chapitre": "[ANNALES 2014] DUE – Modification par referendum",
+    "type": "single",
+    "question": "Il est possible de modifier par referendum un régime initialement mis en place par décision unilatérale :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. On peut passer d'une modalité de mise en place à une autre. Un régime initialement mis en place par DUE (Décision Unilatérale de l'Employeur) peut être modifié par :\n• Referendum\n• Accord collectif\n\nLes 3 modalités de mise en place sont inter-changeables, sous réserve de respecter les procédures.\n\nAttention : modifier par accord collectif ou referendum implique de respecter les règles de représentativité et de majorité propres à chaque mode.",
+    "explication_vn": "ĐÚNG. Có thể chuyển từ hình thức này sang hình thức khác. Chế độ ban đầu được thực hiện bằng DUE có thể được sửa đổi bằng:\n• Referendum\n• Accord collectif\n\n3 hình thức triển khai có thể hoán đổi cho nhau, miễn là tuân thủ các thủ tục.\n\nLưu ý: sửa đổi bằng accord collectif hoặc referendum đòi hỏi phải tuân thủ các quy tắc về đại diện và đa số."
+  },
+  {
+    "id": 136,
+    "chapitre": "[ANNALES 2014] Âge moyen actuariel",
+    "type": "single",
+    "question": "Une entreprise compte 5 salariés âgés respectivement de 30, 40, 45, 50 et 65 ans. Dans le cadre de la tarification de garanties décès sur ce groupe d'assurés, l'âge moyen actuariel est :",
+    "options": [
+      "Egal à 46 ans",
+      "Inférieur à 46 ans",
+      "Supérieur à 46 ans"
+    ],
+    "correct": [2],
+    "explication_fr": "L'âge moyen arithmétique = (30+40+45+50+65) / 5 = 230/5 = 46 ans.\n\nMais l'âge moyen ACTUARIEL est supérieur à 46 ans car :\n• En tarification décès, le risque n'est PAS linéaire avec l'âge\n• La probabilité de décès (qx) augmente de façon exponentielle avec l'âge\n• Le salarié de 65 ans pèse beaucoup plus dans le calcul que le salarié de 30 ans\n\nL'âge moyen actuariel est le taux de prime moyen ramené à un groupe homogène, tenant compte du profil de risque réel. Il sera SUPÉRIEUR à l'âge arithmétique car les seniors ont un poids actuariel disproportionné.",
+    "explication_vn": "Tuổi trung bình số học = (30+40+45+50+65) / 5 = 46 tuổi.\n\nNhưng tuổi trung bình ACTUARIEL cao hơn 46 tuổi vì:\n• Trong định phí tử vong, rủi ro KHÔNG tuyến tính theo tuổi\n• Xác suất tử vong (qx) tăng theo hàm mũ theo tuổi\n• Nhân viên 65 tuổi có trọng số actuariel lớn hơn nhiều so với nhân viên 30 tuổi\n\nTuổi trung bình actuariel = tỷ lệ phí trung bình quy về nhóm đồng nhất, tính đến hồ sơ rủi ro thực tế. Sẽ CAO HƠN tuổi số học vì người lớn tuổi có trọng số actuariel không cân xứng."
+  },
+  {
+    "id": 137,
+    "chapitre": "[ANNALES 2014] Exonération SS – Contrat responsable",
+    "type": "single",
+    "question": "Pour que la participation de l'employeur au financement du régime Complémentaire santé soit exonérée de charges sociales, il faut, entre autres, que le contrat soit un « contrat responsable » :",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. Depuis 2016 (Loi de Financement de la Sécurité Sociale), le bénéfice de l'exonération de charges sociales sur la part patronale est CONDITIONNÉ, entre autres, au caractère 'responsable' du contrat.\n\nConditions cumulatives pour l'exonération (Loi Fillon 2003, modifiée) :\n1. Contrat collectif et obligatoire\n2. Caractère collectif (catégories objectives)\n3. Taux uniforme par catégorie\n4. Garanties identiques par catégorie\n5. Contrat RESPONSABLE (depuis 2016)\n\nSi le contrat n'est pas responsable : perte de l'exonération sociale ET du taux TSCA réduit.",
+    "explication_vn": "ĐÚNG. Từ 2016 (LFSS), việc được miễn charges sociales trên phần đóng của chủ lao động được ĐIỀU KIỆN HÓA bởi, trong số các điều kiện khác, tính 'responsable' của hợp đồng.\n\nĐiều kiện đồng thời để được miễn (Loi Fillon 2003, sửa đổi):\n1. Hợp đồng tập thể và bắt buộc\n2. Tính tập thể (catégories objectives)\n3. Tỷ lệ đồng nhất theo catégorie\n4. Bảo đảm giống nhau theo catégorie\n5. Hợp đồng RESPONSABLE (từ 2016)\n\nNếu không phải contrat responsable: mất miễn giảm xã hội VÀ tỷ lệ TSCA giảm."
+  },
+  {
+    "id": 138,
+    "chapitre": "[ANNALES 2014] TAA – Signification",
+    "type": "single",
+    "question": "Que signifie TAA ?",
+    "options": [
+      "Tarifs des Actes Acceptés",
+      "Tarification à l'activité",
+      "Tarifs des Actes Approuvés",
+      "Trame des Actes Acceptés"
+    ],
+    "correct": [1],
+    "explication_fr": "TAA = Tarification À l'Activité.\n\nC'est le mode de financement des établissements de santé (hôpitaux et cliniques) depuis 2004 (Loi Douste-Blazy).\n\nPrincipe : les établissements sont rémunérés en fonction de leur activité réelle, mesurée par les GHM (Groupes Homogènes de Malades), chacun associé à un GHS (Groupe Homogène de Séjours) avec un tarif fixé.\n\nAnne la T2A (terme le plus courant). Remplace l'ancien système du budget global.\n\nA ne pas confondre avec TA (Tarif d'Autorité) = base de remboursement pour médecin non conventionné.",
+    "explication_vn": "TAA = Tarification À l'Activité.\n\nĐây là phương thức tài trợ cho các cơ sở y tế (bệnh viện và phòng khám) từ 2004 (Loi Douste-Blazy).\n\nNguyên tắc: các cơ sở được trả theo hoạt động thực tế, đo bằng GHM (Groupes Homogènes de Malades), mỗi GHM liên kết với một GHS (Groupe Homogène de Séjours) với mức giá cố định.\n\nCòn được gọi là T2A. Thay thế hệ thống ngân sách toàn cầu cũ.\n\nKhông nhầm với TA (Tarif d'Autorité) = cơ sở hoàn trả cho bác sĩ non conventionné."
+  },
+  {
+    "id": 139,
+    "chapitre": "[ANNALES 2014] Rapport Loi Evin",
+    "type": "single",
+    "question": "En prévoyance Collective, comment s'appelle le rapport qui doit être envoyé aux Entreprises ?",
+    "options": [
+      "Rapport Loi Fillon",
+      "Rapport Loi Evin",
+      "Rapport Loi Evry",
+      "Rapport Loi Pasquat"
+    ],
+    "correct": [1],
+    "explication_fr": "Le RAPPORT LOI EVIN est l'obligation pour l'assureur de remettre annuellement un compte de résultat du contrat au souscripteur (chef d'entreprise).\n\nContenu :\n• Cotisations/primes brutes\n• Prestations payées\n• Provisions techniques en début et fin d'exercice\n• Produits financiers, commissions, charges diverses\n• Nombre de salariés garantis\n\nDélai : au plus tard le 31 octobre (ou 31 août selon certaines interprétations) suivant la clôture de l'exercice.\n\nBase légale : Loi Evin du 31 décembre 1989, art. 15.",
+    "explication_vn": "RAPPORT LOI EVIN là nghĩa vụ của công ty bảo hiểm phải gửi hàng năm báo cáo kết quả hợp đồng cho người ký hợp đồng (chủ doanh nghiệp).\n\nNội dung:\n• Cotisations/primes gộp\n• Prestations đã thanh toán\n• Provisions kỹ thuật đầu và cuối năm\n• Sản phẩm tài chính, hoa hồng, các khoản phí khác\n• Số nhân viên được bảo hiểm\n\nHạn chót: muộn nhất 31 tháng 10 (hoặc 31 tháng 8 theo một số cách giải thích) sau khi kết thúc năm tài chính.\n\nCơ sở pháp lý: Loi Evin ngày 31/12/1989, điều 15."
+  },
+  {
+    "id": 140,
+    "chapitre": "[ANNALES 2014] Rente invalidité SS – Salaire de calcul",
+    "type": "single",
+    "question": "Sur quelle période est calculé le salaire moyen pris en compte dans le calcul de la rente invalidité SS ?",
+    "options": [
+      "10 dernières années",
+      "20 meilleures années",
+      "10 meilleures années",
+      "12 derniers mois"
+    ],
+    "correct": [2],
+    "explication_fr": "La rente d'invalidité SS est calculée sur les 10 MEILLEURES ANNÉES.\n\nFormule : Rente = 50% × Salaire Annuel Moyen (SAM)\nSAM = moyenne des salaires annuels bruts PLAFONNÉS à la Tranche A sur les 10 meilleures années.\n\nCatégories et taux :\n• Cat 1 : 30% du SAM\n• Cat 2 : 50% du SAM\n• Cat 3 : 50% du SAM + majoration tierce personne\n\nLe montant minimum = AVTS (Allocation aux Vieux Travailleurs Salariés).",
+    "explication_vn": "Rente invalidité SS được tính trên 10 NĂM TỐT NHẤT.\n\nCông thức: Rente = 50% × Salaire Annuel Moyen (SAM)\nSAM = Trung bình lương gộp hàng năm GIỚI HẠN ở Tranche A trong 10 năm tốt nhất.\n\nLoại và tỷ lệ:\n• Loại 1: 30% SAM\n• Loại 2: 50% SAM\n• Loại 3: 50% SAM + majoration tierce personne\n\nMức tối thiểu = AVTS (Allocation aux Vieux Travailleurs Salariés)."
+  },
+  {
+    "id": 141,
+    "chapitre": "[ANNALES 2014] Prestations SS branche maladie",
+    "type": "single",
+    "question": "Quels sont les deux types de prestations prévues par la branche Maladie ?",
+    "options": [
+      "Prestations en espèces et avances sur les frais futurs",
+      "Prestations en nature et dépenses de prévention",
+      "Prestations en nature et prestations en espèces",
+      "Prestations en espèces et dépenses de prévention"
+    ],
+    "correct": [2],
+    "explication_fr": "La branche Maladie de la SS prévoit 2 types de prestations :\n\n1. PRESTATIONS EN NATURE = remboursement des soins\n   → Consultations, médicaments, hospitalisation, optique, dentaire...\n\n2. PRESTATIONS EN ESPÈCES = revenu de remplacement\n   → Indemnités Journalières (IJ) en cas d'arrêt de travail\n   → Allocations maternité/paternité\n\nLe tiers payant est un MODE DE PAIEMENT (pas un type de prestation) : l'organisme règle directement le professionnel de santé.",
+    "explication_vn": "Nhánh Maladie của SS có 2 loại quyền lợi:\n\n1. PRESTATIONS EN NATURE = hoàn trả chi phí y tế\n   → Khám chữa bệnh, thuốc, nhập viện, kính, nha khoa...\n\n2. PRESTATIONS EN ESPÈCES = thu nhập thay thế\n   → Indemnités Journalières (IJ) khi nghỉ ốm\n   → Trợ cấp thai sản/phụ cấp cha\n\nTiers payant là PHƯƠNG THỨC THANH TOÁN (không phải loại quyền lợi): cơ quan thanh toán trực tiếp cho nhà cung cấp dịch vụ y tế."
+  },
+  {
+    "id": 142,
+    "chapitre": "[ANNALES 2014] Rente invalidité – Résiliation contrat",
+    "type": "single",
+    "question": "Depuis le 20/06/2013, M. Dupont bénéficie d'une rente d'invalidité versée par l'assureur X au titre du contrat de Prévoyance Collective. Au 31/12/2013, l'entreprise résilie le contrat auprès de X et met en place un nouveau régime auprès de Y à effet du 01/01/2014. A compter de cette date :",
+    "options": [
+      "La rente de M. Dupont ne sera plus revalorisée",
+      "La revalorisation de la rente de M. Dupont sera payée par l'assureur X",
+      "La revalorisation de la rente de M. Dupont sera payée par l'assureur Y (usage de la place mais pas du tout légalement obligatoire)",
+      "La revalorisation de la rente de M. Dupont sera payée par l'assureur X ou l'assureur Y cela dépend du contrat"
+    ],
+    "correct": [1],
+    "explication_fr": "La rente en cours de service (déjà commencée) continue d'être servie et revalorisée par l'ASSUREUR RÉSILIÉ (X).\n\nPrincipe : l'assureur qui a garanti le risque supporte le sinistre jusqu'à son terme. La résiliation du contrat n'entraîne pas la cessation des prestations en cours.\n\nObligation légale (Loi Evin art. 7) : l'assureur résilié doit maintenir les rentes en cours de service et les revaloriser.\n\nLe nouvel assureur Y prend en charge les nouveaux sinistres survenant à partir du 01/01/2014.\n\nUsage de la place (convention entre assureurs) : parfois Y prend en charge, mais ce n'est PAS obligatoire légalement.",
+    "explication_vn": "Rente đang được trả (đã bắt đầu) tiếp tục được thanh toán và tái định giá bởi CÔNG TY BẢO HIỂM BỊ HỦY HỢP ĐỒNG (X).\n\nNguyên tắc: công ty bảo hiểm đã bảo đảm rủi ro phải chịu sinistre đến khi kết thúc. Hủy hợp đồng không dừng các quyền lợi đang được trả.\n\nNghĩa vụ pháp lý (Loi Evin điều 7): công ty bảo hiểm bị hủy phải duy trì các rente đang được trả và tái định giá chúng.\n\nCông ty mới Y chịu trách nhiệm các sinistre mới phát sinh từ 01/01/2014.\n\n'Usage de la place' (thỏa thuận giữa công ty bảo hiểm): đôi khi Y chịu trách nhiệm, nhưng KHÔNG bắt buộc về mặt pháp lý."
+  },
+  {
+    "id": 143,
+    "chapitre": "[ANNALES 2014] Obligation prévoyance cadres",
+    "type": "single",
+    "question": "A ce jour, quelle est la seule obligation légale en matière de prévoyance collective ?",
+    "options": [
+      "Obligation de cotisation à un régime complémentaire santé pour les salariés Cadres et Non Cadres",
+      "Obligation de cotisation à un régime de prévoyance pour les salariés Cadres et Assimilés Cadres",
+      "Obligation de cotisation à une assurance décès pour les salariés Cadres et Non Cadres",
+      "Obligation de cotisation à une retraite supplémentaire pour les salariés Cadres et Assimilés Cadres"
+    ],
+    "correct": [1],
+    "explication_fr": "La seule obligation légale historique en prévoyance collective = cotisation des employeurs à un régime de prévoyance pour les CADRES ET ASSIMILÉS CADRES.\n\nBase : Article 7 de la Convention Collective Nationale des Cadres du 14 mars 1947.\nCotisation minimale : 1,50% de la Tranche A du salaire.\nEssentiel : doit être affectée en priorité au risque décès.\n\nNote post-2016 : depuis la LSE 2013 (effective 2016), tous les salariés doivent bénéficier d'une complémentaire SANTÉ collective. Mais pour la PRÉVOYANCE LOURDE (incapacité, invalidité, décès), l'obligation ne concerne que les cadres.",
+    "explication_vn": "Nghĩa vụ pháp lý lịch sử duy nhất trong prévoyance tập thể = đóng cotisation của chủ lao động vào chế độ prévoyance cho CADRES VÀ TƯƠNG ĐƯƠNG.\n\nCơ sở: Điều 7 CCN Cadres ngày 14/03/1947.\nCotisation tối thiểu: 1,50% Tranche A lương.\nChủ yếu: phải được ưu tiên phân bổ cho rủi ro tử vong.\n\nSau 2016: từ LSE 2013 (hiệu lực 2016), tất cả nhân viên phải được hưởng complémentaire SANTÉ tập thể. Nhưng với PRÉVOYANCE LOURDE (incapacité, invalidité, décès), nghĩa vụ chỉ áp dụng cho cadres."
+  },
+  {
+    "id": 144,
+    "chapitre": "[ANNALES 2014] Hors parcours de soins – Réduction BR",
+    "type": "single",
+    "question": "Lorsqu'on consulte un médecin en dehors du « parcours de soins », la BR retenue par le régime général d'assurance maladie est réduite de 50% :",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. Hors parcours de soins, ce n'est pas la BR qui est réduite de 50%, mais le TAUX DE REMBOURSEMENT qui est minoré.\n\nHors parcours de soins :\n• Réduction du taux SS de 40% (au lieu de 70% pour un généraliste)\n• Majoration du ticket modérateur à 60%\n• Interdiction pour le contrat responsable de rembourser la majoration du TM\n\nLa BR (base de remboursement = tarif de convention) reste la MÊME. Seul le taux de prise en charge change.\n\nParcours de soins = consultation du médecin traitant déclaré, puis orientation vers spécialiste si besoin.",
+    "explication_vn": "SAI. Ngoài parcours de soins, không phải BR bị giảm 50% mà là TỶ LỆ HOÀN TRẢ bị giảm.\n\nNgoài parcours de soins:\n• Tỷ lệ SS giảm xuống 40% (thay vì 70% cho bác sĩ đa khoa)\n• Ticket modérateur tăng lên 60%\n• Contrat responsable bị cấm hoàn trả phần tăng thêm của TM\n\nBR (base de remboursement = tarif de convention) giữ NGUYÊN. Chỉ có tỷ lệ bảo hiểm thay đổi.\n\nParcours de soins = khám bác sĩ traitant đã đăng ký, sau đó chuyển tiếp đến chuyên gia nếu cần."
+  },
+  {
+    "id": 145,
+    "chapitre": "[ANNALES 2014] Garantie double effet",
+    "type": "single",
+    "question": "Qu'est-ce que la garantie Double effet ?",
+    "options": [
+      "Une garantie Santé qui prévoit une majoration des prestations en cas d'adhésion des 2 conjoints",
+      "Une garantie décès qui prévoit une majoration des prestations fonction du nombre d'enfants",
+      "Une garantie arrêt de travail qui prévoit une majoration des prestations fonction du nombre d'enfants",
+      "Une garantie décès qui prévoit le versement d'un capital aux enfants à charge en cas de décès du conjoint survivant"
+    ],
+    "correct": [3],
+    "explication_fr": "La garantie DOUBLE EFFET = garantie décès qui prévoit le versement d'un CAPITAL SUPPLÉMENTAIRE aux enfants à charge en cas de décès du CONJOINT SURVIVANT.\n\nMécanisme :\n1. Décès de l'assuré → versement du capital décès à la famille\n2. Décès ultérieur du conjoint survivant (alors qu'il y a encore des enfants à charge) → versement d'un NOUVEAU capital aux enfants\n\nObjectif : assurer les enfants contre le 'double deuil' et garantir leur sécurité financière.\n\nCe n'est PAS une majoration en cas d'adhésion de 2 conjoints (erreur fréquente).",
+    "explication_vn": "Bảo đảm DOUBLE EFFET = bảo đảm tử vong dự kiến trả VỐN BỔ SUNG cho các con phụ thuộc khi VỢ/CHỒNG CÒN LẠI qua đời.\n\nCơ chế:\n1. Người được bảo hiểm qua đời → trả vốn tử vong cho gia đình\n2. Vợ/chồng còn lại qua đời sau (khi vẫn còn con phụ thuộc) → trả VỐN MỚI cho các con\n\nMục tiêu: bảo vệ các con khỏi 'tang đôi' và đảm bảo an ninh tài chính.\n\nKHÔNG PHẢI là tăng thêm khi cả 2 vợ chồng tham gia bảo hiểm (lỗi thường gặp)."
+  },
+  {
+    "id": 146,
+    "chapitre": "[ANNALES 2014] Tables mortalité génération – Obligation",
+    "type": "single",
+    "question": "La réglementation impose d'utiliser les tables de mortalité par génération pour la tarification :",
+    "options": [
+      "De toutes les garanties décès (en capital et en rentes)",
+      "Des rentes viagères uniquement",
+      "Des garanties décès en capital uniquement",
+      "Des rentes temporaires et viagères"
+    ],
+    "correct": [1],
+    "explication_fr": "Les tables de mortalité par GÉNÉRATION (TGH 00-02 et TGF 00-02) sont obligatoires pour :\n• Les RENTES VIAGÈRES uniquement\n\nPour les garanties décès EN CAPITAL :\n• Tables TH 00-02 et TF 00-02 (tables de période, pas de génération)\n\nPourquoi la distinction ? Les rentes viagères impliquent des paiements très longs (jusqu'au décès) → la tendance à l'amélioration de la mortalité dans le futur est cruciale. Les tables générationnelles intègrent cette amélioration attendue, ce qui est plus prudent pour les rentes.",
+    "explication_vn": "Bảng tử vong theo THẾ HỆ (TGH 00-02 và TGF 00-02) là bắt buộc cho:\n• RENTE VIAGÈRE (niên kim trọn đời) mà THÔI\n\nVới bảo đảm tử vong bằng VỐN:\n• Bảng TH 00-02 và TF 00-02 (bảng theo thời kỳ, không phải thế hệ)\n\nTại sao phân biệt? Rente viagère liên quan đến thanh toán rất dài (đến khi tử vong) → xu hướng cải thiện tử vong trong tương lai rất quan trọng. Bảng thế hệ tích hợp sự cải thiện kỳ vọng này, thận trọng hơn cho rente."
+  },
+  {
+    "id": 147,
+    "chapitre": "[ANNALES 2014] Taux remboursement médicaments",
+    "type": "single",
+    "question": "Les médicaments peuvent être remboursés par la Sécurité Sociale à hauteur de :",
+    "options": [
+      "100% ; 65% ; 30% ; 15% ; 0%",
+      "100% ; 65% ; 35% ; 15% ; 0%",
+      "65% ; 35% ; 15% ; 0%",
+      "65% ; 30% ; 15% ; 0%"
+    ],
+    "correct": [0],
+    "explication_fr": "Les taux de remboursement SS des médicaments :\n• 100% : médicaments irremplaçables, maternité, ALD exonérantes\n• 65% : vignette blanche (service médical rendu important)\n• 30% : vignette bleue (service médical rendu modéré)\n• 15% : homéopathie (service médical rendu insuffisant)\n• 0% : médicaments non remboursés (pas de vignette)\n\nDepuis 2020, les taux 35% n'existent plus (ancienne catégorie). Les 4 taux actifs sont : 100%, 65%, 30%, 15%.",
+    "explication_vn": "Tỷ lệ hoàn trả SS cho thuốc:\n• 100%: thuốc không thể thay thế, thai sản, ALD miễn giảm\n• 65%: vignette blanche (hiệu quả y tế quan trọng)\n• 30%: vignette bleue (hiệu quả y tế vừa phải)\n• 15%: homéopathie (hiệu quả y tế không đủ)\n• 0%: thuốc không được hoàn trả\n\nTừ 2020, tỷ lệ 35% không còn tồn tại. 4 tỷ lệ hiện tại: 100%, 65%, 30%, 15%."
+  },
+  {
+    "id": 148,
+    "chapitre": "[ANNALES 2014] TSCA – Définition et taux",
+    "type": "single",
+    "question": "Qu'est-ce que la TSCA ? Quels sont les niveaux actuels pour les contrats Santé ?",
+    "options": [
+      "Taxe Supplémentaire Contributive des Assurances à 9% pour les contrats non responsables et 3% pour les contrats responsables",
+      "Taxe sur les Conventions d'Assurance à 9% pour les contrats non responsables et 7% pour les contrats responsables",
+      "Taxe sur les Conventions d'Assurance à 14% pour les contrats non responsables et 7% pour les contrats responsables",
+      "Taxe spéciale pour les conventions d'assurance à 14% pour les contrats non responsables et 3% pour les contrats responsables"
+    ],
+    "correct": [2],
+    "explication_fr": "TSCA = Taxe sur les Conventions d'Assurance.\n\nTaux pour les contrats santé :\n• Contrat RESPONSABLE : ~13,27% (question 2014 indique 7%, les taux ont évolué)\n• Contrat NON RESPONSABLE : ~20,27% (question 2014 indique 14%)\n\nAttention : les taux cités dans cette annale de 2014 correspondent aux taux de l'époque.\nTaux actuels (post-2016) :\n• Responsable : 13,27%\n• Non responsable : 20,27%\n\nLa TSCA est une incitation fiscale forte à proposer des contrats responsables.",
+    "explication_vn": "TSCA = Taxe sur les Conventions d'Assurance.\n\nTỷ lệ cho hợp đồng sức khỏe:\n• Contrat RESPONSABLE: ~13,27% (đề 2014 ghi 7%, tỷ lệ đã thay đổi)\n• Contrat NON RESPONSABLE: ~20,27% (đề 2014 ghi 14%)\n\nLưu ý: tỷ lệ trong đề 2014 là tỷ lệ của thời điểm đó.\nTỷ lệ hiện tại (sau 2016):\n• Responsable: 13,27%\n• Non responsable: 20,27%\n\nTSCA là động lực thuế mạnh để đề xuất contrat responsable."
+  },
+  {
+    "id": 149,
+    "chapitre": "[ANNALES 2014] Remboursement 100% BR – Niveau de gamme",
+    "type": "single",
+    "question": "Un contrat complémentaire Santé qui rembourse à hauteur de 100% BR y compris SS est-il un contrat :",
+    "options": ["Haut de gamme", "Luxe", "Milieu de gamme", "Entrée de gamme"],
+    "correct": [3],
+    "explication_fr": "Un contrat remboursant à 100% BR y compris SS = ENTRÉE DE GAMME.\n\nCela signifie que le contrat rembourse UNIQUEMENT le ticket modérateur (30% × BR pour un généraliste), sans aucune couverture des dépassements d'honoraires ni garanties supplémentaires.\n\nNiveaux de gamme typiques :\n• Entrée de gamme : 100% BR yc SS (= TM couvert, rien de plus)\n• Milieu de gamme : 150-200% BR + optique/dentaire améliorés\n• Haut de gamme : 200-300% BR + couverture dépassements importants + optique/dentaire élevés\n• Luxe : frais réels + garanties illimitées",
+    "explication_vn": "Hợp đồng hoàn trả 100% BR kể cả SS = ENTRY LEVEL (thấp nhất).\n\nCó nghĩa là hợp đồng chỉ hoàn trả Ticket Modérateur (30% × BR cho bác sĩ đa khoa), không có bảo hiểm dépassements d'honoraires hay bảo đảm bổ sung.\n\nCác mức độ hợp đồng điển hình:\n• Entry level: 100% BR kể cả SS (= TM được bảo hiểm, không thêm gì)\n• Trung cấp: 150-200% BR + optique/dentaire cải thiện\n• Cao cấp: 200-300% BR + bảo hiểm dépassements lớn + optique/dentaire cao\n• Luxury: frais réels + bảo đảm không giới hạn"
+  },
+  {
+    "id": 150,
+    "chapitre": "[ANNALES 2014] Loi Evin – Garantie décès arrêt de travail",
+    "type": "single",
+    "question": "Que prévoit la Loi Evin concernant les couvertures décès ?",
+    "options": [
+      "Obligation pour les employeurs de cotiser à un contrat d'assurance décès pour les salariés Cadres",
+      "Obligation de maintenir la garantie décès pour les personnes en arrêt de travail même après résiliation ou non renouvellement du (des) contrat(s) et ce pendant 12 mois",
+      "Obligation de maintenir la garantie décès pour les personnes en arrêt de travail même après résiliation ou non renouvellement du (des) contrat(s) et ce pendant 24 mois",
+      "Obligation de maintenir la garantie décès pour les personnes en arrêt de travail même après résiliation ou non renouvellement du (des) contrat(s)"
+    ],
+    "correct": [3],
+    "explication_fr": "La Loi Evin prévoit (art. 7) le maintien de la garantie décès pour les personnes en arrêt de travail SANS LIMITATION DE DURÉE, même en cas de résiliation ou non-renouvellement du contrat.\n\nCe maintien dure TANT QUE l'arrêt de travail se poursuit (aucune limite temporelle).\n\nÀ ne pas confondre avec :\n• La portabilité (chômage) : limitée à 12 mois\n• Le maintien pour retraités (Loi Evin art. 4) : garanti par l'assureur sur demande\n\nL'assureur résilié doit continuer à couvrir les personnes en arrêt de travail jusqu'à la fin de leur arrêt.",
+    "explication_vn": "Loi Evin quy định (điều 7) duy trì bảo đảm tử vong cho người nghỉ ốm KHÔNG GIỚI HẠN THỜI GIAN, kể cả khi hợp đồng bị hủy hay không gia hạn.\n\nViệc duy trì này kéo dài MIỄN LÀ nghỉ ốm tiếp tục (không có giới hạn thời gian).\n\nKhông nhầm với:\n• Portabilité (thất nghiệp): giới hạn 12 tháng\n• Duy trì cho người hưu trí (Loi Evin điều 4): được bảo hiểm đảm bảo theo yêu cầu\n\nCông ty bảo hiểm bị hủy hợp đồng phải tiếp tục bảo hiểm người đang nghỉ ốm cho đến khi hết nghỉ."
+  },
+  {
+    "id": 151,
+    "chapitre": "[ANNALES 2013] Régimes spéciaux SS",
+    "type": "single",
+    "question": "Lequel de ces régimes n'est pas un régime spécial de Sécurité Sociale ?",
+    "options": ["SNCF", "Militaires", "Culte", "Huissiers"],
+    "correct": [3],
+    "explication_fr": "Les RÉGIMES SPÉCIAUX sont des régimes particuliers créés avant 1945 pour certaines catégories professionnelles. Exemples : SNCF, RATP, EDF, GDF, Mines, Marins, Culte, Militaires, Assemblée Nationale...\n\nLes HUISSIERS (officiers ministériels) n'ont PAS de régime spécial SS propre. Ils relèvent du régime des travailleurs non-salariés (anciennement RSI, maintenant SSI - Sécurité Sociale des Indépendants) ou du régime général selon leur statut.\n\nLes régimes spéciaux tendent à être fermés progressivement (réformes retraites).",
+    "explication_vn": "CÁC RÉGIMES SPÉCIAUX là các chế độ đặc biệt được tạo ra trước 1945 cho một số ngành nghề. Ví dụ: SNCF, RATP, EDF, GDF, Mỏ, Hàng hải, Tôn giáo, Quân đội, Quốc hội...\n\nHUISIERS (công chứng viên tư pháp) KHÔNG có régime spécial SS riêng. Họ thuộc chế độ tự doanh (trước là RSI, nay là SSI - Sécurité Sociale des Indépendants) hoặc régime général tùy trạng thái.\n\nCác régimes spéciaux đang dần được đóng lại (cải cách hưu trí)."
+  },
+  {
+    "id": 152,
+    "chapitre": "[ANNALES 2013] Régime Alsace-Moselle – Affiliation",
+    "type": "single",
+    "question": "En fonction de quel critère est-on affilié au régime spécial Alsace-Moselle ?",
+    "options": [
+      "Le type d'activité",
+      "Le lieu de résidence",
+      "La localisation du siège social de l'entreprise",
+      "Le lieu de travail"
+    ],
+    "correct": [3],
+    "explication_fr": "L'affiliation au régime Alsace-Moselle dépend du LIEU DE TRAVAIL (et non du lieu de résidence ni du siège social).\n\nLe régime local Alsace-Moselle est plus favorable que le régime général :\n• Taux de remboursement SS plus élevés (ex: 90% au lieu de 70% pour les médecins)\n• FJH partiellement remboursé\n• Cotisations légèrement plus élevées\n\nHistorique : héritage du droit local issu de la période d'annexion allemande (1871-1918), maintenu lors du retour à la France.",
+    "explication_vn": "Gia nhập chế độ Alsace-Moselle phụ thuộc vào NƠI LÀM VIỆC (không phải nơi cư trú hay trụ sở công ty).\n\nChế độ địa phương Alsace-Moselle có lợi hơn chế độ chung:\n• Tỷ lệ hoàn trả SS cao hơn (vd: 90% thay vì 70% cho bác sĩ)\n• FJH được hoàn trả một phần\n• Cotisations cao hơn một chút\n\nLịch sử: kế thừa pháp luật địa phương từ thời bị Đức sáp nhập (1871-1918), được duy trì khi trở về Pháp."
+  },
+  {
+    "id": 153,
+    "chapitre": "[ANNALES 2013] Ayants droit – Concubin",
+    "type": "single",
+    "question": "Le concubin sans activité professionnelle, peut être ayant droit d'un assuré au titre de la Sécurité Sociale",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. En droit commun, le concubin (sans mariage ni PACS) N'EST PAS automatiquement ayant droit SS.\n\nLes ayants droit reconnus par la SS :\n• Conjoint marié\n• Partenaire de PACS\n• Enfants à charge jusqu'à 16 ans (20 ans si études)\n• Ascendants à charge\n\nLe concubin peut devenir ayant droit SEULEMENT s'il vit avec l'assuré ET est à charge de l'assuré ET n'exerce pas d'activité professionnelle → c'est le statut de 'personne à charge'.\n\nNote : Avec la PUMA (2016), toute personne travaillant ou résidant en France est couverte à titre personnel.",
+    "explication_vn": "SAI. Theo pháp luật chung, người chung sống không hôn thú và không có PACS KHÔNG tự động là ayant droit SS.\n\nAyants droit được SS công nhận:\n• Vợ/chồng hôn thú\n• Partenaire de PACS\n• Con phụ thuộc đến 16 tuổi (20 tuổi nếu học)\n• Người thân phụ thuộc\n\nNgười chung sống có thể trở thành ayant droit CHỈ KHI sống chung với người được bảo hiểm VÀ phụ thuộc vào người đó VÀ không có hoạt động nghề nghiệp → đây là tư cách 'personne à charge'.\n\nLưu ý: Với PUMA (2016), mọi người làm việc hoặc cư trú ở Pháp đều được bảo hiểm cá nhân."
+  },
+  {
+    "id": 154,
+    "chapitre": "[ANNALES 2013] Ayants droit complémentaire – Définition propre",
+    "type": "single",
+    "question": "Les régimes complémentaires doivent obligatoirement se baser sur les mêmes définitions que la Sécurité Sociale pour définir les ayants droit :",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. Les régimes complémentaires sont LIBRES de définir leurs propres critères pour les ayants droit, qui peuvent être plus larges ou plus restrictifs que ceux de la SS.\n\nExemples de différences :\n• Un régime complémentaire peut inclure le concubin comme ayant droit\n• Peut étendre la couverture aux enfants jusqu'à 28 ans\n• Peut inclure les partenaires de PACS avec des conditions propres\n\nLa seule contrainte : respecter le caractère collectif et non discriminatoire du régime.",
+    "explication_vn": "SAI. Các chế độ bổ sung TỰ DO định nghĩa tiêu chí ayants droit riêng, có thể rộng hơn hoặc hẹp hơn SS.\n\nVí dụ về sự khác biệt:\n• Chế độ bổ sung có thể bao gồm người chung sống là ayant droit\n• Có thể mở rộng bảo hiểm cho con đến 28 tuổi\n• Có thể bao gồm partenaires de PACS với điều kiện riêng\n\nRàng buộc duy nhất: tôn trọng tính tập thể và không phân biệt đối xử của chế độ."
+  },
+  {
+    "id": 155,
+    "chapitre": "[ANNALES 2013] Base remboursement SS",
+    "type": "single",
+    "question": "La Sécurité Sociale rembourse les prestations santé sur la base :",
+    "options": [
+      "Des frais réels",
+      "Des dépassements",
+      "De la base de remboursement",
+      "Du ticket modérateur"
+    ],
+    "correct": [2],
+    "explication_fr": "La SS rembourse sur la BASE DE REMBOURSEMENT (BR), et non sur les frais réels.\n\nFormule : RSS = Taux SS × BR\n\nSi les frais réels > BR (dépassements d'honoraires) : la SS rembourse quand même sur la BR.\n\nExemple : Médecin secteur 2 facture 50€ pour une consultation (BR = 23€).\nRSS = 70% × 23€ = 16,10€ (pas 70% × 50€)\nDépassement = 50 - 23 = 27€ → à la charge du patient/complémentaire.",
+    "explication_vn": "SS hoàn trả trên CƠ SỞ HOÀN TRẢ (BR), không phải frais réels.\n\nCông thức: RSS = Tỷ lệ SS × BR\n\nNếu frais réels > BR (dépassements d'honoraires): SS vẫn chỉ hoàn trả trên BR.\n\nVí dụ: Bác sĩ secteur 2 tính 50€ cho một lần khám (BR = 23€).\nRSS = 70% × 23€ = 16,10€ (không phải 70% × 50€)\nDépassement = 50 - 23 = 27€ → bệnh nhân/complémentaire chịu."
+  },
+  {
+    "id": 156,
+    "chapitre": "[ANNALES 2013] Secteur non conventionné – Tarif",
+    "type": "single",
+    "question": "Comment est appelée l'assiette servant de base au remboursement de la Sécurité Sociale en secteur non conventionné ?",
+    "options": [
+      "Tarif d'autorité",
+      "Tarif de convention",
+      "Base de remboursement",
+      "Ticket modérateur"
+    ],
+    "correct": [0],
+    "explication_fr": "En secteur NON CONVENTIONNÉ, la base de remboursement SS = TARIF D'AUTORITÉ (TA).\n\nLe TA est très faible :\n• Généraliste : 0,61€\n• Spécialiste : variable mais très bas\n\nà comparer avec le Tarif de Convention (TC) :\n• Généraliste secteur 1 : 23€\n• Spécialiste secteur 1 : 25€ ou plus selon spécialité\n\nDonc un patient consultant un médecin non conventionné est très peu remboursé par la SS (RSS = 70% × TA ≈ 0,43€ pour un généraliste).",
+    "explication_vn": "Trong lĩnh vực NON CONVENTIONNÉ, cơ sở hoàn trả SS = TARIF D'AUTORITÉ (TA).\n\nTA rất thấp:\n• Bác sĩ đa khoa: 0,61€\n• Chuyên gia: rất thấp tùy chuyên khoa\n\nSo với Tarif de Convention (TC):\n• Bác sĩ đa khoa secteur 1: 23€\n• Chuyên gia secteur 1: 25€ hoặc hơn\n\nBệnh nhân khám bác sĩ non conventionné được SS hoàn trả rất ít (RSS = 70% × TA ≈ 0,43€ cho đa khoa)."
+  },
+  {
+    "id": 157,
+    "chapitre": "[ANNALES 2013] Remboursement médicament – Franchise",
+    "type": "single",
+    "question": "Soit X, la base de remboursement d'une boite de médicament en Euros. Le taux de prise en charge de la Sécurité Sociale est de 65%. Le remboursement de la Sécurité Sociale pour cette boite de médicament est égal à :",
+    "options": [
+      "65% * X",
+      "65% * X – 1 Euros",
+      "65% * (X – 0,5 Euros)",
+      "65% * X – 0,5 Euros"
+    ],
+    "correct": [3],
+    "explication_fr": "Formule correcte : RSS = 65% × X − 0,50€\n\nLa franchise médicale de 0,50€ est déduite du remboursement SS (et non de la BR).\n\nDonc :\n• RSS brut = 65% × X\n• RSS net = 65% × X − 0,50€\n\nAttention : la franchise s'applique APRÈS le calcul du remboursement brut.\n\nExemple : médicament à 10€\n• RSS brut = 65% × 10 = 6,50€\n• RSS net = 6,50 − 0,50 = 6,00€\n\nEt non : 65% × (10 − 0,50) = 65% × 9,50 = 6,175€ (calcul incorrect).",
+    "explication_vn": "Công thức đúng: RSS = 65% × X − 0,50€\n\nFranchise médicale 0,50€ được trừ vào remboursement SS (không phải BR).\n\nVậy:\n• RSS gộp = 65% × X\n• RSS ròng = 65% × X − 0,50€\n\nLưu ý: franchise áp dụng SAU khi tính remboursement gộp.\n\nVí dụ: thuốc 10€\n• RSS gộp = 65% × 10 = 6,50€\n• RSS ròng = 6,50 − 0,50 = 6,00€\n\nKhông phải: 65% × (10 − 0,50) = 6,175€ (sai)."
+  },
+  {
+    "id": 158,
+    "chapitre": "[ANNALES 2013] LPP – Signification",
+    "type": "single",
+    "question": "Quelle est la signification de LPP ?",
+    "options": [
+      "Liste des produits prescrits",
+      "Liste des produits et prestations",
+      "Liste des produits des praticiens",
+      "Liste permanente des produits"
+    ],
+    "correct": [1],
+    "explication_fr": "LPP = Liste des Produits et Prestations.\n\nC'est la nomenclature pour les appareillages, fournitures médicales et dispositifs médicaux.\n\nStructure :\n• Titre I : Fournitures médicales (pansements, béquilles...)\n• Titre II : Orthèses et Prothèses externes (prothèses auditives, lunettes...)\n• Titre III : Dispositifs implantables\n• Titre IV : Véhicules pour handicapés\n\nLa BR figure directement dans la LPP (pas de lettre-clé × coefficient).\n\nExemples : audioprothèses (Titre II), fauteuil roulant (Titre IV).",
+    "explication_vn": "LPP = Liste des Produits et Prestations.\n\nĐây là danh mục thiết bị y tế, vật tư và dụng cụ y tế.\n\nCấu trúc:\n• Titre I: Vật tư y tế (băng gạc, nạng...)\n• Titre II: Chỉnh hình và Giả chi ngoài (máy trợ thính, kính...)\n• Titre III: Thiết bị cấy ghép\n• Titre IV: Xe cho người khuyết tật\n\nBR ghi trực tiếp trong LPP (không có lettre-clé × hệ số).\n\nVí dụ: audioprothèses (Titre II), xe lăn (Titre IV)."
+  },
+  {
+    "id": 159,
+    "chapitre": "[ANNALES 2013] NGAP – Codage honoraires",
+    "type": "single",
+    "question": "Quelle est la base de codage des honoraires des praticiens ?",
+    "options": ["CCAM", "NGAP", "TAA", "NABM"],
+    "correct": [1],
+    "explication_fr": "NGAP = Nomenclature Générale des Actes Professionnels.\n\nC'est LA base de codage des honoraires des praticiens libéraux (médecins, auxiliaires médicaux, sages-femmes).\n\nLogique : BR = Lettre-clé × coefficient × valeur\nEx : consultation généraliste = C2 = 2 × 11,50€ = 23€\n\nMais attention : CCAM est utilisé pour les actes techniques médicaux (chirurgie, imagerie). Les deux coexistent.\n\nRéponse : NGAP est la base GÉNÉRALE de codage des honoraires, CCAM est spécifique aux actes techniques.",
+    "explication_vn": "NGAP = Nomenclature Générale des Actes Professionnels.\n\nĐây là cơ sở mã hóa thù lao của các nhà thực hành tự do (bác sĩ, auxiliaires médicaux, hộ sinh).\n\nLogic: BR = Lettre-clé × hệ số × giá trị\nVd: khám đa khoa = C2 = 2 × 11,50€ = 23€\n\nNhưng lưu ý: CCAM được dùng cho các actes kỹ thuật y tế (phẫu thuật, hình ảnh học). Hai danh mục cùng tồn tại.\n\nĐáp án: NGAP là cơ sở MÃ HÓA THÙ LAO TỔNG QUÁT, CCAM đặc thù cho actes kỹ thuật."
+  },
+  {
+    "id": 160,
+    "chapitre": "[ANNALES 2013] Couronne dentaire – Lettre clé",
+    "type": "single",
+    "question": "Quelle est la lettre clé pour la facturation d'une couronne dentaire ?",
+    "options": ["CD", "SPR", "SCD", "PCD"],
+    "correct": [1],
+    "explication_fr": "La lettre-clé pour une couronne dentaire est SPR (Soin Prothétique).\n\nExemples en dentaire :\n• SPR 50 : couronne métallique simple\n• SPR 30 : couronne partielle\n• TO 90 : orthodontie (semestre)\n\nLa codification NGAP en dentaire utilise SPR comme lettre-clé pour les prothèses.\n\nLa BR = SPR × coefficient × valeur de la lettre SPR.\n\nNote : depuis la réforme 100% Santé, certaines couronnes ont une BR revalorisée dans le panier 100% Santé.",
+    "explication_vn": "Chữ-chìa khóa cho răng sứ (couronne dentaire) là SPR (Soin Prothétique).\n\nVí dụ trong nha khoa:\n• SPR 50: răng sứ kim loại đơn giản\n• SPR 30: răng sứ một phần\n• TO 90: chỉnh nha (một học kỳ)\n\nMã hóa NGAP trong nha khoa dùng SPR làm lettre-clé cho răng giả.\n\nBR = SPR × hệ số × giá trị của chữ SPR.\n\nLưu ý: từ cải cách 100% Santé, một số răng sứ có BR được nâng cao trong panier 100% Santé."
+  },
+  {
+    "id": 161,
+    "chapitre": "[ANNALES 2013] Invalidité 2ème catégorie – Activité professionnelle",
+    "type": "single",
+    "question": "Un invalide de 2ème catégorie peut exercer une activité professionnelle",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. Un invalide de 2ème catégorie est 'absolument incapable d'exercer une profession quelconque' → NE PEUT PAS travailler.\n\nRappel des 3 catégories :\n• Cat 1 : peut exercer une activité RÉDUITE → PEUT travailler\n• Cat 2 : absolument incapable d'exercer → NE PEUT PAS travailler\n• Cat 3 : incapable + a besoin d'une tierce personne → NE PEUT PAS travailler\n\nNombre : les catégories 2 et 3 interdisent toute activité professionnelle.",
+    "explication_vn": "SAI. Invalide loại 2 là người 'hoàn toàn không thể làm bất kỳ nghề nghiệp nào' → KHÔNG THỂ làm việc.\n\nNhắc lại 3 loại:\n• Loại 1: có thể làm việc một phần → CÓ THỂ làm việc\n• Loại 2: hoàn toàn không thể làm việc → KHÔNG THỂ làm việc\n• Loại 3: không thể làm việc + cần người hỗ trợ → KHÔNG THỂ làm việc\n\nLoại 2 và 3 cấm mọi hoạt động nghề nghiệp."
+  },
+  {
+    "id": 162,
+    "chapitre": "[ANNALES 2013] Rente invalidité SS – Conditions fin de versement",
+    "type": "single",
+    "question": "Le versement de la rente d'invalidité prend fin au moment de la liquidation des droits à retraite",
+    "options": ["Vrai", "Faux"],
+    "correct": [0],
+    "explication_fr": "VRAI. La rente d'invalidité SS cesse d'être versée lorsque l'assuré atteint l'âge de la retraite (62 ans dans le droit commun) et liquide ses droits à retraite.\n\nElle est alors remplacée par la PENSION DE VIEILLESSE POUR INAPTITUDE AU TRAVAIL (calculée au taux plein de 50%), ce qui évite une rupture de revenu.\n\nAutres causes de fin de rente invalidité :\n• Reprise d'une activité professionnelle (pour cat 2 et 3)\n• Décès de l'invalide",
+    "explication_vn": "ĐÚNG. Rente invalidité SS ngừng được trả khi người được bảo hiểm đến tuổi hưu trí (62 tuổi theo quy định chung) và thanh toán quyền hưu trí.\n\nSau đó được thay thế bằng PENSION DE VIEILLESSE POUR INAPTITUDE AU TRAVAIL (tính theo tỷ lệ đầy đủ 50%), tránh gián đoạn thu nhập.\n\nCác nguyên nhân khác chấm dứt rente invalidité:\n• Tiếp tục hoạt động nghề nghiệp (cho loại 2 và 3)\n• Người bị tàn tật qua đời"
+  },
+  {
+    "id": 163,
+    "chapitre": "[ANNALES 2013] Rente invalidité – Assiette salariale",
+    "type": "single",
+    "question": "Le salaire servant de base à la détermination de la rente d'invalidité est limité à",
+    "options": ["La tranche A du salaire", "La tranche B du salaire", "1 SMIC", "1,8 SMIC"],
+    "correct": [0],
+    "explication_fr": "Le salaire servant de base au calcul de la rente d'invalidité SS est limité à la TRANCHE A (= 1 PASS = Plafond Annuel de la Sécurité Sociale).\n\nLe SAM (Salaire Annuel Moyen) = moyenne des 10 meilleures années de salaires bruts PLAFONNÉS à la Tranche A.\n\nRente cat 2 = 50% × SAM TA\n\nLes complémentaires prévoyance peuvent étendre la couverture aux Tranches B et C pour compenser ce plafonnement.",
+    "explication_vn": "Lương dùng làm cơ sở tính rente invalidité SS bị giới hạn ở TRANCHE A (= 1 PASS = Plafond Annuel de la Sécurité Sociale).\n\nSAM (Salaire Annuel Moyen) = trung bình 10 năm tốt nhất của lương gộp GIỚI HẠN ở Tranche A.\n\nRente loại 2 = 50% × SAM TA\n\nCác complémentaires prévoyance có thể mở rộng bảo hiểm đến Tranches B và C để bù đắp sự giới hạn này."
+  },
+  {
+    "id": 164,
+    "chapitre": "[ANNALES 2013] Organismes but non lucratif",
+    "type": "single",
+    "question": "Sur les 3 types d'organismes assureur, combien sont à but non lucratif ?",
+    "options": ["1", "2", "3"],
+    "correct": [1],
+    "explication_fr": "2 des 3 types d'organismes sont à but NON LUCRATIF :\n\n✓ MUTUELLES : but non lucratif (Code de la Mutualité)\n✓ INSTITUTIONS DE PRÉVOYANCE : but non lucratif (Code SS Livre IX)\n✗ SOCIÉTÉS D'ASSURANCE : peuvent être à but lucratif (SA) ou mutualiste (SAM)\n\nLes SA (Sociétés Anonymes) sont clairement à but lucratif → actionnaires à rémunérer.\nLes SAM (Sociétés d'Assurance Mutuelle) peuvent revendiquer un caractère mutualiste mais ne sont pas nécessairement 'à but non lucratif' au sens strict.",
+    "explication_vn": "2 trong 3 loại tổ chức là phi lợi nhuận:\n\n✓ MUTUELLES: phi lợi nhuận (Code de la Mutualité)\n✓ INSTITUTIONS DE PRÉVOYANCE: phi lợi nhuận (Code SS Livre IX)\n✗ SOCIÉTÉS D'ASSURANCE: có thể vì lợi nhuận (SA) hoặc mutualiste (SAM)\n\nSA (Sociétés Anonymes) rõ ràng vì lợi nhuận → có cổ đông nhận cổ tức.\nSAM (Sociétés d'Assurance Mutuelle) có thể tuyên bố tính mutualiste nhưng không nhất thiết 'phi lợi nhuận' theo nghĩa chặt."
+  },
+  {
+    "id": 165,
+    "chapitre": "[ANNALES 2013] DUE – Précompte cotisations",
+    "type": "single",
+    "question": "On peut imposer le précompte des cotisations aux salariés lorsque le régime de protection sociale a été mis en place par décision unilatérale ?",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX. Lorsqu'un régime est mis en place par DUE (Décision Unilatérale de l'Employeur), l'employeur NE PEUT PAS imposer le précompte (retenue sur salaire) à des salariés présents AVANT la mise en place.\n\nCette protection découle de la Loi Evin : un employeur ne peut pas unilatéralement imposer une retenue sur salaire pour une cotisation à un régime non consenti par les salariés anciens.\n\nEn revanche, pour les nouveaux salariés embauchés APRÈS la mise en place de la DUE : le précompte peut s'appliquer car ils adhèrent au régime lors de leur embauche.",
+    "explication_vn": "SAI. Khi chế độ được thực hiện bằng DUE, chủ lao động KHÔNG THỂ áp đặt précompte (trừ vào lương) cho nhân viên hiện tại TRƯỚC khi thực hiện.\n\nBảo vệ này xuất phát từ Loi Evin: chủ lao động không thể đơn phương áp đặt việc trừ lương cho cotisation vào chế độ mà nhân viên cũ không đồng ý.\n\nTuy nhiên, với nhân viên mới được tuyển dụng SAU khi có DUE: précompte có thể áp dụng vì họ tham gia chế độ khi được tuyển dụng."
+  },
+  {
+    "id": 166,
+    "chapitre": "[ANNALES 2013] Rente conjoint – Expression générale",
+    "type": "single",
+    "question": "Le niveau des rentes de conjoint proposées par les régimes collectifs est généralement exprimé en fonction :",
+    "options": [
+      "Du nombre d'enfants à charge de l'assuré au décès",
+      "De l'âge du conjoint au moment du décès de l'assuré",
+      "De l'âge de l'assuré au moment de son décès",
+      "De l'âge de l'assuré à son décès et de l'âge du bénéficiaire"
+    ],
+    "correct": [2],
+    "explication_fr": "Le niveau de la rente de conjoint est généralement exprimé en fonction de L'ÂGE DE L'ASSURÉ AU MOMENT DE SON DÉCÈS.\n\nPourquoi ? Plus l'assuré décède jeune, plus la rente versée au conjoint doit être élevée car :\n• La durée d'indemnisation sera plus longue\n• Le conjoint aura moins d'épargne et de droits retraite\n\nEn pratique : barème par paliers d'âge (ex: 100% si décès avant 40 ans, 80% entre 40-50 ans, etc.)\n\nRente de conjoint viagère vs temporaire :\n• Viagère : versée jusqu'au décès du conjoint\n• Temporaire : versée jusqu'à un certain âge",
+    "explication_vn": "Mức rente de conjoint thường được xác định theo TUỔI CỦA NGƯỜI ĐƯỢC BẢO HIỂM KHI TỬ VONG.\n\nTại sao? Người được bảo hiểm qua đời càng trẻ, rente trả cho vợ/chồng phải càng cao vì:\n• Thời gian bồi thường sẽ dài hơn\n• Vợ/chồng sẽ có ít tiết kiệm và quyền hưu trí hơn\n\nThực tế: biểu giá theo bậc tuổi (vd: 100% nếu tử vong trước 40 tuổi, 80% từ 40-50 tuổi...)\n\nRente de conjoint viagère vs tạm thời:\n• Viagère: trả đến khi vợ/chồng qua đời\n• Tạm thời: trả đến một độ tuổi nhất định"
+  },
+  {
+    "id": 167,
+    "chapitre": "[ANNALES 2013] Portabilité – Conditions bénéficiaires",
+    "type": "single",
+    "question": "Les anciens salariés bénéficiaires du maintien des régimes complémentaires (Portabilité) dont ils bénéficiaient dans leur ancienne Entreprise (ANI), sont les personnes :",
+    "options": [
+      "Victimes d'une rupture de leur contrat de travail non consécutive à une faute lourde",
+      "Ayant droit à la prise en charge par l'assurance chômage",
+      "Ayant travaillé au moins un mois entier avec le dernier employeur",
+      "Vérifiant ces 3 critères"
+    ],
+    "correct": [3],
+    "explication_fr": "Les 3 conditions CUMULATIVES de la portabilité (ANI 2008, L911-8 CSS) :\n1. Rupture du contrat NON consécutive à une faute lourde\n2. Avoir droit à l'assurance CHÔMAGE\n3. Avoir bénéficié du régime complémentaire dans l'entreprise\n\nTOUTES les 3 conditions doivent être remplies simultanément.\n\nNote : la durée minimale de travail (1 mois) a été remplacée par la condition d'avoir droit au chômage. Il n'y a pas de durée minimale explicite dans l'ANI actuel, mais la condition chômage implique généralement une durée d'affiliation suffisante.",
+    "explication_vn": "3 điều kiện ĐỒNG THỜI của portabilité (ANI 2008, L911-8 CSS):\n1. Chấm dứt hợp đồng KHÔNG do faute lourde\n2. Có quyền hưởng bảo hiểm CHÔMAGE\n3. Đã được hưởng chế độ bổ sung tại công ty\n\nTẤT CẢ 3 điều kiện phải được đáp ứng đồng thời.\n\nLưu ý: thời gian làm việc tối thiểu (1 tháng) đã được thay thế bằng điều kiện có quyền thất nghiệp. Hiện không có thời gian tối thiểu rõ ràng trong ANI, nhưng điều kiện thất nghiệp ngụ ý thời gian đóng bảo hiểm đủ."
+  },
+  {
+    "id": 168,
+    "chapitre": "[ANNALES 2013] Loi Evin retraité – Plafond tarifaire",
+    "type": "single",
+    "question": "Les retraités peuvent bénéficier du strict maintien du régime complémentaire Santé dont ils bénéficiaient dans leur ancienne Entreprise, pour un tarif n'excédant pas x% du tarif des actifs.",
+    "options": ["x = 25%", "x = 50%", "x = 75%", "x = 100%"],
+    "correct": [3],
+    "explication_fr": "La 1ère année, le tarif proposé au retraité ne peut pas excéder 100% du tarif des actifs.\n\nPlafonds progressifs (Loi Evin art. 4 + Azoulay) :\n• Année 1 : ≤ 100% du tarif actifs\n• Année 2 : ≤ 125% du tarif actifs\n• Année 3 : ≤ 150% du tarif actifs\n• Année 4+ : pas de plafond réglementaire\n\nCette question porte sur la 1ère année → x = 100%.",
+    "explication_vn": "Năm đầu tiên, phí đề nghị cho người hưu trí không được vượt quá 100% phí người đang làm.\n\nCác mức trần tăng dần (Loi Evin điều 4 + Azoulay):\n• Năm 1: ≤ 100% phí người đang làm\n• Năm 2: ≤ 125% phí người đang làm\n• Năm 3: ≤ 150% phí người đang làm\n• Năm 4+: không có trần theo quy định\n\nCâu hỏi này về năm 1 → x = 100%."
+  },
+  {
+    "id": 169,
+    "chapitre": "[ANNALES 2013] Exonération cotisations employeur – Conditions",
+    "type": "single",
+    "question": "Les contributions Employeur aux régimes de Prévoyance et de Frais de santé, peuvent bénéficier d'exonérations de charges sociales :",
+    "options": [
+      "Sous conditions",
+      "Dans certaines limites",
+      "Sous conditions et dans certaines limites",
+      "Sans conditions et sans limites"
+    ],
+    "correct": [2],
+    "explication_fr": "SOUS CONDITIONS ET DANS CERTAINES LIMITES (les 2 à la fois).\n\nConditions (Loi Fillon 2003) :\n• Contrat collectif et obligatoire\n• Caractère collectif (catégories objectives - Décret 2012)\n• Taux uniforme par catégorie\n• Garanties identiques par catégorie\n• Contrat responsable (depuis 2016)\n\nLimites d'exonération (en % du PASS) :\n• Santé : 6% du PASS\n• Prévoyance lourde : 1,5% TA + 6% TA (jusqu'à un plafond)\n\nL'excédent éventuel est réintégré dans l'assiette des cotisations sociales.",
+    "explication_vn": "THEO ĐIỀU KIỆN VÀ TRONG CÁC GIỚI HẠN (cả hai cùng lúc).\n\nĐiều kiện (Loi Fillon 2003):\n• Hợp đồng tập thể và bắt buộc\n• Tính tập thể (catégories objectives - Décret 2012)\n• Tỷ lệ đồng nhất theo catégorie\n• Bảo đảm giống nhau theo catégorie\n• Contrat responsable (từ 2016)\n\nGiới hạn miễn giảm (theo % PASS):\n• Santé: 6% PASS\n• Prévoyance lourde: 1,5% TA + 6% TA (đến một trần)\n\nPhần vượt được tái nhập vào cơ sở cotisations sociales."
+  },
+  {
+    "id": 170,
+    "chapitre": "[ANNALES 2013] Catégories objectives – Cadres/Non-cadres",
+    "type": "single",
+    "question": "La mise en place, dans une entreprise, de garanties Prévoyance différentes pour les Cadres et les Non Cadres remet-elle en cause le bénéfice des avantages sociaux et fiscaux sur les cotisations versées au régime ?",
+    "options": ["Oui", "Non"],
+    "correct": [1],
+    "explication_fr": "NON. La distinction Cadres/Non-Cadres est une catégorie OBJECTIVE reconnue par la réglementation. Elle ne remet pas en cause les avantages sociaux et fiscaux.\n\nLes catégories objectives reconnues (Décret du 9 janvier 2012) :\n• Cadres vs Non-Cadres (ou assimilés cadres)\n• Catégories définies par les conventions collectives\n• Catégories définies par les accords d'entreprise\n• Catégories par niveau de rémunération (tranche A, B...)\n\nLa seule condition : les garanties doivent être identiques au sein de chaque catégorie.",
+    "explication_vn": "KHÔNG. Phân biệt Cadres/Non-Cadres là catégorie OBJECTIVE được quy định công nhận. Không ảnh hưởng đến ưu đãi xã hội và thuế.\n\nCác catégories objectives được công nhận (Décret 9/01/2012):\n• Cadres vs Non-Cadres (hoặc assimilés cadres)\n• Catégories theo conventions collectives\n• Catégories theo accords d'entreprise\n• Catégories theo mức lương (tranche A, B...)\n\nĐiều kiện duy nhất: bảo đảm phải giống nhau trong mỗi catégorie."
+  },
+  {
+    "id": 171,
+    "chapitre": "[ANNALES 2013] Résiliation contrat – Rentes en cours",
+    "type": "single",
+    "question": "En cas de résiliation d'un contrat de Prévoyance Complémentaire intégrant des prestations sous forme de rente :",
+    "options": [
+      "L'organisme assureur résilié (« A ») a l'obligation de poursuivre la revalorisation des rentes en cours de service à la date de résiliation",
+      "Le nouvel organisme assureur (« B ») a l'obligation de prendre en charge la revalorisation des rentes en cours de service à la date de résiliation chez l'ancien assureur (« A »)",
+      "L'entreprise a l'obligation d'organiser la poursuivre la revalorisation des rentes en cours de service à la date de résiliation",
+      "L'organisme assureur résilié (« A ») a l'obligation d'organiser la poursuite de la revalorisation des rentes en cours de service à la date de résiliation"
+    ],
+    "correct": [3],
+    "explication_fr": "L'assureur résilié (A) a l'obligation d'ORGANISER la poursuite de la revalorisation des rentes en cours.\n\nImportant : 'organiser la poursuite' ≠ 'poursuivre lui-même'. L'assureur résilié doit :\n• Maintenir les rentes en cours de service\n• S'assurer que leur revalorisation sera assurée\n• Constituer les provisions nécessaires\n\nIl peut 'organiser' cela en :\n• Maintenant lui-même la revalorisation\n• Transférant les provisions au nouvel assureur (si accord)\n• Constituant une réserve suffisante\n\nBase légale : Loi Evin art. 7.",
+    "explication_vn": "Công ty bảo hiểm bị hủy (A) có nghĩa vụ TỔ CHỨC việc tiếp tục tái định giá rente đang được trả.\n\nQuan trọng: 'tổ chức việc tiếp tục' ≠ 'tự tiếp tục'. Công ty bảo hiểm bị hủy phải:\n• Duy trì các rente đang được trả\n• Đảm bảo việc tái định giá của chúng được bảo đảm\n• Lập các provisions cần thiết\n\nCó thể 'tổ chức' điều này bằng cách:\n• Tự duy trì việc tái định giá\n• Chuyển provisions sang công ty mới (nếu có thỏa thuận)\n• Lập quỹ dự phòng đủ\n\nCơ sở pháp lý: Loi Evin điều 7."
+  },
+  {
+    "id": 172,
+    "chapitre": "[ANNALES 2013] Salarié arrêt travail – Décès après résiliation",
+    "type": "single",
+    "question": "Un salarié est en arrêt de travail depuis le mois d'avril 2012. Au 31/12/2012, l'entreprise supprime le régime de Prévoyance. En 2013, ce salarié, toujours en arrêt de travail, décède. Ses héritiers sont-ils indemnisés ?",
+    "options": [
+      "Ses héritiers sont indemnisés par l'assureur « A » conformément aux garanties en cas de décès prévues dans le régime en vigueur en 2012",
+      "L'entreprise est tenue d'indemniser ses héritiers conformément aux garanties en cas de décès prévues dans le régime en vigueur en 2012",
+      "Ses héritiers n'ont droit à aucune indemnisation"
+    ],
+    "correct": [0],
+    "explication_fr": "L'assureur A indemnise les héritiers selon les garanties en vigueur en 2012.\n\nPrincipe Loi Evin art. 7 : le maintien de la garantie décès pour les personnes en arrêt de travail survient MÊME APRÈS la résiliation du contrat, et CE SANS LIMITATION DE DURÉE.\n\nLe salarié était en arrêt depuis avril 2012, le contrat a été résilié au 31/12/2012, mais le maintien s'applique pendant toute la durée de l'arrêt. Quand il décède en 2013, l'assureur A doit indemniser les héritiers conformément aux garanties décès prévues dans le régime en vigueur à la date d'entrée en arrêt (2012).",
+    "explication_vn": "Công ty bảo hiểm A bồi thường cho người thừa kế theo bảo đảm hiệu lực năm 2012.\n\nNguyên tắc Loi Evin điều 7: duy trì bảo đảm tử vong cho người đang nghỉ ốm xảy ra NGAY CẢ SAU KHI hủy hợp đồng, VÀ KHÔNG GIỚI HẠN THỜI GIAN.\n\nNhân viên nghỉ ốm từ tháng 4/2012, hợp đồng bị hủy 31/12/2012, nhưng việc duy trì áp dụng trong suốt thời gian nghỉ ốm. Khi qua đời năm 2013, công ty bảo hiểm A phải bồi thường cho người thừa kế theo bảo đảm tử vong hiệu lực tại thời điểm bắt đầu nghỉ ốm (2012)."
+  },
+  {
+    "id": 173,
+    "chapitre": "[ANNALES 2013] P/C – Analyse par survenance",
+    "type": "single",
+    "question": "Un directeur technique constate que le P/C Comptable est supérieur à 100% malgré deux redressements tarifaires. Son adjoint suggère d'analyser les comptes par année de survenance. Est-ce une bonne idée et pourquoi ?",
+    "options": [
+      "Non car si le résultat est encore déficitaire après 2 redressements tarifaires cela montrera qu'il s'agit d'une insuffisance de produits financiers",
+      "Non car le P/C par année de survenance est le même que le P/C comptable",
+      "Oui car les comptes techniques par année de survenance permettent de juger de l'efficacité d'un redressement tarifaire",
+      "Non car le P/C par année de survenance n'intègre pas les frais"
+    ],
+    "correct": [2],
+    "explication_fr": "OUI, c'est une excellente idée car l'analyse par année de survenance permet de :\n\n• Séparer les résultats des années antérieures (avant redressement) des années récentes (après redressement)\n• Voir si les nouvelles cohortes (après le redressement tarifaire) montrent une amélioration du S/P\n• Distinguer entre l'effet du passé (sinistres anciens encore en développement) et l'effet du présent (nouvelles primes après redressement)\n\nLe P/C comptable mélange toutes les années de survenance → impossible de savoir si le redressement a été efficace.\n\nLe P/C par survenance est L'OUTIL ACTUARIEL de pilotage par excellence.",
+    "explication_vn": "ĐÚNG, đây là ý tưởng xuất sắc vì phân tích theo année de survenance cho phép:\n\n• Tách kết quả của các năm trước (trước điều chỉnh) khỏi các năm gần đây (sau điều chỉnh)\n• Xem liệu các đợt mới (sau điều chỉnh biểu phí) có cải thiện S/P không\n• Phân biệt giữa hiệu ứng quá khứ (sinistres cũ vẫn đang phát triển) và hiệu ứng hiện tại (primes mới sau điều chỉnh)\n\nP/C kế toán trộn lẫn tất cả các années de survenance → không thể biết điều chỉnh có hiệu quả không.\n\nP/C theo survenance là CÔNG CỤ ACTUARIEL điều hành tuyệt vời nhất."
+  },
+  {
+    "id": 174,
+    "chapitre": "[ANNALES 2013] Marché santé collective – Leader",
+    "type": "single",
+    "question": "Quelle famille d'Organisme assureur est le leader sur le marché de la Santé Collective ?",
+    "options": [
+      "Mutuelles",
+      "Institutions de prévoyance",
+      "Sociétés d'assurance",
+      "Répartitions en parts égales entre les 3 familles"
+    ],
+    "correct": [1],
+    "explication_fr": "Les INSTITUTIONS DE PRÉVOYANCE sont leaders sur le marché de la SANTÉ COLLECTIVE.\n\nLeur positionnement historique sur le marché collectif (conventions collectives, clauses de désignation) leur a permis de dominer ce segment.\n\nRépartition approximative du marché santé collective :\n• Institutions de Prévoyance : ~40-45%\n• Mutuelles : ~35-40%\n• Sociétés d'Assurance : ~20-25%\n\nEn revanche, sur la Santé INDIVIDUELLE, les Mutuelles dominent historiquement.",
+    "explication_vn": "CÁC INSTITUTIONS DE PRÉVOYANCE dẫn đầu thị trường BẢO HIỂM SỨC KHỎE TẬP THỂ.\n\nVị trí lịch sử của họ trên thị trường tập thể (CCN, clauses de désignation) đã cho phép họ chiếm lĩnh phân khúc này.\n\nPhân chia thị trường sức khỏe tập thể (gần đúng):\n• Institutions de Prévoyance: ~40-45%\n• Mutuelles: ~35-40%\n• Sociétés d'Assurance: ~20-25%\n\nNgược lại, trong lĩnh vực Santé CÁ NHÂN, Mutuelles dẫn đầu lịch sử."
+  },
+  {
+    "id": 175,
+    "chapitre": "[ANNALES 2013] Régime obligatoire – Ancienneté",
+    "type": "single",
+    "question": "Une entreprise met en place un régime complémentaire santé à adhésion obligatoire pour l'ensemble du personnel ayant plus de 9 mois d'ancienneté. Est-ce un contrat collectif obligatoire ?",
+    "options": [
+      "Oui a priori mais ça dépend",
+      "Non a priori mais ça dépend",
+      "Oui",
+      "Non"
+    ],
+    "correct": [0],
+    "explication_fr": "OUI, a priori, mais ça dépend.\n\nUn régime peut exclure certains salariés selon des critères objectifs (ancienneté, temps partiel, CDD...) tout en restant 'collectif et obligatoire' pour les éligibles.\n\nLa condition d'ancienneté de 9 mois peut constituer une catégorie objective reconnue.\n\nMais 'ça dépend' car :\n• Si la condition d'ancienneté est discriminatoire ou non conforme aux catégories objectives du décret 2012 → problème\n• Si la majorité des salariés est exclue → le caractère 'collectif' peut être remis en question\n• L'administration peut refuser l'exonération sociale si la catégorie n'est pas reconnue",
+    "explication_vn": "ĐÚNG về nguyên tắc, nhưng còn tùy.\n\nMột chế độ có thể loại trừ một số nhân viên theo tiêu chí khách quan (thâm niên, bán thời gian, CDD...) trong khi vẫn 'tập thể và bắt buộc' cho những người đủ điều kiện.\n\nĐiều kiện thâm niên 9 tháng có thể là catégorie objective được công nhận.\n\nNhưng 'còn tùy' vì:\n• Nếu điều kiện thâm niên mang tính phân biệt hoặc không phù hợp với catégories objectives theo Décret 2012 → vấn đề\n• Nếu đại đa số nhân viên bị loại trừ → tính 'tập thể' có thể bị tranh luận\n• Cơ quan thuế có thể từ chối miễn giảm xã hội nếu catégorie không được công nhận"
+  },
+  {
+    "id": 176,
+    "chapitre": "[ANNALES 2013] TSCA contrat responsable – Taux",
+    "type": "single",
+    "question": "Les contrats santé responsables bénéficient d'un taux de TSCA réduit à 7% :",
+    "options": ["Vrai", "Faux"],
+    "correct": [1],
+    "explication_fr": "FAUX (pour les taux actuels). Le taux de TSCA pour les contrats RESPONSABLES n'est pas 7%.\n\nTaux TSCA actuels (post-2016) :\n• Contrat responsable : 13,27% (comprenant la taxe de solidarité + taxes diverses)\n• Contrat non responsable : 20,27%\n\nCette question de 2013 reflète des taux anciens (7% vs 14%). Les taux ont évolué suite aux réformes.\n\nLe principe reste vrai : les contrats responsables bénéficient d'un taux TSCA RÉDUIT par rapport aux non-responsables, mais les chiffres précis ont changé.",
+    "explication_vn": "SAI (theo tỷ lệ hiện tại). Tỷ lệ TSCA cho contrat RESPONSABLE không phải 7%.\n\nTỷ lệ TSCA hiện tại (sau 2016):\n• Contrat responsable: 13,27% (bao gồm taxe de solidarité + các thuế khác)\n• Contrat non responsable: 20,27%\n\nCâu hỏi 2013 này phản ánh tỷ lệ cũ (7% vs 14%). Tỷ lệ đã thay đổi do các cải cách.\n\nNguyên tắc vẫn đúng: contrat responsable được tỷ lệ TSCA GIẢM so với non-responsable, nhưng con số cụ thể đã thay đổi."
+  },
+  {
+    "id": 177,
+    "chapitre": "[ANNALES 2013] Remboursement SS hospitalier – Taux",
+    "type": "single",
+    "question": "Quel est le taux de remboursement SS d'une hospitalisation dans le cas général (hors régime AM) ?",
+    "options": ["50%", "80%", "100%", "65%"],
+    "correct": [1],
+    "explication_fr": "Le taux de remboursement SS d'une hospitalisation dans le cas général = 80%.\n\nSauf exceptions :\n• ALD exonérante : 100%\n• Maternité/maternité pathologique : 100%\n• AT/MP : 100%\n• Personnes à faibles revenus (CMU, CSS) : 100%\n\nLe patient reste donc à charge de 20% de la BR, plus le forfait journalier hospitalier (non remboursé par SS).\n\nLe contrat responsable doit couvrir le TM hospitalier (20% BR) ET le forfait journalier hospitalier, illimités.",
+    "explication_vn": "Tỷ lệ hoàn trả SS nhập viện trong trường hợp chung = 80%.\n\nNgoại lệ:\n• ALD miễn giảm: 100%\n• Thai sản/bệnh thai sản: 100%\n• AT/MP: 100%\n• Người thu nhập thấp (CMU, CSS): 100%\n\nBệnh nhân vẫn phải chịu 20% BR, cộng forfait journalier hospitalier (SS không hoàn trả).\n\nContrat responsable phải bao gồm TM nhập viện (20% BR) VÀ forfait journalier hospitalier, không giới hạn."
+  },
+  {
+    "id": 178,
+    "chapitre": "[ANNALES 2013] Catégories invalidité SS",
+    "type": "single",
+    "question": "Combien existe-t-il de catégories d'invalidité au sens de la SS ?",
+    "options": ["3", "2", "4"],
+    "correct": [0],
+    "explication_fr": "Il existe 3 CATÉGORIES d'invalides au sens de la SS (art. L341-3 CSS) :\n\n• 1ère catégorie : invalides capables d'exercer une activité réduite\n  → Rente = 30% du SAM TA\n  → Peuvent travailler\n\n• 2ème catégorie : invalides absolument incapables d'exercer une profession\n  → Rente = 50% du SAM TA\n  → Ne peuvent pas travailler\n\n• 3ème catégorie : invalides nécessitant l'assistance d'une tierce personne\n  → Rente = 50% du SAM TA + MTP (Majoration Tierce Personne ~1200€/mois)\n  → Ne peuvent pas travailler\n\nCondition d'attribution : réduction de la capacité de travail d'au moins 2/3.",
+    "explication_vn": "Có 3 LOẠI invalide theo SS (điều L341-3 CSS):\n\n• Loại 1: invalide có thể làm việc một phần\n  → Rente = 30% SAM TA\n  → Có thể làm việc\n\n• Loại 2: invalide hoàn toàn không thể làm việc\n  → Rente = 50% SAM TA\n  → Không thể làm việc\n\n• Loại 3: invalide cần người hỗ trợ\n  → Rente = 50% SAM TA + MTP (Majoration Tierce Personne ~1200€/tháng)\n  → Không thể làm việc\n\nĐiều kiện: năng lực lao động giảm ít nhất 2/3."
+  },
+  {
+    "id": 179,
+    "chapitre": "[ANNALES 2013] Invalidité – Condition réduction capacité",
+    "type": "single",
+    "question": "Pour bénéficier d'une indemnisation Sécurité Sociale au titre de l'invalidité, une des conditions est d'avoir sa capacité de travail ou de gain réduite d'au moins :",
+    "options": ["1 tiers", "2 tiers", "2 cinquièmes", "3 cinquièmes"],
+    "correct": [1],
+    "explication_fr": "La condition principale pour être reconnu invalide SS = réduction de la capacité de travail ou de gain d'au moins 2/3 (= 66,67%).\n\nAutres conditions :\n• Être immatriculé SS depuis au moins 12 mois avant l'arrêt de travail\n• Avoir travaillé un certain nombre d'heures ou cotisé un montant minimum\n• Être âgé de moins de 62 ans (âge légal de retraite)\n\nLa reconnaissance se fait par le médecin-conseil de l'Assurance Maladie, sur dossier médical.",
+    "explication_vn": "Điều kiện chính để được công nhận invalide SS = giảm năng lực lao động hoặc thu nhập ít nhất 2/3 (= 66,67%).\n\nCác điều kiện khác:\n• Đã đăng ký SS ít nhất 12 tháng trước khi nghỉ ốm\n• Đã làm việc một số giờ nhất định hoặc đóng cotisation tối thiểu\n• Dưới 62 tuổi (tuổi hưu trí pháp định)\n\nViệc công nhận do bác sĩ tư vấn của Assurance Maladie thực hiện, dựa trên hồ sơ y tế."
+  },
+  {
+    "id": 180,
+    "chapitre": "[ANNALES 2013] Tarification Santé – Fréquence actes",
+    "type": "single",
+    "question": "En matière de tarification d'un contrat complémentaire Santé, pour estimer la fréquence moyenne d'un acte on rapporte généralement le nombre d'actes observés sur une période à :",
+    "options": [
+      "L'effectif assuré au début de la période",
+      "L'effectif des assurés ayant « consommé » au moins un acte sur la période",
+      "L'effectif moyen pondéré par la durée de présence sur la période",
+      "L'effectif assuré au début de période hors enfants"
+    ],
+    "correct": [2],
+    "explication_fr": "La fréquence d'un acte = Nombre d'actes / Effectif moyen pondéré par la durée de présence.\n\nPourquoi l'effectif pondéré ? Car certains assurés entrent ou sortent en cours de période (arrivées, départs, décès, résiliations). Un assuré présent 6 mois ne doit compter que pour 0,5 dans l'effectif.\n\nEffectif moyen pondéré = Σ(durée de présence de chaque assuré) / durée totale de la période\n\nUtiliser l'effectif en début de période surestimerait la fréquence si des sorties ont lieu. Utiliser l'effectif des 'consommants' biaiserait fortement les statistiques.",
+    "explication_vn": "Tần suất của một acte = Số actes / Effectif trung bình có trọng số theo thời gian hiện diện.\n\nTại sao effectif có trọng số? Vì một số người được bảo hiểm vào hoặc ra trong kỳ (đến, đi, tử vong, hủy bảo hiểm). Người được bảo hiểm 6 tháng chỉ được tính 0,5 trong effectif.\n\nEffectif trung bình có trọng số = Σ(thời gian hiện diện của mỗi người) / tổng thời gian kỳ\n\nDùng effectif đầu kỳ sẽ ước tính quá cao tần suất nếu có người rời đi. Dùng effectif 'tiêu dùng' sẽ lệch thống kê mạnh."
+  },
+  {
+    "id": 181,
+    "chapitre": "[ANNALES 2013] Tarification Santé – Paramètres réglementaires",
+    "type": "single",
+    "question": "En matière de tarification d'un contrat complémentaire Santé, les paramètres imposés par la règlementation sont :",
+    "options": [
+      "Une table de fréquences",
+      "Un taux technique",
+      "Une table de coûts moyens",
+      "Aucun paramètre"
+    ],
+    "correct": [3],
+    "explication_fr": "AUCUN PARAMÈTRE réglementaire n'est imposé pour la tarification des contrats complémentaires santé.\n\nContrairement aux garanties décès (tables TH/TF obligatoires) ou rentes viagères (TGH/TGF obligatoires), la tarification santé est LIBRE.\n\nL'assureur utilise ses propres statistiques de sinistralité pour estimer :\n• Les fréquences d'actes par catégorie\n• Les coûts moyens par acte\n• Les tendances (inflation médicale, vieillissement)\n\nSeules contraintes : respecter les règles du contrat responsable et les obligations de provisionnement réglementaire.",
+    "explication_vn": "KHÔNG CÓ THAM SỐ quy định nào được áp đặt cho định phí hợp đồng bổ sung sức khỏe.\n\nKhác với bảo đảm tử vong (bảng TH/TF bắt buộc) hay rente viagère (TGH/TGF bắt buộc), định phí sức khỏe HOÀN TOÀN TỰ DO.\n\nCông ty bảo hiểm sử dụng thống kê sinistralité riêng để ước tính:\n• Tần suất actes theo catégorie\n• Chi phí trung bình mỗi acte\n• Xu hướng (lạm phát y tế, lão hóa)\n\nRàng buộc duy nhất: tuân thủ quy tắc contrat responsable và nghĩa vụ provisionnement."
+  },
+  {
+    "id": 182,
+    "chapitre": "[ANNALES 2013] BCAC – Signification",
+    "type": "single",
+    "question": "BCAC signifie :",
+    "options": [
+      "Bureau Commun des Assurances Collectives"
+    ],
+    "correct": [0],
+    "explication_fr": "BCAC = Bureau Commun des Assurances Collectives.\n\nC'est un organisme interprofessionnel qui :\n• Collecte les données de sinistralité des compagnies d'assurance sur les risques collectifs (arrêt de travail, décès, invalidité, incapacité)\n• Produit des tables et coefficients de tarification de référence\n• Permet la mutualisation des données entre assureurs\n\nSon utilité : fournir aux actuaires des références statistiques fiables pour la tarification des contrats de prévoyance collective, notamment pour les garanties Arrêt de Travail où les données individuelles peuvent être insuffisantes.",
+    "explication_vn": "BCAC = Bureau Commun des Assurances Collectives.\n\nĐây là tổ chức liên nghề nghiệp:\n• Thu thập dữ liệu sinistralité của các công ty bảo hiểm về rủi ro tập thể (nghỉ ốm, tử vong, tàn tật, mất khả năng lao động)\n• Tạo ra các bảng và hệ số định phí tham chiếu\n• Cho phép chia sẻ dữ liệu giữa các công ty bảo hiểm\n\nTính hữu ích: cung cấp cho các actuaire tham chiếu thống kê đáng tin cậy để định phí hợp đồng prévoyance tập thể, đặc biệt cho bảo đảm Arrêt de Travail khi dữ liệu cá nhân có thể không đủ."
   }
+
+
+
+
+
 ]
 
 
